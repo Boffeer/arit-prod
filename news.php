@@ -1,0 +1,135 @@
+<?php 
+/*
+ * Template Name: Новости
+ */
+?>
+<?php get_header();?>
+    <main class="subpage--white">
+      <div class="container">
+        <script>
+          var mapsDelay = 1000;
+        </script>
+        <div class="breadcrumbs"><a class="breadcrumb breadcrumb--main" href="#">Главная</a><a class="breadcrumb" href="#">Обучение</a><a class="breadcrumb" href="#">Повышение квалификации</a><a class="breadcrumb" href="#">Менеджмент</a><a class="breadcrumb" href="#">Логистическйи менеджмент</a></div>
+
+        <h1 class="section__title">Новости</h1>
+
+<?php 
+	$news_latest_item = array(
+		'post_type' => 'news',
+		'supress_filters' => false,
+		'numberposts' => 1,
+		'orderby' => 'date',
+		'order' => 'DESC',
+	);
+	$news_latest_small = array(
+		'post_type' => 'news',
+		'supress_filters' => false,
+		'numberposts' => 3,
+		'orderby' => 'date',
+		'order' => 'DESC',
+		'offset' => 1,
+	);
+	$news_rest = array(
+		'post_type' => 'news',
+		'supress_filters' => false,
+		'numberposts' => -1,
+		'orderby' => 'date',
+		'order' => 'DESC',
+		'offset' => 4,
+	);
+
+	$news_latest = get_posts( $news_latest_item );
+	$news_smalls = get_posts( $news_latest_small );
+	$news_rest = get_posts( $news_rest );
+	$catalog_counter = 1;
+
+?>
+
+
+
+        <div class="news-page">
+          <div class="news-wrapper">
+
+
+
+						<div class="news-latest-one">
+<?php
+	foreach ($news_latest as $post) {
+		setup_postdata($post);
+?>
+							<a class="news-latest-one__img-wrap" href="<?php echo the_permalink(); ?>">
+							<img class="news-latest-one__pic" src="<?php the_field('news_hero'); ?>" alt="<?php the_field('news_title'); ?>">
+							</a>
+							<div class="news-latest-one-info">
+								<a href="<?php echo the_permalink(); ?>">
+									<h3 class="news-item__title"><?php echo the_ID() ?><?php the_field('news_title'); ?></h3>
+								</a>
+								<p class="news-item__descr"><?php the_field('news_subtitle'); ?></p>
+								<div class="news-bottom">
+									<a class="news-button" href="<?php the_permalink(); ?>">Подробнее</a>
+									<span class="news-date"><?php the_date('d.m.Y'); ?></span>
+								</div>
+              </div>
+<?php }; // end latest post ?>
+
+            </div>
+
+
+
+
+						<div class="news-latest">
+<?php
+	foreach ($news_smalls as $post) {
+		setup_postdata($post);
+?>
+							<a class="news-latest-item" href="<?php the_permalink(); ?>">
+								<h3 class="news-item__title"><?php the_field('news_title'); ?></h3>
+								<p class="news-date"><?php the_date('d.m.Y'); ?></p>
+							</a>
+<?php } //end smalls ?>
+						</div>
+
+          </div>
+        </div>
+
+
+        <div class="regular-news-wrapper">
+          <div class="news-page regular-news">
+					<?php
+						foreach ($news_rest as $post) {
+						setup_postdata($post);
+					?>
+						<div class="news-item">
+							<a href="<?php the_permalink() ?>">
+								<picture class="news__picture">
+									<img src="<?php the_field('news_hero') ?>"/>
+								</picture>
+							</a>
+							<div class="news-info">
+								<a href="<?php the_permalink ?>">
+									<h3 class="news-item__title"><?php the_field('news_title') ?></h3>
+								</a>
+								<p class="news-item__descr"><?php the_field('news_subtitle') ?></p>
+								<div class="news-bottom">
+									<a class="news-button" href="<?php the_permalink() ?>">Подробнее</a>
+									<span class="news-date"><?php the_date() ?></span>
+								</div>
+              </div>
+            </div>
+						<?php } //end rest news?>
+          <div class="button--center-aligner">
+            <button class="secondary-button news__more">Показать еще</button>
+          </div>
+        </div>
+        <script>
+          showmore({
+          	items: '.news-item'	,
+          	clickHandler: '.news__more',
+          	itemsToShow: 3,
+          	initialShow: 3,
+          	currentItem: 0,
+          })
+        </script>
+      </div>
+    </main>
+<?php get_footer();?>
