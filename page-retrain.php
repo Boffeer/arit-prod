@@ -1,7 +1,7 @@
 <?php 
 /*
-Template Name: Курс по ПК
-Template Post Type: courses_skillup
+Template Name: Курс ПП
+Template Post Type: courses_retrain
  */
 ?>
 <?php get_header();?>
@@ -18,7 +18,7 @@ Template Post Type: courses_skillup
 
 <?php
 	$newsItems = array(
-		'post_type' => 'courses_skillup',
+		'post_type' => 'courses',
 		'supress_filters' => false,
 		'numberposts' => -1,
 		'order' => 'ASC',

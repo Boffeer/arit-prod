@@ -1,3 +1,7 @@
+<?php
+	$url;
+	$get_current_url = home_url(add_query_arg( array() ), $url->requiest);
+?>
     <div class="form-wrapper">
       <div class="form-map">
         <script class="ym-lazy" type="text/javascript" charset="utf-8" async data-src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A4e0949e6941d52d78f94a84b1d3430955dacdefab8154e7ad5c100bae25f7aa5&amp;amp;width=100%25&amp;amp;lang=ru_RU&amp;amp;scroll=true"></script>
@@ -7,6 +11,9 @@
           <div class="form__border">
             <h2 class="form__title">Оставить заявку</h2>
                         <div class="form-fields">
+                          <div class="form-input-wrap">
+													<input type="hidden" name="currenturl" value="<?php echo $url; ?>">
+                          </div>
                           <div class="form-input-wrap">
                             <input type="hidden" name="fomrname">
                           </div>

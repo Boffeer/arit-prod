@@ -2,7 +2,9 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8">
-    <title>АРИТ — Стань востребованным специалистом в сжатые сроки, не отрываясь от работы</title>
+    <!--<title>АРИТ — Стань востребованным специалистом в сжатые сроки, не отрываясь от работы</title>-->
+		<title><?php bloginfo('name'); ?></title>
+		<meta name="description" content="<?php bloginfo('description'); ?>">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
 	 <?php wp_head();?>
@@ -122,7 +124,7 @@
 
 <?php if ( is_home() ) {} else {?>
 	<!-- .container -->
-	<div class="container" style="margin-top: 200px">
+	<div class="container" style="margin-top: 150px; margin-bottom: -120px;">
 		<div class="breadcrumbs">
 			<?php
 					if (function_exists('yoast_breadcrumb') ) {
