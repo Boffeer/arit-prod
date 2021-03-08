@@ -43,32 +43,77 @@
           </div>
         </header>
       </div>
+
+
+
+
+
+
+
+<?php
+					// === Get menu items for custom nav menu ===
+					$get_menu = wp_get_nav_menu_items( 'nav' );
+					$menu_array = array();
+					$menu_child = array();
+
+					$menu_parent_id;
+					$is_menu_parent_id_got = false;
+
+					foreach ( $get_menu as $key => $menu_item ) {
+						$menu_item_ar = $menu_item->to_array();
+						
+						if ( !$is_menu_parent_id_got ) {
+							$menu_parent_id = $menu_item_ar['db_id'];
+							$is_menu_parent_id_got = true;
+						}
+						if ( $menu_item_ar['menu_item_parent'] == $menu_parent_id) {
+							$menu_child[$key]['db_id'] = $menu_item_ar['db_id'];
+							$menu_child[$key]['post_title'] = $menu_item_ar['post_title'];
+							$menu_child[$key]['url'] = $menu_item_ar['url'];
+							$menu_child[$key]['title'] = $menu_item_ar['title'];
+							$menu_child[$key]['menu_item_parent'] = $menu_item_ar['menu_item_parent'];
+						} else {
+							$menu_array[$key]['db_id'] = $menu_item_ar['db_id'];
+							$menu_array[$key]['post_title'] = $menu_item_ar['post_title'];
+							$menu_array[$key]['url'] = $menu_item_ar['url'];
+							$menu_array[$key]['title'] = $menu_item_ar['title'];
+							$menu_array[$key]['menu_item_parent'] = $menu_item_ar['menu_item_parent'];
+						}
+					}
+					// echo '<pre>';
+					// var_dump($menu_array);
+					// var_dump($menu_new_array);
+					// echo '</pre>';
+
+?>
+
+
       <nav class="nav container">
         <div class="nav-list">
-          <div class="dropdown-menu-item"><a class="nav-list-item nav-list-item--dropdown" href="#about">
-              <div class="nav-list-item__text">Об академии</div></a>
-            <div class="nav-list-item-dropdown-wrap">
+<?php foreach ($menu_array as $menu_item) { ?>
+					
+	<?php if ($menu_item['db_id'] == $menu_parent_id) {?>
+					<div class="dropdown-menu-item">
+						<a class="nav-list-item nav-list-item--dropdown" href="#about">
+							<div class="nav-list-item__text"><?php echo $menu_item['title'] ?></div>
+						</a>
+
+						<div class="nav-list-item-dropdown-wrap">
 							<div class="nav-list-item-dropdown">
-								<a class="dropdown-item" href="/about.html">Сведения об образовательной организации</a>
-								<a class="dropdown-item" href="/licenses.html">Лицензии</a>
-								<a class="dropdown-item" href="/maininfo.html">Основные сведения</a>
-								<a class="dropdown-item" href="/structure.html">Структура и органы управления образовательной организацией</a>
-								<a class="dropdown-item" href="/documents.html">Документы</a>
-								<a class="dropdown-item" href="/standards.html">Образовательные стандарты</a>
-								<a class="dropdown-item" href="/teachers.html">Руководство и педагогический состав</a>
-								<a class="dropdown-item" href="jobs.html">Вакансии</a>
-								<a class="dropdown-item" href="testimonials.html">Отзывы</a>
-								<a class="dropdown-item" href="bankdetails.html">Реквизиты</a></div>
-            </div>
-          </div><a class="nav-list-item" href="./seminars.html">
-            <div class="nav-list-item__text">Семинары</div></a><a class="nav-list-item" href="./webinars.html">
-            <div class="nav-list-item__text">Вебинары</div></a><a class="nav-list-item" href="./learning.html">
-            <div class="nav-list-item__text">Обучение</div></a><a class="nav-list-item" href="#media">
-            <div class="nav-list-item__text">Медиа</div></a><a class="nav-list-item" href="./news.html">
-            <div class="nav-list-item__text">Новости</div></a><a class="nav-list-item" href="./testimonials.html">
-            <div class="nav-list-item__text">Отзывы</div></a><a class="nav-list-item" href="./partners.html">
-            <div class="nav-list-item__text">Партнеры</div></a><a class="nav-list-item" href="./contacts.html">
-            <div class="nav-list-item__text">Контакты</div></a>
+								<?php foreach ($menu_child as $menu_child_item) {?>
+									<a class="dropdown-item" href="<?php echo $menu_child_item['url'] ?>"><?php echo $menu_child_item['title'] ?></a>
+								<?php } ?>
+							</div>
+						</div>
+					</div>
+	<?php } // end menu dropdown?>
+
+	<?php if ($menu_item['db_id'] != $menu_parent_id) {?>
+						<a class="nav-list-item" href="<?php echo $menu_item['url'] ?>">
+							<div class="nav-list-item__text"><?php echo $menu_item['title'] ?></div>
+						</a>
+	<?php } // end last menu items?>
+<?php } // end foreach?>
         </div>
       </nav>
     </div>
@@ -77,7 +122,7 @@
 
 <?php if ( is_home() ) {} else {?>
 	<!-- .container -->
-	<div class="container">
+	<div class="container" style="margin-top: 200px">
 		<div class="breadcrumbs">
 			<?php
 					if (function_exists('yoast_breadcrumb') ) {
@@ -88,26 +133,3 @@
 </div>
 	<!-- /.container -->
 <?php } ?>
-
-<?php
-					// === Get menu items for custom nav menu ===
-					$get_menu = wp_get_nav_menu_items( 'nav' );
-					$menu_array = array();
-
-					foreach ( $get_menu as $key => $menu_item ) {
-						$menu_item_ar = $menu_item->to_array();
-
-						$menu_array[$key]['db_id'] = $menu_item_ar['db_id'];
-						$menu_array[$key]['post_title'] = $menu_item_ar['post_title'];
-						$menu_array[$key]['url'] = $menu_item_ar['url'];
-						$menu_array[$key]['title'] = $menu_item_ar['title'];
-						$menu_array[$key]['menu_item_parent'] = $menu_item_ar['menu_item_parent'];
-					}
-
-					// echo '<pre>';
-					// var_dump($menu_array);
-					// var_dump($menu_new_array);
-					// echo '</pre>';
-?>
-
-

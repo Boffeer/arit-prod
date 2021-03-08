@@ -10,7 +10,6 @@
           var mapsDelay = 1000;
           
         </script>
-        <div class="breadcrumbs"><a class="breadcrumb breadcrumb--main" href="#">Главная</a><a class="breadcrumb" href="#">Об академии</a><a class="breadcrumb" href="#">Документы</a></div>
         <h1 class="section__title section__title--page">Документы</h1>
       </div>
       <div class="container container--mobile-fullscreen">

@@ -7,7 +7,6 @@
     <main class="subpage">
       <div class="container">
         <script>var mapsDelay = 1000;</script>
-        <div class="breadcrumbs"><a class="breadcrumb breadcrumb--main" href="#">Главная</a><a class="breadcrumb" href="#">Об академии</a><a class="breadcrumb" href="#">Лицензии</a></div>
       </div>
       <div class="container main-info-container">
         <div class="maininfo">

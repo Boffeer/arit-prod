@@ -11,7 +11,6 @@ Template Post Type: courses
           var mapsDelay = 1000;
           
         </script>
-        <div class="breadcrumbs"><a class="breadcrumb breadcrumb--main" href="#">Главная</a><a class="breadcrumb" href="#">Обучение</a><a class="breadcrumb" href="#">Повышение квалификации</a><a class="breadcrumb" href="#">Менеджмент</a><a class="breadcrumb" href="#">Логистическйи менеджмент</a></div>
       </div>
       <div class="container container--page-course">
         <div class="course-left">

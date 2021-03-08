@@ -9,7 +9,6 @@ Template Name: Семинары
         <script>
           var mapsDelay = 1000;
         </script>
-        <div class="breadcrumbs"><a class="breadcrumb breadcrumb--main" href="#">Главная</a><a class="breadcrumb" href="#">Об академии</a><a class="breadcrumb" href="#">Лицензии</a></div>
         <h1 class="section__title--left section__title">Ближайшие семинары</h1>
       </div>
 
@@ -76,8 +75,10 @@ foreach ( $posts as $post ) {
 		$postsToIncoming[$incomingCounter]['meetup_speakers'] = get_field('meetup_speakers');
 		$postsToIncoming[$incomingCounter]['sorting_days'] = $get_meetup_untill;
 
-		if ($get_meetup_untill < 2) {
+		if ($get_meetup_untill < 1) {
 			$postsToIncoming[$incomingCounter]['days_untill'] = 'Семинар сегодня';
+		} else if ($get_meetup_untill < 2) {
+			$postsToIncoming[$incomingCounter]['days_untill'] = 'Семинар завтра';
 		} else if ($get_meetup_untill < 5) {
 			$postsToIncoming[$incomingCounter]['days_untill'] = 'Осталось ' . $get_meetup_untill . ' дня'; //2, 3, 4
 		} else if ($get_meetup_untill > 4){
