@@ -33,7 +33,6 @@
       <div class="learning" id="learning">
         <div class="container">
           <h2 class="section__title learning__title">Направления обучения в АРИТ</h2>
-					<ul>
 <?php
 $arit_get_categories = array(
 	'show_count' => true,
@@ -51,7 +50,17 @@ $arit_get_categories = array(
 	$column_2_count = floor($categories_per_column);
 	$column_3_count = ceil($categories_per_column);
 
+
+	// echo '<pre>';
+	// var_dump($categories);
+	// echo '</pre>';
+	// foreach ($categories as $category) {
+	// echo '<pre>';
+	// var_dump($category);
+	// echo '</pre>';
+	// }
 ?>
+					<ul>
 					</ul>
           <div class="learning-tabs-wrap">
             <div class="learning-tabbar">

@@ -66,6 +66,7 @@
         </div>
       </div>
     </footer>
+
     <div class="consult-pop-wrap" hidden>
       <button class="pop-closer">X</button>
       <div class="pop-aligner">
@@ -75,7 +76,7 @@
               <h2 class="form__title">Оставить заявку</h2>
                           <div class="form-fields">
                             <div class="form-input-wrap">
-                              <input type="hidden" name="fomrname">
+                              <input class="formname" type="hidden" name="fomrname">
                             </div>
                             <div class="form-input-wrap">
                               <input class="form__input" required name="name" type="text" placeholder="Имя">

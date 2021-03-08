@@ -72,3 +72,42 @@
         </div>
       </nav>
     </div>
+
+
+
+<?php if ( is_home() ) {} else {?>
+	<!-- .container -->
+	<div class="container">
+		<div class="breadcrumbs">
+			<?php
+					if (function_exists('yoast_breadcrumb') ) {
+						yoast_breadcrumb( '<p id="breadcrumbs">', '</p>' );
+					}
+			?>
+	</div>
+</div>
+	<!-- /.container -->
+<?php } ?>
+
+<?php
+					// === Get menu items for custom nav menu ===
+					$get_menu = wp_get_nav_menu_items( 'nav' );
+					$menu_array = array();
+
+					foreach ( $get_menu as $key => $menu_item ) {
+						$menu_item_ar = $menu_item->to_array();
+
+						$menu_array[$key]['db_id'] = $menu_item_ar['db_id'];
+						$menu_array[$key]['post_title'] = $menu_item_ar['post_title'];
+						$menu_array[$key]['url'] = $menu_item_ar['url'];
+						$menu_array[$key]['title'] = $menu_item_ar['title'];
+						$menu_array[$key]['menu_item_parent'] = $menu_item_ar['menu_item_parent'];
+					}
+
+					// echo '<pre>';
+					// var_dump($menu_array);
+					// var_dump($menu_new_array);
+					// echo '</pre>';
+?>
+
+

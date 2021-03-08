@@ -73,8 +73,9 @@ foreach ( $posts as $post ) {
 		$postsToIncoming[$incomingCounter]['meetup_name'] = get_field('meetup_name');
 		$postsToIncoming[$incomingCounter]['meetup_speakers'] = get_field('meetup_speakers');
 		$postsToIncoming[$incomingCounter]['meetup_link'] = get_field('meetup_link');
+		$postsToIncoming[$incomingCounter]['sorting_days'] = $get_meetup_untill;
 
-		if ($get_meetup_untill == 0) {
+		if ($get_meetup_untill < 1) {
 			$postsToIncoming[$incomingCounter]['days_untill'] = 'Семинар сегодня';
 		} else if ($get_meetup_untill < 5) {
 			$postsToIncoming[$incomingCounter]['days_untill'] = 'Осталось ' . $get_meetup_untill . ' дня'; //2, 3, 4
@@ -95,6 +96,11 @@ foreach ( $posts as $post ) {
 	}
 
 } wp_reset_postdata();
+
+
+usort($postsToIncoming, function($a,$b){
+	return ($a['sorting_days'] - $b['sorting_days']);
+});
 
 foreach ($postsToIncoming as $post) {
 ?>

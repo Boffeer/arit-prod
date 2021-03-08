@@ -9,7 +9,6 @@
         <script>
           var mapsDelay = 1000;
         </script>
-        <div class="breadcrumbs"><a class="breadcrumb breadcrumb--main" href="#">Главная</a><a class="breadcrumb" href="#">Обучение</a><a class="breadcrumb" href="#">Повышение квалификации</a><a class="breadcrumb" href="#">Менеджмент</a><a class="breadcrumb" href="#">Логистическйи менеджмент</a></div>
 
         <h1 class="section__title">Новости</h1>
 
@@ -62,7 +61,7 @@
 							</a>
 							<div class="news-latest-one-info">
 								<a href="<?php echo the_permalink(); ?>">
-									<h3 class="news-item__title"><?php echo the_ID() ?><?php the_field('news_title'); ?></h3>
+									<h3 class="news-item__title"><?php the_field('news_title'); ?></h3>
 								</a>
 								<p class="news-item__descr"><?php the_field('news_subtitle'); ?></p>
 								<div class="news-bottom">
@@ -70,7 +69,7 @@
 									<span class="news-date"><?php the_date('d.m.Y'); ?></span>
 								</div>
               </div>
-<?php }; // end latest post ?>
+<?php }; wp_reset_postdata();// end latest post ?>
 
             </div>
 
@@ -86,7 +85,7 @@
 								<h3 class="news-item__title"><?php the_field('news_title'); ?></h3>
 								<p class="news-date"><?php the_date('d.m.Y'); ?></p>
 							</a>
-<?php } //end smalls ?>
+<?php }; wp_reset_postdata();//end smalls ?>
 						</div>
 
           </div>
@@ -112,7 +111,7 @@
 								<p class="news-item__descr"><?php the_field('news_subtitle') ?></p>
 								<div class="news-bottom">
 									<a class="news-button" href="<?php the_permalink() ?>">Подробнее</a>
-									<span class="news-date"><?php the_date() ?></span>
+									<span class="news-date"><?php the_date('d.m.Y') ?></span>
 								</div>
               </div>
             </div>

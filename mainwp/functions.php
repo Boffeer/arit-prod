@@ -5,6 +5,7 @@
 		  wp_enqueue_script( 'modal', get_template_directory_uri() . '/js/modal.min.js', '', '1.0.0', false );
 		  wp_enqueue_script( 'swiper', get_template_directory_uri() . '/js/swiper-bundle.min.js', '', '1.0.0', true );
 		  wp_enqueue_script( 'showmore', get_template_directory_uri() . '/js/blocks/showmore.min.js', '', '1.0.0', false );
+		  wp_enqueue_script( 'dropdown', get_template_directory_uri() . '/js/dropdown.min.js', '', '1.0.0', false );
 		  wp_enqueue_script( 'tabbar', get_template_directory_uri() . '/js/blocks/tabbar.min.js', '', '1.0.0', true );
 		  wp_enqueue_script( 'header_and_footer', get_template_directory_uri() . '/js/blocks/headerAndFooter.min.js', '', '1.0.0', true );
 		  wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/main.min.js', '', '1.0.0', true   );
@@ -132,5 +133,161 @@
 			'menu_icon'          => 'dashicons-welcome-learn-more',
 			'taxonomies'         => array( 'category' ),
 		) );
+		
+		register_post_type( 'jobs', array(
+			'labels'             => array(
+				'name'               => 'Вакансия',
+				'singular_name'      => 'Вакансия',
+				'add_new'            => 'Добавить новую',
+				'add_new_item'       => 'Добавить вакансию',
+				'edit_item'          => 'Редактировать вакансию',
+				'new_item'           => 'Новая вакания',
+				'view_item'          => 'Посмотреть вакансию',
+				'search_items'       => 'Найти вакансию',
+				'not_found'          => 'Вакансий не найдено',
+				'not_found_in_trash' => 'Удаленных вакансий не найдено',
+				'parent_item_colon'  => '',
+				'menu_name'          => 'Вакансии',
+		  ),
+			'public'             => true,
+			'publicly_queryable' => true,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'query_var'          => true,
+			'rewrite'            => true,
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => false,
+			'menu_position'      => null,
+			'supports'           => array('title','editor','author','thumbnail','excerpt','comments'),
+			'menu_icon'          => 'dashicons-nametag',
+			'taxonomies'         => array( 'category' ),
+		) );
+
+		register_post_type( 'partners', array(
+			'labels'             => array(
+				'name'               => 'Партнер',
+				'singular_name'      => 'Партнер',
+				'add_new'            => 'Добавить нового',
+				'add_new_item'       => 'Добавить партнеры',
+				'edit_item'          => 'Редактировать партнера',
+				'new_item'           => 'Новый преподаватель',
+				'view_item'          => 'Посмотреть партнера',
+				'search_items'       => 'Найти партнера',
+				'not_found'          => 'Партнеров не найдено',
+				'not_found_in_trash' => 'Удаленных Партнеров не найдено',
+				'parent_item_colon'  => '',
+				'menu_name'          => 'Партнеры',
+		  ),
+			'public'             => true,
+			'publicly_queryable' => true,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'query_var'          => true,
+			'rewrite'            => true,
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => false,
+			'menu_position'      => null,
+			'supports'           => array('title','editor','author','thumbnail','excerpt','comments'),
+			'menu_icon'          => 'dashicons-admin-users',
+		) );
+
+		register_post_type( 'teachers', array(
+			'labels'             => array(
+				'name'               => 'Преподаватель',
+				'singular_name'      => 'Преподаватель',
+				'add_new'            => 'Добавить нового',
+				'add_new_item'       => 'Добавить преподавателя',
+				'edit_item'          => 'Редактировать преподавателя',
+				'new_item'           => 'Новый преподаватель',
+				'view_item'          => 'Посмотреть преподавателя',
+				'search_items'       => 'Найти преподавателя',
+				'not_found'          => 'Преподавателей не найдено',
+				'not_found_in_trash' => 'Удаленных преподавателей не найдено',
+				'parent_item_colon'  => '',
+				'menu_name'          => 'Преподаватели',
+		  ),
+			'public'             => true,
+			'publicly_queryable' => true,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'query_var'          => true,
+			'rewrite'            => true,
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => false,
+			'menu_position'      => null,
+			'supports'           => array('title','editor','author','thumbnail','excerpt','comments'),
+			'menu_icon'          => 'dashicons-admin-users',
+		) );
+
+
+		register_post_type( 'testimonials', array(
+			'labels'             => array(
+				'name'               => 'Отзыв',
+				'singular_name'      => 'Отзыв',
+				'add_new'            => 'Добавить новый',
+				'add_new_item'       => 'Добавить отзыв',
+				'edit_item'          => 'Редактировать отзыв',
+				'new_item'           => 'Новый отзыв',
+				'view_item'          => 'Посмотреть отзыв',
+				'search_items'       => 'Найти отзыв',
+				'not_found'          => 'Отзывов не найдено',
+				'not_found_in_trash' => 'Удаленных отзывов не найдено',
+				'parent_item_colon'  => '',
+				'menu_name'          => 'Отзывы',
+		  ),
+			'public'             => true,
+			'publicly_queryable' => true,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'query_var'          => true,
+			'rewrite'            => true,
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => false,
+			'menu_position'      => null,
+			'supports'           => array('title','editor','author','thumbnail','excerpt','comments'),
+			'menu_icon'          => 'dashicons-thumbs-up',
+		) );
+
+	
+		register_post_type( 'contact_info', array(
+			'labels'             => array(
+				'name'               => 'Контакт',
+				'singular_name'      => 'Контакты',
+				'add_new'            => 'Добавить новый',
+				'add_new_item'       => 'Добавить контакт',
+				'edit_item'          => 'Редактировать контакт',
+				'new_item'           => 'Новый контакт',
+				'view_item'          => 'Посмотреть контакт',
+				'search_items'       => 'Найти контакт',
+				'not_found'          => 'Контактов не найдено',
+				'not_found_in_trash' => 'Удаленных контактов не найдено',
+				'parent_item_colon'  => '',
+				'menu_name'          => 'Контакты',
+		  ),
+			'public'             => true,
+			'publicly_queryable' => true,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'query_var'          => true,
+			'rewrite'            => true,
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => false,
+			'menu_position'      => null,
+			'supports'           => array('title','editor','author','thumbnail','excerpt','comments'),
+			'menu_icon'          => 'dashicons-email',
+		) );
+
 	}
+
+
+
+	if(function_exists('add_theme_support')) {
+		add_theme_support('menus');
+	}
+
 

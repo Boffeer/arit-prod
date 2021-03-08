@@ -1478,6 +1478,7 @@ p {
 
 .news__picture {
   overflow: hidden;
+  height: 250px;
 }
 
 .news__picture:hover img {
@@ -2427,6 +2428,10 @@ p {
   margin-right: 59px;
 }
 
+.meetups-next-list {
+  width: 100%;
+}
+
 .meetups-page-container {
   display: flex;
   justify-content: space-between;
@@ -2590,6 +2595,14 @@ p {
 
 .archieve-wrapper--webinars .archieve-item {
   background: #f9fafa;
+}
+
+.archieve__picture {
+  height: 210px;
+}
+
+.archieve__picture img {
+  height: 100%;
 }
 
 .archieve-item-picture {
@@ -3496,6 +3509,13 @@ p {
   display: flex;
   flex-direction: column;
   max-width: 100%;
+  width: 100%;
+}
+
+.news__picture img {
+  width: 100%;
+  height: 100%;
+  object-fite: cover;
 }
 
 .news-latest-one {

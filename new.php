@@ -11,7 +11,7 @@ Template Post Type: news
           var mapsDelay = 1000;
           
         </script>
-        <div class="breadcrumbs"><a class="breadcrumb breadcrumb--main" href="#">Главная</a><a class="breadcrumb" href="#">Обучение</a><a class="breadcrumb" href="#">Повышение квалификации</a><a class="breadcrumb" href="#">Менеджмент</a><a class="breadcrumb" href="#">Логистическйи менеджмент</a></div>
+
 
 <?php 
 	$newsItems = array(
@@ -24,6 +24,7 @@ Template Post Type: news
         <div class="news-item-page">
           <div class="paper paper--news-item">
 					<h1><?php the_field('news_title'); ?></h1>
+					<img src="<?php the_field('news_hero') ?>" alt="<?php the_field('news_title'); ?>">
             <div class="paper--news-item-body">
 							<?php the_field('news_text'); ?>
             </div>
