@@ -124,7 +124,7 @@
 
 <?php if ( is_home() ) {} else {?>
 	<!-- .container -->
-	<div class="container" style="margin-top: 150px; margin-bottom: -120px;">
+	<div class="container breadcrumbs-container">
 		<div class="breadcrumbs">
 			<?php
 					if (function_exists('yoast_breadcrumb') ) {

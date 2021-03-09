@@ -59,6 +59,9 @@
               <div class="learning-tab">
                 <div class="learning-page-list">
 
+<?php if (count($all_tag_posts_retrain) === 0) { ?>
+								<p style="text-align: center; margin-bottom: 20px;">Пока нет опубликованных курсов по этому направлению</p>
+<?php } ?>
 <?php foreach ($all_tag_posts_retrain as $key => $course) {
 	setup_postdata($course);
 	$course_ar = $course->to_array();
@@ -80,7 +83,7 @@
                   <div class="learning-page-item">
                     <div class="learning-page-info-wrapper">
                       <div class="learning-page-number">
-											<p class="learning-page__number"><?php echo $key + 1?></p>
+											<p class="learning-page__number"><?php echo $key + 1?> </p>
                       </div>
                       <div class="learning-page-info">
 											<h3 class="learning-page-info__title"><?php echo $course_ar['post_title'] ?></h3>
@@ -117,6 +120,9 @@
               <div class="learning-tab">
                 <div class="learning-page-list">
 
+<?php if (count($all_tag_posts) === 0) { ?>
+								<p style="text-align: center; margin-bottom: 20px;">Пока нет опубликованных курсов по этому направлению</p>
+<?php } ?>
 <?php foreach ($all_tag_posts as $key => $course) {
 	setup_postdata($course);
 	$course_ar = $course->to_array();

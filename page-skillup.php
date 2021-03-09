@@ -30,15 +30,15 @@ Template Post Type: courses_skillup
 
 
 
-					<h1 class="section__title section__title--left"><?php the_field('course_name') ?></h1>
+					<h1 class="section__title section__title--left"><?php the_title() ?></h1>
           <div class="course-about">
             <div class="course-about-name">
               <p class="course-about__descriptor">Форма обучения</p>
-							<p class="course-about__value"><?php echo $skillup['format']; ?></p>
+							<p class="course-about__value"><?php the_field('format'); ?></p>
             </div>
             <div class="course-about-time">
               <p class="course-about__descriptor">Время обучения</p>
-              <p class="course-about__value">от 500ч.</p>
+							<p class="course-about__value"><?php the_field('hours') ?></p>
             </div>
           </div>
           <div class="course-info">
@@ -48,7 +48,7 @@ Template Post Type: courses_skillup
                 <button class="dropdown-block__handler"></button>
               </div>
               <div class="dropdown-block-text paper paper--dropdown">
-									<?php echo $skillup['descr'] ?>
+									<?php the_field('descr') ?>
               </div>
             </div>
             <div class="dropdown-block course-info-dropdown">
@@ -58,7 +58,7 @@ Template Post Type: courses_skillup
               </div>
 							<div class="dropdown-block-text paper paper--dropdown"><img src="http://xn--80aqxj.xn--p1ai/wp-content/uploads/2021/03/diploma.png" alt="">
                 <p><b> <i>Важно! В дипломе не указывается форма обучения (очная/заочная). Диплом установленного образца</i></b></p>
-								<?php echo $skillup['documents']; ?>
+								<?php the_field('documents'); ?>
               </div>
             </div>
             <div class="dropdown-block course-info-dropdown">
@@ -67,7 +67,7 @@ Template Post Type: courses_skillup
                 <button class="dropdown-block__handler"></button>
               </div>
               <div class="dropdown-block-text paper paper--dropdown">
-								<?php echo $skillup['requirements'] ?>
+								<?php the_field('requirements') ?>
               </div>
             </div>
           </div>
@@ -78,7 +78,7 @@ Template Post Type: courses_skillup
               <h3 class="form__title">Оставить заявку на консультацию</h3>
               <div class="form-fields">
                 <div class="form-input-wrap">
-                  <input type="hidden" name="fomrname"/>
+								<input type="hidden" name="fomrname" value="Заявка на консультацию по курсу ПП <?php the_title() ?>"/>
                 </div>
                 <div class="form-input-wrap">
                   <input class="form__input" required="required" name="name" type="text" placeholder="Имя"/>
@@ -138,6 +138,28 @@ Template Post Type: courses_skillup
           </li>
         </ul>
       </div>
+
+
+
+
+
+
+<?php
+	$get_partners = array(
+		'post_type' => 'partners',
+		'supress_filters' => false,
+		'numberposts' => -1,
+		'order' => 'ASC',
+	);
+
+	$partners = get_posts( $get_partners );
+
+?>
+
+
+
+
+
       <div class="partners--course">
         <div class="partners-wrapper" id="partners">
           <div class="partners-container container">
@@ -145,97 +167,21 @@ Template Post Type: courses_skillup
               <h2 class="section__title partners__title">У нас обучаются</h2>
               <div class="partners-slider-outer">
                 <div class="partners-slider-wrap swiper-container">
-                  <div class="partners-slider swiper-wrapper"><a class="partners-item swiper-slide" href="https://www.atmos-med.ru/" target="_blank">
+									<div class="partners-slider swiper-wrapper">
+
+<?php
+	foreach ($partners as $partner) {
+		setup_postdata($partner)
+?>
+										<a class="partners-item swiper-slide" href="<?php the_field('partner_link') ?>" target="_blank">
                       <div class="partners-item__border">
                         <picture class="partners__picture">
-                          <source srcset="img/8-partners/atmos.webp 1x,img/8-partners/atmos@2x.webp 2x" type="image/webp"/><img src="img/8-partners/atmos.png" srcset="img/8-partners/atmos@2x.png 2x"/>
+												<img src="<?php the_field('partner_logo') ?>"/>
                         </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://www.btlmed.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/btl.webp 1x,img/8-partners/btl@2x.webp 2x" type="image/webp"/><img src="img/8-partners/btl.png" srcset="img/8-partners/btl@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://www.cbr.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/cb.webp 1x,img/8-partners/cb@2x.webp 2x" type="image/webp"/><img src="img/8-partners/cb.png" srcset="img/8-partners/cb@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://fcgie.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/center-hygien.webp 1x,img/8-partners/center-hygien@2x.webp 2x" type="image/webp"/><img src="img/8-partners/center-hygien.png" srcset="img/8-partners/center-hygien@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="http://ucentr.karelia.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/center-karnelius.webp 1x,img/8-partners/center-karnelius@2x.webp 2x" type="image/webp"/><img src="img/8-partners/center-karnelius.png" srcset="img/8-partners/center-karnelius@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://vk.com/dental.aurora" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/dental-aurora-clinic.webp 1x,img/8-partners/dental-aurora-clinic@2x.webp 2x" type="image/webp"/><img src="img/8-partners/dental-aurora-clinic.png" srcset="img/8-partners/dental-aurora-clinic@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://www.instagram.com/doctor_super/?hl=ru" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/dr-super.webp 1x,img/8-partners/dr-super@2x.webp 2x" type="image/webp"/><img src="img/8-partners/dr-super.png" srcset="img/8-partners/dr-super@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://www.vladokb.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/gbuzvookb.webp 1x,img/8-partners/gbuzvookb@2x.webp 2x" type="image/webp"/><img src="img/8-partners/gbuzvookb.png" srcset="img/8-partners/gbuzvookb@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://g-richter.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/gedeon-richter.webp 1x,img/8-partners/gedeon-richter@2x.webp 2x" type="image/webp"/><img src="img/8-partners/gedeon-richter.png" srcset="img/8-partners/gedeon-richter@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://gkbe.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/gkb-eramishanceva.webp 1x,img/8-partners/gkb-eramishanceva@2x.webp 2x" type="image/webp"/><img src="img/8-partners/gkb-eramishanceva.png" srcset="img/8-partners/gkb-eramishanceva@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/job-service.webp 1x,img/8-partners/job-service@2x.webp 2x" type="image/webp"/><img src="img/8-partners/job-service.png" srcset="img/8-partners/job-service@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://niioz.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/nii.webp 1x,img/8-partners/nii@2x.webp 2x" type="image/webp"/><img src="img/8-partners/nii.png" srcset="img/8-partners/nii@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://www.pnzgu.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/president-gov-univercity.webp 1x,img/8-partners/president-gov-univercity@2x.webp 2x" type="image/webp"/><img src="img/8-partners/president-gov-univercity.png" srcset="img/8-partners/president-gov-univercity@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="http://spmuzrb.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/sergiev-posad.webp 1x,img/8-partners/sergiev-posad@2x.webp 2x" type="image/webp"/><img src="img/8-partners/sergiev-posad.png" srcset="img/8-partners/sergiev-posad@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://www.lvrach.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/doctor.webp 1x,img/8-partners/doctor@2x.webp 2x" type="image/webp"/><img src="img/8-partners/doctor.png" srcset="img/8-partners/doctor@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://www.lvrach.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/ttp-optic.webp 1x,img/8-partners/ttp-optic@2x.webp 2x" type="image/webp"/><img src="img/8-partners/ttp-optic.png" srcset="img/8-partners/ttp-optic@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://szgmu.ru/rus/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/szgmu.webp 1x,img/8-partners/szgmu@2x.webp 2x" type="image/webp"/><img src="img/8-partners/szgmu.png" srcset="img/8-partners/szgmu@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://www.rastatus.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/status.webp 1x,img/8-partners/status@2x.webp 2x" type="image/webp"/><img src="img/8-partners/status.png" srcset="img/8-partners/status@2x.png 2x"/>
-                        </picture>
-                      </div></a>
+											</div>
+										</a>
+<?php } wp_reset_postdata(); ?>
+
                   </div>
                 </div>
                 <div class="partners-slider-scrollbar slider-scrollbar"></div>
@@ -255,6 +201,17 @@ Template Post Type: courses_skillup
         </div>
       </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
     <div class="testimonials-wrapper">
       <div class="testimonials-container container">
         <div class="testimonials page-course">

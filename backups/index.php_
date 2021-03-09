@@ -68,11 +68,27 @@ $arit_get_categories = array(
 		$learning_ways[$key]['link'] = get_tag_link($tag['term_id']);
 			
 	}
-	$tags_count = count($learning_ways);
+	// $tags_count = count($learning_ways);
+	$tags_count = 60;
 	$tags_per_column = $tags_count / 3;
-	$column_1_count = floor($tags_per_column) - 1;
-	$column_2_count = $column_1_count * 2 + 2;
+	$column_1_count = floor($tags_per_column);
+	$column_2_count = floor($tags_per_column);
+	$column_3_count = ceil($tags_per_column);
 
+		echo '<pre>';
+		echo $tags_count . ', ';
+
+		// var_dump($learning_ways);
+		echo $column_1_count . ', ';
+		echo $column_2_count . ', ';
+		echo $column_3_count . ', ';
+		echo '</pre>';
+
+	// foreach ($categories as $category) {
+	// echo '<pre>';
+	// var_dump($category);
+	// echo '</pre>';
+	// }
 ?>
 					<ul>
 					</ul>
@@ -84,90 +100,105 @@ $arit_get_categories = array(
             <div class="learning-tab--retrain">
               <div class="learning-tab">
                 <ul class="learning-tab-list">
-<?php
-		$tag_counter = 0;
-		while ($tag_counter <= $column_1_count) { ?>
-									<li class="learning-tab-list-item">
-										<a class="learning-tab-list-item__link" 
-												href="<?php echo $learning_ways[$tag_counter]['link'] ?>">
-													<?php echo $learning_ways[$tag_counter]['name'] ?>
-										</a>
-									</li>
-<?php $tag_counter++; } ?>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">АвиаГСМ</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Агрономия</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Архитектура и дизайн</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Бухгалтерское дело</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Ветеринария</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Горная промышленность и маркшейдерское дело</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Государственное и муниципальное управление</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Государственные закупки</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Железнодорожный транспорт</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Землеустройство и кадастр</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Инженерные изыскания</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Инженерные системы</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Кадровое делопроизводство</a></li>
                 </ul>
-
                 <ul class="learning-tab-list">
-<?php while ($tag_counter <= $column_2_count) { ?>
-									<li class="learning-tab-list-item">
-										<a class="learning-tab-list-item__link" 
-												href="<?php echo $learning_ways[$tag_counter]['link'] ?>">
-													<?php echo $learning_ways[$tag_counter]['name'] ?>
-										</a>
-									</li>
-<?php $tag_counter++; } ?>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Косметология</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Лаборатории</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Медицина</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Менеджмент</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Металлургия</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Метрологический контроль</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Нефтегазовое дело</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Охрана труда. Специальная оценка условий труда (СОУТ)</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Оценочная деятельность</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Педагогика</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Подъемные сооружения и лифты</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Пожарно-технический минимум</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Проектирование </a></li>
                 </ul>
-
                 <ul class="learning-tab-list">
-<?php while ($tag_counter < $tags_count) { ?>
-									<li class="learning-tab-list-item">
-										<a class="learning-tab-list-item__link"
-											href="<?php echo $learning_ways[$tag_counter]['link'] ?>"><?php echo $learning_ways[$tag_counter]['name'] ?>
-										</a>
-									</li>
-<?php $tag_counter++; } ?>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Радиационная безопасность</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Реставрация</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Спорт и фитнес</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Строительство</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Техническое обслуживание медицинской техники (ТОМТ)</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Транспортная безопасность</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Фармация</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Холодильное оборудование</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Экология</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Экономика и финансы</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Электробезопасность</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Энергетика</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Юриспруденция</a></li>
                 </ul>
-
               </div>
               <button class="learning-more--retrain secondary-button">Показать еще</button>
             </div>
-
-
-
-
             <div class="learning-tab--skillup learning-tab--active">
               <div class="learning-tab">
                 <ul class="learning-tab-list">
-<?php
-		$tag_counter = 0;
-		while ($tag_counter <= $column_1_count) { ?>
-									<li class="learning-tab-list-item">
-										<a class="learning-tab-list-item__link" 
-												href="<?php echo $learning_ways[$tag_counter]['link'] ?>">
-													<?php echo $learning_ways[$tag_counter]['name'] ?>
-										</a>
-									</li>
-<?php $tag_counter++; } ?>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Master of Business Administration&nbsp;(MBA)</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">АвиаГСМ </a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Агрономия </a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Архитектура и дизайн</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Бухгалтерское дело</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Ветеринария</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Горная промышленность и маркшейдерское дело</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Государственное и муниципальное управление</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Государственные закупки</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Железнодорожный транспорт</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Землеустройство и кадастр</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Инженерные изыскания</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Инженерные системы</a></li>
                 </ul>
-
                 <ul class="learning-tab-list">
-<?php while ($tag_counter <= $column_2_count) { ?>
-									<li class="learning-tab-list-item">
-										<a class="learning-tab-list-item__link" 
-												href="<?php echo $learning_ways[$tag_counter]['link'] ?>">
-													<?php echo $learning_ways[$tag_counter]['name'] ?>
-										</a>
-									</li>
-<?php $tag_counter++; } ?>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Кадровое делопроизводство</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Косметология</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Лаборатории</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Медицина</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Менеджмент</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Металлургия</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Метрологический контроль</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Нефтегазовое дело</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Охрана труда. Специальная оценка условий труда (СОУТ)</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Оценочная деятельность</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Педагогика</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Подъемные сооружения и лифты</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Пожарно-технический минимум</a></li>
                 </ul>
-
                 <ul class="learning-tab-list">
-<?php while ($tag_counter < $tags_count) { ?>
-									<li class="learning-tab-list-item">
-										<a class="learning-tab-list-item__link"
-											href="<?php echo $learning_ways[$tag_counter]['link'] ?>"><?php echo $learning_ways[$tag_counter]['name'] ?>
-										</a>
-									</li>
-<?php $tag_counter++; } ?>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Проектирование</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Реставрация</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Спорт и фитнес</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Строительство</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Техническое обслуживание медицинской техники (ТОМТ)</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Транспортная безопасность</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Фармация </a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Холодильное оборудование</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Экология</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Экономика и финансы</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Энергетика</a></li>
+                  <li class="learning-tab-list-item"> <a class="learning-tab-list-item__link" href="#">Юриспруденция</a></li>
                 </ul>
-
               </div>
               <button class="learning-more--skillup secondary-button">Показать еще</button>
             </div>
           </div>
         </div>
       </div>
-
-
       <div class="about-wrap" id="about">
         <div class="about-container container">
           <div class="about">
@@ -264,18 +295,6 @@ $arit_get_categories = array(
           </div>
         </div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
       <div class="teachers-wrap">
         <div class="teachers-container container">
           <div class="teachers">
@@ -405,114 +424,59 @@ $arit_get_categories = array(
           </div>
         </div>
       </div>
-
-
-
-
-
-
-
-<?php
-
-$args = array(
-	'post_type' => 'seminars',
-	'supress_filters' => false,
-	'numberposts' => 1,
-	'orderby' => 'date',
-	'order' => 'DESC',
-);
-$last_seminar = get_posts( $args );
-$args_web = array(
-	'post_type' => 'webinars',
-	'supress_filters' => false,
-	'numberposts' => 1,
-	'orderby' => 'date',
-	'order' => 'DESC',
-);
-$last_webinar = get_posts( $args_web );
-
-// echo  '<pre>';
-// var_dump($last_seminar);
-// echo  '</pre>';
-?>
-
-
-
-
       <div class="meetups-wrapper" id="meetups">
         <div class="meetups-container container">
           <div class="meetups">
             <div class="meetups-category meetups-category--seminars">
               <h2 class="section__title">Семинары</h2>
-<?php foreach ($last_seminar as $seminar) {
-	setup_postdata($seminar); 
-	$id = $seminar->to_array()['ID'];
-?>
                   <div class="meetups-item meetups-item--seminar">
                     <picture class="meetups__picture">
-											<img src="<?php the_field('meetup_pic', $id) ?>"/>
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/6-meetups/seminar.webp 1x,<?php echo get_template_directory_uri()?>/img/6-meetups/seminar@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/6-meetups/seminar.png" srcset="<?php echo get_template_directory_uri()?>/img/6-meetups/seminar@2x.png 2x"/>
                     </picture>
                     <div class="meetup-info">
-										<h3 class="meetup__title"><?php the_field('meetup_name', $id) ?></h3>
+                      <h3 class="meetup__title">Название мероприятия</h3>
                       <div class="meetup-about">
                         <div class="meetup-location"><img src="<?php echo get_template_directory_uri()?>/img/0-common/geo.svg" alt="geo-icon">
-												<p><?php the_field('meetup_address', $id) ?></p>
+                          <p>г. Санкт-Петербург, ул. 50 лет ВЛКСМ д.22, офис 351</p>
                         </div>
                         <div class="meetup-time"><img src="<?php echo get_template_directory_uri()?>/img/0-common/time.svg">
-												<p><?php the_field('meetup_date', $id) ?></p>
+                          <p>26.03.21</p>
                         </div>
                       </div>
                       <div class="meetup-buttons">
-											<button data-to-form="Заявка на семинар <?php the_field('meetup_name', $id) ?>" class="meetup__primary-button primary-button seminar__button-cta">Принять участие</button>
-											<a href="<?php the_permalink($id) ?>" class="meetup__secondary-button thirdly-button seminar__button-more">Подробнее</a>
+                        <button class="meetup__primary-button primary-button seminar__button-cta">Принять участие</button>
+                        <button class="meetup__secondary-button thirdly-button seminar__button-more">Подробнее</button>
                       </div>
                     </div>
                   </div><a class="secondary-button meetups-more--seminars" href="/seminars">Показать еще</a>
             </div>
-<?php } //end seminar ?>
-
-
-
-<?php foreach ($last_webinar as $webinar) {
-	setup_postdata($webinar); 
-	$id = $webinar->to_array()['ID'];
-?>
             <div class="meetups-category meetups-category--webinars">
               <h2 class="section__title">Вебинары</h2>
                   <div class="meetups-item meetups-item--webinar">
                     <picture class="meetups__picture">
-		<img src="<?php echo the_field('meetup_pic', $id)?>" />
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/6-meetups/webinar.webp 1x,<?php echo get_template_directory_uri()?>/img/6-meetups/webinar@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/6-meetups/webinar.png" srcset="<?php echo get_template_directory_uri()?>/img/6-meetups/webinar@2x.png 2x"/>
                     </picture>
                     <div class="meetup-info">
-										<h3 class="meetup__title"><?php the_field('meetup_name', $id) ?></h3>
+                      <h3 class="meetup__title">Название мероприятия</h3>
                       <div class="meetup-about">
                         <div class="meetup-location"><img src="<?php echo get_template_directory_uri()?>/img/0-common/geo.svg" alt="geo-icon">
-												<p><?php the_field('meetup_address', $id) ?></p>
+                          <p>г. Санкт-Петербург, ул. 50 лет ВЛКСМ д.22, офис 351</p>
                         </div>
                         <div class="meetup-time"><img src="<?php echo get_template_directory_uri()?>/img/0-common/time.svg">
-												<p><?php the_field('meetup_date', $id) ?></p>
+                          <p>26.03.21</p>
                         </div>
                       </div>
                       <div class="meetup-buttons">
                         <button class="meetup__primary-button primary-button webinar__button-cta">Принять участие</button>
-												<a href="<?php the_permalink($id) ?>" class="meetup__secondary-button thirdly-button webinar__button-more">Подробнее</a>
+                        <button class="meetup__secondary-button thirdly-button webinar__button-more">Подробнее</button>
                       </div>
                     </div>
-<?php } // end of webinar ?>
                   </div><a class="secondary-button meetups-more--webinars" href="/webinars">Показать еще</a>
             </div>
           </div>
         </div>
       </div>
     </main>
-
-
-
-
-
-
-
-
     <div class="news-wrapper" id="news">
       <div class="news-container container">
         <div class="news">
@@ -520,40 +484,56 @@ $last_webinar = get_posts( $args_web );
           <div class="news-slider-outer">
             <div class="news-slider-wrapper swiper-container">
               <div class="news-slider swiper-wrapper">
-
-
-<?php
-	$get_news = array(
-		'post_type' => 'news',
-		'supress_filters' => false,
-		'numberposts' => 10,
-		'orderby' => 'date',
-		'order' => 'DESC',
-	);
-
-	$news = get_posts( $get_news );
-	foreach ($news as $new) {
-		$id = $new->to_array()['ID'];
-		setup_postdata($new)
-?>
-
-                <div class="news-item swiper-slide"><a href="<?php the_permalink($id) ?>">
+                <div class="news-item swiper-slide"><a href="">
                     <picture class="news__picture">
-										<img src="<?php the_field('news_hero', $id)?>"/>
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/7-news/news-1.webp 1x,<?php echo get_template_directory_uri()?>/img/7-news/news-1@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/7-news/news-1.png" srcset="<?php echo get_template_directory_uri()?>/img/7-news/news-1@2x.png 2x"/>
                     </picture></a>
-										<div class="news-info"><a href="<?php the_permalink($id) ?>">
-									<h3 class="news-item__title"><?php the_field('news_title', $id) ?></h3></a>
-									<p class="news-item__descr"><?php the_field('news_subtitle', $id) ?></p>
-									<div class="news-bottom">
-									<a class="news-button" href="<?php the_permalink($id) ?>">Подробнее</a>
-<?php // Выводит дату поста всегда ?>
-									<span class="news-date"><?php echo date('d.m.y', strtotime($new->post_date))  ?></span></div>
+                  <div class="news-info"><a href="">
+                      <h3 class="news-item__title">Заголовок новости</h3></a>
+                    <p class="news-item__descr">Текст описания в 2 строчки, чтобы набить обхем текста</p>
+                    <div class="news-bottom"><a class="news-button" href="">Подробнее</a><span class="news-date">02.06.20</span></div>
                   </div>
                 </div>
-
-<?php } ?>
-
-
+                <div class="news-item swiper-slide"><a href="">
+                    <picture class="news__picture">
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/7-news/news-2.webp 1x,<?php echo get_template_directory_uri()?>/img/7-news/news-2@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/7-news/news-2.png" srcset="<?php echo get_template_directory_uri()?>/img/7-news/news-2@2x.png 2x"/>
+                    </picture></a>
+                  <div class="news-info"><a href="">
+                      <h3 class="news-item__title">Заголовок новости</h3></a>
+                    <p class="news-item__descr">Текст описания в 2 строчки, чтобы набить обхем текста</p>
+                    <div class="news-bottom"><a class="news-button" href="">Подробнее</a><span class="news-date">02.06.20</span></div>
+                  </div>
+                </div>
+                <div class="news-item swiper-slide"><a href="">
+                    <picture class="news__picture">
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/7-news/news-3.webp 1x,<?php echo get_template_directory_uri()?>/img/7-news/news-3@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/7-news/news-3.png" srcset="<?php echo get_template_directory_uri()?>/img/7-news/news-3@2x.png 2x"/>
+                    </picture></a>
+                  <div class="news-info"><a href="">
+                      <h3 class="news-item__title">Заголовок новости</h3></a>
+                    <p class="news-item__descr">Текст описания в 2 строчки, чтобы набить обхем текста</p>
+                    <div class="news-bottom"><a class="news-button" href="">Подробнее</a><span class="news-date">02.06.20</span></div>
+                  </div>
+                </div>
+                <div class="news-item swiper-slide"><a href="">
+                    <picture class="news__picture">
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/7-news/news-2.webp 1x,<?php echo get_template_directory_uri()?>/img/7-news/news-2@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/7-news/news-2.png" srcset="<?php echo get_template_directory_uri()?>/img/7-news/news-2@2x.png 2x"/>
+                    </picture></a>
+                  <div class="news-info"><a href="">
+                      <h3 class="news-item__title">Заголовок новости</h3></a>
+                    <p class="news-item__descr">Текст описания в 2 строчки, чтобы набить обхем текста</p>
+                    <div class="news-bottom"><a class="news-button" href="">Подробнее</a><span class="news-date">02.06.20</span></div>
+                  </div>
+                </div>
+                <div class="news-item swiper-slide"><a href="">
+                    <picture class="news__picture">
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/7-news/news-1.webp 1x,<?php echo get_template_directory_uri()?>/img/7-news/news-1@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/7-news/news-1.png" srcset="<?php echo get_template_directory_uri()?>/img/7-news/news-1@2x.png 2x"/>
+                    </picture></a>
+                  <div class="news-info"><a href="">
+                      <h3 class="news-item__title">Заголовок новости</h3></a>
+                    <p class="news-item__descr">Текст описания в 2 строчки, чтобы набить обхем текста</p>
+                    <div class="news-bottom"><a class="news-button" href="">Подробнее</a><span class="news-date">02.06.20</span></div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="news-slider-scrollbar slider-scrollbar"></div>
@@ -570,39 +550,103 @@ $last_webinar = get_posts( $args_web );
           </div>
         </div>
       </div>
-
-
       <div class="partners-wrapper" id="partners">
         <div class="partners-container container">
           <div class="partners">
             <h2 class="section__title partners__title">Партнеры</h2>
             <div class="partners-slider-outer">
               <div class="partners-slider-wrap swiper-container">
-								<div class="partners-slider swiper-wrapper">
-
-
-<?php
-	$get_partners = array(
-		'post_type' => 'partners',
-		'supress_filters' => false,
-		'numberposts' => -1,
-		'order' => 'ASC',
-	);
-
-	$partners = get_posts( $get_partners );
-	foreach ($partners as $partner) {
-		$id = $partner->to_array()['ID'];
-		setup_postdata($partner)
-?>
-										<a class="partners-item swiper-slide" href="<?php the_field('partner_link', $id) ?>" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-													<img src="<?php the_field('partner_logo', $id) ?>"/>
-                        </picture>
-											</div>
-										</a>
-<?php } wp_reset_postdata(); ?>
-
+                <div class="partners-slider swiper-wrapper"><a class="partners-item swiper-slide" href="https://www.atmos-med.ru/" target="_blank">
+                    <div class="partners-item__border">
+                      <picture class="partners__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/8-partners/atmos.webp 1x,<?php echo get_template_directory_uri()?>/img/8-partners/atmos@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/8-partners/atmos.png" srcset="<?php echo get_template_directory_uri()?>/img/8-partners/atmos@2x.png 2x"/>
+                      </picture>
+                    </div></a><a class="partners-item swiper-slide" href="https://www.btlmed.ru/" target="_blank">
+                    <div class="partners-item__border">
+                      <picture class="partners__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/8-partners/btl.webp 1x,<?php echo get_template_directory_uri()?>/img/8-partners/btl@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/8-partners/btl.png" srcset="<?php echo get_template_directory_uri()?>/img/8-partners/btl@2x.png 2x"/>
+                      </picture>
+                    </div></a><a class="partners-item swiper-slide" href="https://www.cbr.ru/" target="_blank">
+                    <div class="partners-item__border">
+                      <picture class="partners__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/8-partners/cb.webp 1x,<?php echo get_template_directory_uri()?>/img/8-partners/cb@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/8-partners/cb.png" srcset="<?php echo get_template_directory_uri()?>/img/8-partners/cb@2x.png 2x"/>
+                      </picture>
+                    </div></a><a class="partners-item swiper-slide" href="https://fcgie.ru/" target="_blank">
+                    <div class="partners-item__border">
+                      <picture class="partners__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/8-partners/center-hygien.webp 1x,<?php echo get_template_directory_uri()?>/img/8-partners/center-hygien@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/8-partners/center-hygien.png" srcset="<?php echo get_template_directory_uri()?>/img/8-partners/center-hygien@2x.png 2x"/>
+                      </picture>
+                    </div></a><a class="partners-item swiper-slide" href="http://ucentr.karelia.ru/" target="_blank">
+                    <div class="partners-item__border">
+                      <picture class="partners__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/8-partners/center-karnelius.webp 1x,<?php echo get_template_directory_uri()?>/img/8-partners/center-karnelius@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/8-partners/center-karnelius.png" srcset="<?php echo get_template_directory_uri()?>/img/8-partners/center-karnelius@2x.png 2x"/>
+                      </picture>
+                    </div></a><a class="partners-item swiper-slide" href="https://vk.com/dental.aurora" target="_blank">
+                    <div class="partners-item__border">
+                      <picture class="partners__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/8-partners/dental-aurora-clinic.webp 1x,<?php echo get_template_directory_uri()?>/img/8-partners/dental-aurora-clinic@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/8-partners/dental-aurora-clinic.png" srcset="<?php echo get_template_directory_uri()?>/img/8-partners/dental-aurora-clinic@2x.png 2x"/>
+                      </picture>
+                    </div></a><a class="partners-item swiper-slide" href="https://www.instagram.com/doctor_super/?hl=ru" target="_blank">
+                    <div class="partners-item__border">
+                      <picture class="partners__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/8-partners/dr-super.webp 1x,<?php echo get_template_directory_uri()?>/img/8-partners/dr-super@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/8-partners/dr-super.png" srcset="<?php echo get_template_directory_uri()?>/img/8-partners/dr-super@2x.png 2x"/>
+                      </picture>
+                    </div></a><a class="partners-item swiper-slide" href="https://www.vladokb.ru/" target="_blank">
+                    <div class="partners-item__border">
+                      <picture class="partners__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/8-partners/gbuzvookb.webp 1x,<?php echo get_template_directory_uri()?>/img/8-partners/gbuzvookb@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/8-partners/gbuzvookb.png" srcset="<?php echo get_template_directory_uri()?>/img/8-partners/gbuzvookb@2x.png 2x"/>
+                      </picture>
+                    </div></a><a class="partners-item swiper-slide" href="https://g-richter.ru/" target="_blank">
+                    <div class="partners-item__border">
+                      <picture class="partners__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/8-partners/gedeon-richter.webp 1x,<?php echo get_template_directory_uri()?>/img/8-partners/gedeon-richter@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/8-partners/gedeon-richter.png" srcset="<?php echo get_template_directory_uri()?>/img/8-partners/gedeon-richter@2x.png 2x"/>
+                      </picture>
+                    </div></a><a class="partners-item swiper-slide" href="https://gkbe.ru/" target="_blank">
+                    <div class="partners-item__border">
+                      <picture class="partners__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/8-partners/gkb-eramishanceva.webp 1x,<?php echo get_template_directory_uri()?>/img/8-partners/gkb-eramishanceva@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/8-partners/gkb-eramishanceva.png" srcset="<?php echo get_template_directory_uri()?>/img/8-partners/gkb-eramishanceva@2x.png 2x"/>
+                      </picture>
+                    </div></a><a class="partners-item swiper-slide" target="_blank">
+                    <div class="partners-item__border">
+                      <picture class="partners__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/8-partners/job-service.webp 1x,<?php echo get_template_directory_uri()?>/img/8-partners/job-service@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/8-partners/job-service.png" srcset="<?php echo get_template_directory_uri()?>/img/8-partners/job-service@2x.png 2x"/>
+                      </picture>
+                    </div></a><a class="partners-item swiper-slide" href="https://niioz.ru/" target="_blank">
+                    <div class="partners-item__border">
+                      <picture class="partners__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/8-partners/nii.webp 1x,<?php echo get_template_directory_uri()?>/img/8-partners/nii@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/8-partners/nii.png" srcset="<?php echo get_template_directory_uri()?>/img/8-partners/nii@2x.png 2x"/>
+                      </picture>
+                    </div></a><a class="partners-item swiper-slide" href="https://www.pnzgu.ru/" target="_blank">
+                    <div class="partners-item__border">
+                      <picture class="partners__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/8-partners/president-gov-univercity.webp 1x,<?php echo get_template_directory_uri()?>/img/8-partners/president-gov-univercity@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/8-partners/president-gov-univercity.png" srcset="<?php echo get_template_directory_uri()?>/img/8-partners/president-gov-univercity@2x.png 2x"/>
+                      </picture>
+                    </div></a><a class="partners-item swiper-slide" href="http://spmuzrb.ru/" target="_blank">
+                    <div class="partners-item__border">
+                      <picture class="partners__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/8-partners/sergiev-posad.webp 1x,<?php echo get_template_directory_uri()?>/img/8-partners/sergiev-posad@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/8-partners/sergiev-posad.png" srcset="<?php echo get_template_directory_uri()?>/img/8-partners/sergiev-posad@2x.png 2x"/>
+                      </picture>
+                    </div></a><a class="partners-item swiper-slide" href="https://www.lvrach.ru/" target="_blank">
+                    <div class="partners-item__border">
+                      <picture class="partners__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/8-partners/doctor.webp 1x,<?php echo get_template_directory_uri()?>/img/8-partners/doctor@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/8-partners/doctor.png" srcset="<?php echo get_template_directory_uri()?>/img/8-partners/doctor@2x.png 2x"/>
+                      </picture>
+                    </div></a><a class="partners-item swiper-slide" href="https://www.lvrach.ru/" target="_blank">
+                    <div class="partners-item__border">
+                      <picture class="partners__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/8-partners/ttp-optic.webp 1x,<?php echo get_template_directory_uri()?>/img/8-partners/ttp-optic@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/8-partners/ttp-optic.png" srcset="<?php echo get_template_directory_uri()?>/img/8-partners/ttp-optic@2x.png 2x"/>
+                      </picture>
+                    </div></a><a class="partners-item swiper-slide" href="https://szgmu.ru/rus/" target="_blank">
+                    <div class="partners-item__border">
+                      <picture class="partners__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/8-partners/szgmu.webp 1x,<?php echo get_template_directory_uri()?>/img/8-partners/szgmu@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/8-partners/szgmu.png" srcset="<?php echo get_template_directory_uri()?>/img/8-partners/szgmu@2x.png 2x"/>
+                      </picture>
+                    </div></a><a class="partners-item swiper-slide" href="https://www.rastatus.ru/" target="_blank">
+                    <div class="partners-item__border">
+                      <picture class="partners__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/8-partners/status.webp 1x,<?php echo get_template_directory_uri()?>/img/8-partners/status@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/8-partners/status.png" srcset="<?php echo get_template_directory_uri()?>/img/8-partners/status@2x.png 2x"/>
+                      </picture>
+                    </div></a>
                 </div>
               </div>
               <div class="partners-slider-scrollbar slider-scrollbar"></div>

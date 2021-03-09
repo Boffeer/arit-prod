@@ -708,6 +708,18 @@ p {
   margin-bottom: 10px;
 }
 
+.breadcrumbs-container {
+  margin-top: 150px;
+  margin-bottom: -120px;
+}
+
+@media (max-width:1200px) {
+  .breadcrumbs-container {
+    margin-top: 50px;
+    margin-bottom: -100px;
+  }
+}
+
 .header {
   padding: 20px 0 24px;
   display: flex;
@@ -948,7 +960,7 @@ p {
 }
 
 .hero-wrapper {
-  margin-top: 156px;
+  margin-top: 116px;
   background: url(../img/1-hero/hero-bg.png) 0 0/cover;
   height: 680px;
   margin-bottom: 65px;
@@ -1390,6 +1402,10 @@ p {
   overflow: hidden;
 }
 
+.meetups__picture img {
+  height: 250px;
+}
+
 .meetup-info {
   background: #fff;
   padding: 25px 20px;
@@ -1428,6 +1444,7 @@ p {
 .meetup-buttons {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .meetup__primary-button {
@@ -1474,6 +1491,10 @@ p {
 
 .news-item {
   background: var(--color-surface-dark);
+}
+
+.news__picture img {
+  height: 280px;
 }
 
 .news__picture {
@@ -4062,7 +4083,7 @@ p {
 
   .about-wrap {
     margin-bottom: 0;
-    padding-bottom: 30px;
+    padding-bottom: 0;
   }
 
   .about-container {

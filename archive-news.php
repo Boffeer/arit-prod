@@ -83,7 +83,7 @@
 ?>
 							<a class="news-latest-item" href="<?php the_permalink(); ?>">
 								<h3 class="news-item__title"><?php the_field('news_title'); ?></h3>
-								<p class="news-date"><?php the_date('d.m.Y'); ?></p>
+								<p class="news-date"><?php echo date('d.m.y', strtotime($post->post_date)) ?></p>
 							</a>
 <?php }; wp_reset_postdata();//end smalls ?>
 						</div>
@@ -105,13 +105,13 @@
 								</picture>
 							</a>
 							<div class="news-info">
-								<a href="<?php the_permalink ?>">
+								<a href="<?php the_permalink() ?>">
 									<h3 class="news-item__title"><?php the_field('news_title') ?></h3>
 								</a>
 								<p class="news-item__descr"><?php the_field('news_subtitle') ?></p>
 								<div class="news-bottom">
 									<a class="news-button" href="<?php the_permalink() ?>">Подробнее</a>
-									<span class="news-date"><?php the_date('d.m.Y') ?></span>
+									<span class="news-date"><?php echo date('d.m.y', strtotime($post->post_date)) ?></span>
 								</div>
               </div>
             </div>
