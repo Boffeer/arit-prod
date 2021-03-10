@@ -1,7 +1,7 @@
 <?php 
 /*
- * Template Name: Новость
- * Template Post Type: news
+Template Name: Новость
+Template Post Type: news
  */
 ?>
 <?php get_header();?>

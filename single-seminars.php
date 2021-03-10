@@ -1,7 +1,7 @@
 <?php 
 /*
-Template Name: Подробнее о семинаре или вебинаре
-Template Post Type: seminars
+ * Template Name: Подробнее о семинаре или вебинаре
+ * Template Post Type: seminars
  */
 ?>
 <?php get_header();?>

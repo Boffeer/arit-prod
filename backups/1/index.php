@@ -18,9 +18,7 @@
               <li class="hero-bullet">Получи<span class="text-bold"> поддержку 24/7 и диплом</span> по&nbsp;окончании</li>
             </ul>
             <div class="hero-buttons">
-							<button class="primary-button hero-cta">Получить консультацию</button>
-<!--<a class="secondary-button hero-learning" target="_blank" href="https://dpoarit.ispringlearn.ru">Учебный портал</a>-->
-          <!--<button class="header_get-consult secondary-button">Получить консультацию </button>-->
+              <button class="primary-button hero-cta">Получить консультацию</button><a class="secondary-button hero-learning" target="_blank" href="https://dpoarit.ispringlearn.ru">Учебный портал</a>
             </div>
           </div>
         </div>
@@ -272,15 +270,6 @@ $arit_get_categories = array(
 
 
 
-<?php
-$args = array(
-	'post_type' => 'teachers',
-	'supress_filters' => false,
-	'numberposts' => -1,
-	'order' => 'ASC',
-);
-$teachers = get_posts( $args );
-?>
 
 
 
@@ -293,25 +282,114 @@ $teachers = get_posts( $args );
             <h2 class="section__title teachers__title">Наши преподаватели</h2>
             <div class="teachers-slider-outer">
               <div class="teachers-slider-wrap swiper-container">
-
                 <div class="teachers-slider swiper-wrapper">
-<?php 
-		foreach ($teachers as $teacher) {
-		$id = $teacher->to_array()['ID'];
-		setup_postdata($teacher);
-?>
                   <div class="teachers-slide swiper-slide">
                     <picture class="teachers__pic">
-<img src="<?php the_field('img', $id) ?>"/>
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/agafonov.webp 1x,<?php echo get_template_directory_uri()?>/img/5-teachers/agafonov@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/5-teachers/agafonov.png" srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/agafonov@2x.png 2x"/>
                     </picture>
-										<h3 class="teachers-slide__title"><?php the_field('name', $id) ?></h3>
-										<p class="teachers-slide__descr"><?php the_field('descr', $id) ?></p>
+                    <h3 class="teachers-slide__title">Агафонов Николай Владимирович</h3>
+                    <p class="teachers-slide__descr">Генеральный директор компании «Альфа Консалтинг», преподаватель по геодезии со стажем более 10 лет</p>
                   </div>
-<?php }  wp_reset_postdata(); ?>
+                  <div class="teachers-slide swiper-slide">
+                    <picture class="teachers__pic">
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/bahtiyarov.webp 1x,<?php echo get_template_directory_uri()?>/img/5-teachers/bahtiyarov@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/5-teachers/bahtiyarov.png" srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/bahtiyarov@2x.png 2x"/>
+                    </picture>
+                    <h3 class="teachers-slide__title">Бахтияров Камиль Рафаэльевич</h3>
+                    <p class="teachers-slide__descr">Доктор медицинских наук, профессор, врач акушер-гинеколог</p>
+                  </div>
+                  <div class="teachers-slide swiper-slide">
+                    <picture class="teachers__pic">
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/bikov.webp 1x,<?php echo get_template_directory_uri()?>/img/5-teachers/bikov@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/5-teachers/bikov.png" srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/bikov@2x.png 2x"/>
+                    </picture>
+                    <h3 class="teachers-slide__title">Быков Алексей Юрьевич</h3>
+                    <p class="teachers-slide__descr">Врач-нейрохирург, член Европейской ассоциации клинической гипертермии, продакт-менеджер компании Zerts</p>
+                  </div>
+                  <div class="teachers-slide swiper-slide">
+                    <picture class="teachers__pic">
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/shmatkova.webp 1x,<?php echo get_template_directory_uri()?>/img/5-teachers/shmatkova@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/5-teachers/shmatkova.png" srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/shmatkova@2x.png 2x"/>
+                    </picture>
+                    <h3 class="teachers-slide__title">Шматкова Виктория Викторовна</h3>
+                    <p class="teachers-slide__descr">Медицинский маркетолог, кандидат экономических наук, MBA, предприниматель, владелец компании ZERTS</p>
+                  </div>
+                  <div class="teachers-slide swiper-slide">
+                    <picture class="teachers__pic">
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/glazkova.webp 1x,<?php echo get_template_directory_uri()?>/img/5-teachers/glazkova@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/5-teachers/glazkova.png" srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/glazkova@2x.png 2x"/>
+                    </picture>
+                    <h3 class="teachers-slide__title">Глазкова Ольга Леонидовна</h3>
+                    <p class="teachers-slide__descr">Кандидат медицинских наук, доцент, врач акушер-гинеколог, врач узи, гинеколог-эндокринолог, онкогинеколог</p>
+                  </div>
+                  <div class="teachers-slide swiper-slide">
+                    <picture class="teachers__pic">
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/knish.webp 1x,<?php echo get_template_directory_uri()?>/img/5-teachers/knish@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/5-teachers/knish.png" srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/knish@2x.png 2x"/>
+                    </picture>
+                    <h3 class="teachers-slide__title">Кныш Олег Юрьевич</h3>
+                    <p class="teachers-slide__descr">Клинический психолог, гипнолог, коуч, преподаватель и автор серии курсов и тренингов по применению методик прикладной психологии для установления эффективной коммуникации</p>
+                  </div>
+                  <div class="teachers-slide swiper-slide">
+                    <picture class="teachers__pic">
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/leizerman.webp 1x,<?php echo get_template_directory_uri()?>/img/5-teachers/leizerman@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/5-teachers/leizerman.png" srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/leizerman@2x.png 2x"/>
+                    </picture>
+                    <h3 class="teachers-slide__title">Лейзерман Михаил Григорьевич</h3>
+                    <p class="teachers-slide__descr">Доктор медицинских наук, профессор, врач-оториноларинголог высшей категории, заместитель главного врача по хирургии в ГКБ № 29 им. Н. Э. Баумана, основоположник радиохирургии в России</p>
+                  </div>
+                  <div class="teachers-slide swiper-slide">
+                    <picture class="teachers__pic">
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/lozhnikova.webp 1x,<?php echo get_template_directory_uri()?>/img/5-teachers/lozhnikova@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/5-teachers/lozhnikova.png" srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/lozhnikova@2x.png 2x"/>
+                    </picture>
+                    <h3 class="teachers-slide__title">Ложникова Татьяна Вячеславовна</h3>
+                    <p class="teachers-slide__descr">Кандидат педагогических наук, доцент, заместитель директора по учебно-методической работе СПО</p>
+                  </div>
+                  <div class="teachers-slide swiper-slide">
+                    <picture class="teachers__pic">
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/lucenko.webp 1x,<?php echo get_template_directory_uri()?>/img/5-teachers/lucenko@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/5-teachers/lucenko.png" srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/lucenko@2x.png 2x"/>
+                    </picture>
+                    <h3 class="teachers-slide__title">Луценко Николай Николаевич</h3>
+                    <p class="teachers-slide__descr">Кандидат медицинских наук, доцент, врач-гинеколог, начальник отдела по производственной практике РНИМУ им. Н.И. Пирогова, руководитель кластера «высокие технологии в гинекологии» НПС «Эндохирургия» ЦА УЦИМТ, ведущий специалист Центра по направлению гинекология — лапароскопические и гистероскопические технологии</p>
+                  </div>
+                  <div class="teachers-slide swiper-slide">
+                    <picture class="teachers__pic">
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/markevich.webp 1x,<?php echo get_template_directory_uri()?>/img/5-teachers/markevich@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/5-teachers/markevich.png" srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/markevich@2x.png 2x"/>
+                    </picture>
+                    <h3 class="teachers-slide__title">Маркевич Харита Алексеевна</h3>
+                    <p class="teachers-slide__descr">Психолог, коуч, сертифицированный бизнес-тренер</p>
+                  </div>
+                  <div class="teachers-slide swiper-slide">
+                    <picture class="teachers__pic">
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/mindlin.webp 1x,<?php echo get_template_directory_uri()?>/img/5-teachers/mindlin@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/5-teachers/mindlin.png" srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/mindlin@2x.png 2x"/>
+                    </picture>
+                    <h3 class="teachers-slide__title">Миндлин Сергей Николаевич</h3>
+                    <p class="teachers-slide__descr">Врач-оториноларинголог, стипендиат президента 2016-2018 гг., обладатель золотой медали «Я-профессионал» (2018 г.), Победитель гранта УМНИК (2017 г.), автор более 10 печатных работ в рецензируемых изданиях, докладчик на всероссийских и международных конференциях</p>
+                  </div>
+                  <div class="teachers-slide swiper-slide">
+                    <picture class="teachers__pic">
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/pogosyan.webp 1x,<?php echo get_template_directory_uri()?>/img/5-teachers/pogosyan@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/5-teachers/pogosyan.png" srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/pogosyan@2x.png 2x"/>
+                    </picture>
+                    <h3 class="teachers-slide__title">Погосян Месроп Левонович</h3>
+                    <p class="teachers-slide__descr">Врач анестезиолог-реаниматолог, заведующий отделением анестезиологии и реанимации и оперблока официального филиала израильской клиники Hadassah Medical Moscow</p>
+                  </div>
+                  <div class="teachers-slide swiper-slide">
+                    <picture class="teachers__pic">
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/skvortsova.webp 1x,<?php echo get_template_directory_uri()?>/img/5-teachers/skvortsova@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/5-teachers/skvortsova.png" srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/skvortsova@2x.png 2x"/>
+                    </picture>
+                    <h3 class="teachers-slide__title">Скворцова Мария Артуровна</h3>
+                    <p class="teachers-slide__descr">Кандидат медицинских наук, врач травматолог-ортопед, ассистент кафедры травматологии, ортопедии и ВПХ ПФ РНИМУ им. Н. И. Пирогова</p>
+                  </div>
+                  <div class="teachers-slide swiper-slide">
+                    <picture class="teachers__pic">
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/firichenko.webp 1x,<?php echo get_template_directory_uri()?>/img/5-teachers/firichenko@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/5-teachers/firichenko.png" srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/firichenko@2x.png 2x"/>
+                    </picture>
+                    <h3 class="teachers-slide__title">Фириченко Сергей Викторович</h3>
+                    <p class="teachers-slide__descr">Доктор медицинских наук, доцент кафедры акушерства и гинекологии лечебного факультета Московского Государственного Медико-стоматологического университета имени А.И. Евдокимова, эксперт РАГИН, член РАГИН, МАРС, сертифицированный специалист по кольпоскопии в Великобритании и США</p>
+                  </div>
+                  <div class="teachers-slide swiper-slide">
+                    <picture class="teachers__pic">
+                      <source srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/churganova.webp 1x,<?php echo get_template_directory_uri()?>/img/5-teachers/churganova@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/5-teachers/churganova.png" srcset="<?php echo get_template_directory_uri()?>/img/5-teachers/churganova@2x.png 2x"/>
+                    </picture>
+                    <h3 class="teachers-slide__title">Чурганова Анастасия Алексеевна</h3>
+                    <p class="teachers-slide__descr">Кандидат медицинских наук, доцент кафедры акушерства, гинекологии и перинатологии Института клинической медицины имени Н.В. Склифосовского Первого МГМУ имени И.М.Сеченова</p>
+                  </div>
                 </div>
               </div>
-
-
               <div class="teachers-slider-scrollbar slider-scrollbar"></div>
               <div class="teachers-slider-prev slider-button">
                 <svg class="news-slider__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -468,7 +546,6 @@ $last_webinar = get_posts( $args_web );
 									<p class="news-item__descr"><?php the_field('news_subtitle', $id) ?></p>
 									<div class="news-bottom">
 									<a class="news-button" href="<?php the_permalink($id) ?>">Подробнее</a>
-<?php // Выводит дату поста всегда ?>
 									<span class="news-date"><?php echo date('d.m.y', strtotime($new->post_date))  ?></span></div>
                   </div>
                 </div>
@@ -574,47 +651,57 @@ $last_webinar = get_posts( $args_web );
             <div class="testimonials-slider-outer">
               <div class="testimonials-slider-wrap">
                 <div class="testimonials-list testimonials-slider">
-
-<?php
-$args = array(
-	'post_type' => 'testimonials',
-	'supress_filters' => false,
-	'numberposts' => 10,
-	'orderby' => 'date',
-	'order' => 'DESC',
-);
-$testimonials = get_posts( $args );
-?>
-<?php if (count($testimonials) == 0) {?>
-	<p>Пока нет ни одного отзыва</p>
-<?php } ?>
-<?php 
-		foreach ($testimonials as $testimonial) {
-		$id = $testimonial->to_array()['ID'];
-		setup_postdata($testimonial);
-?>
                   <div class="testimonial-item swiper-slide">
                     <div class="testimonial">
                       <picture class="testimonial__picture">
-												<img src="<?php the_field('img', $id) ?>"/>
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/10-testimonials/testimonial-1.webp 1x,<?php echo get_template_directory_uri()?>/img/10-testimonials/testimonial-1@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/10-testimonials/testimonial-1.png" srcset="<?php echo get_template_directory_uri()?>/img/10-testimonials/testimonial-1@2x.png 2x"/>
                       </picture>
                       <div class="testimonial-message">
                         <div class="testimonial-message-info">
                           <div class="testimonial-who">
-                            <h3 class="testimonial-who__name"><?php the_field('name', $id) ?></h3>
-                            <p class="testimonial-who__position"><?php the_field('post', $id) ?></p>
+                            <h3 class="testimonial-who__name">Оксана Иванова</h3>
+                            <p class="testimonial-who__position">Директор MacDonalds</p>
                           </div>
-                          <div class="testimonial__date"><?php echo date('d.m.y', strtotime($testimonial->post_date)) ?></div>
+                          <div class="testimonial__date">02.06.20</div>
                         </div>
-                        <p class="testimonial__text"><?php the_field('testimonial', $id) ?></p>
+                        <p class="testimonial__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. In culpa qui officia deserunt mollit anim id est laborum.</p>
                       </div>
                     </div>
                   </div>
-<?php }; wp_reset_postdata();//end smalls ?>
-
-
-
-
+                  <div class="testimonial-item swiper-slide">
+                    <div class="testimonial">
+                      <picture class="testimonial__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/10-testimonials/testimonial-1.webp 1x,<?php echo get_template_directory_uri()?>/img/10-testimonials/testimonial-1@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/10-testimonials/testimonial-1.png" srcset="<?php echo get_template_directory_uri()?>/img/10-testimonials/testimonial-1@2x.png 2x"/>
+                      </picture>
+                      <div class="testimonial-message">
+                        <div class="testimonial-message-info">
+                          <div class="testimonial-who">
+                            <h3 class="testimonial-who__name">Оксана Иванова</h3>
+                            <p class="testimonial-who__position">Директор MacDonalds</p>
+                          </div>
+                          <div class="testimonial__date">02.06.20</div>
+                        </div>
+                        <p class="testimonial__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. In culpa qui officia deserunt mollit anim id est laborum.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="testimonial-item swiper-slide">
+                    <div class="testimonial">
+                      <picture class="testimonial__picture">
+                        <source srcset="<?php echo get_template_directory_uri()?>/img/10-testimonials/testimonial-1.webp 1x,<?php echo get_template_directory_uri()?>/img/10-testimonials/testimonial-1@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/10-testimonials/testimonial-1.png" srcset="<?php echo get_template_directory_uri()?>/img/10-testimonials/testimonial-1@2x.png 2x"/>
+                      </picture>
+                      <div class="testimonial-message">
+                        <div class="testimonial-message-info">
+                          <div class="testimonial-who">
+                            <h3 class="testimonial-who__name">Оксана Иванова</h3>
+                            <p class="testimonial-who__position">Директор MacDonalds</p>
+                          </div>
+                          <div class="testimonial__date">02.06.20</div>
+                        </div>
+                        <p class="testimonial__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. In culpa qui officia deserunt mollit anim id est laborum.</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="testimonials-slider-scrollbar"></div>
               </div>

@@ -1,6 +1,6 @@
 <?php 
 /*
-Template Name: Семинары
+ * Template Name: Семинары
  */
 ?>
 <?php get_header();?>
@@ -12,32 +12,6 @@ Template Name: Семинары
         <h1 class="section__title--left section__title">Ближайшие семинары</h1>
       </div>
 
-
-      <div class="container">
-        <div class="meetups-page-container">
-          <div class="meetups-preview">
-                <div class="meetups-item meetups-item--seminar">
-                  <picture class="meetups__picture">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/6-meetups/seminar.png"/>
-                  </picture>
-                  <div class="meetup-info">
-                    <h3 class="meetup__title">Название мероприятия</h3>
-                    <div class="meetup-about">
-                      <div class="meetup-location"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/0-common/geo.svg" alt="geo-icon">
-                        <p>г. Санкт-Петербург, ул. 50 лет ВЛКСМ д.22, офис 351</p>
-                      </div>
-                      <div class="meetup-time"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/0-common/time.svg">
-                        <p>26.03.21</p>
-                      </div>
-                    </div>
-                    <div class="meetup-buttons">
-                      <button class="meetup__primary-button primary-button seminar__button-cta">Принять участие</button>
-                      <button class="meetup__secondary-button thirdly-button seminar__button-more">Подробнее</button>
-                    </div>
-                  </div>
-                </div>
-          </div>
-          <div class="meetups-next-list">
 
 <?php
 
@@ -74,6 +48,7 @@ foreach ( $posts as $post ) {
 		$postsToIncoming[$incomingCounter]['meetup_name'] = get_field('meetup_name');
 		$postsToIncoming[$incomingCounter]['meetup_speakers'] = get_field('meetup_speakers');
 		$postsToIncoming[$incomingCounter]['sorting_days'] = $get_meetup_untill;
+		$postsToIncoming[$incomingCounter]['url'] = get_permalink();
 
 		if ($get_meetup_untill < 1) {
 			$postsToIncoming[$incomingCounter]['days_untill'] = 'Семинар сегодня';
@@ -92,6 +67,7 @@ foreach ( $posts as $post ) {
 		$postsToArchieve[$archieveCounter]['meetup_date'] = get_field('meetup_date');
 		$postsToArchieve[$archieveCounter]['meetup_name'] = get_field('meetup_name');
 		$postsToArchieve[$archieveCounter]['meetup_speakers'] = get_field('meetup_speakers');
+		$postsToArchieve[$incomingCounter]['url'] = get_permalink();
 
 		$archieveCounter++;
 	}
@@ -101,13 +77,45 @@ foreach ( $posts as $post ) {
 
 usort($postsToIncoming, function($a,$b){
 	return ($a['sorting_days'] - $b['sorting_days']);
-});
+});?>
+      <div class="container">
+        <div class="meetups-page-container">
 
+<?php if (count($postsToIncoming) != 0) { ?>
+          <div class="meetups-preview">
+                <div class="meetups-item meetups-item--seminar">
+                  <picture class="meetups__picture">
+                    <img src="" alt=" "/>
+                  </picture>
+                  <div class="meetup-info">
+                    <h3 class="meetup__title"></h3>
+                    <div class="meetup-about">
+                      <div class="meetup-location"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/0-common/geo.svg" alt="geo-icon">
+                        <p></p>
+                      </div>
+                      <div class="meetup-time"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/0-common/time.svg">
+                        <p></p>
+                      </div>
+                    </div>
+                    <div class="meetup-buttons">
+                      <button class="meetup__primary-button primary-button seminar__button-cta">Принять участие</button>
+                      <a href class="meetup__secondary-button thirdly-button seminar__button-more">Подробнее</a>
+                    </div>
+                  </div>
+                </div>
+          </div>
+<?php } else {?>
+<p>Вебинары пока не запланированы, посмотрите архив</p>
+<?php }?>
+          <div class="meetups-next-list">
+
+
+<?php
 foreach ($postsToIncoming as $post) {
 	
 
 ?>
-							<div class="meetup-next-item" data-src="<?php echo $post['meetup_pic'] ?>" data-address="<?php echo $post['meetup_address'] ?>" data-date="<?php echo $post['meetup_date'] ?>">
+							<div class="meetup-next-item" data-url="<?php echo $post['url'] ?>" data-src="<?php echo $post['meetup_pic'] ?>" data-address="<?php echo $post['meetup_address'] ?>" data-date="<?php echo $post['meetup_date'] ?>">
 								<div class="meetup-next-item-due">
 								<div class="meetup-next-item__date"><?php echo implode('/', explode('.', $post['meetup_date'], -1)) ?></div>
 								<div class="meetup-next-item__status"><?php echo $post['days_untill'] ?></div>

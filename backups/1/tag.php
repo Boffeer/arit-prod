@@ -52,8 +52,8 @@
         <div class="container skillup-container">
           <div class="learning-tabs-wrap">
             <div class="learning-tabbar">
-              <button class="learning-tab__control learning-tab__control--skillup learning-tab__control--active">Повышение квалификации</button>
-              <button class="learning-tab__control learning-tab__control--retrain">Профессиональная переподготовка</button>
+              <button class="learning-tab__control learning-tab__control--skillup learning-tab__control--active">Профессиональная переподготовка</button>
+              <button class="learning-tab__control learning-tab__control--retrain">Повышение квалификации </button>
             </div>
             <div class="learning-tab--retrain">
               <div class="learning-tab">

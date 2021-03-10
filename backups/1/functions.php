@@ -104,35 +104,35 @@
 			'menu_icon'          => 'dashicons-admin-site-alt3'
 		) );
 
-		// register_post_type( 'courses', array(
-		//   'labels'             => array(
-		//     'name'               => 'Курс',
-		//     'singular_name'      => 'Курс',
-		//     'add_new'            => 'Добавить новый',
-		//     'add_new_item'       => 'Добавить курс',
-		//     'edit_item'          => 'Редактировать курс',
-		//     'new_item'           => 'Новый курс',
-		//     'view_item'          => 'Посмотреть курс',
-		//     'search_items'       => 'Найти курс',
-		//     'not_found'          => 'Курсов не найдено',
-		//     'not_found_in_trash' => 'Удаленных курсов не найдено',
-		//     'parent_item_colon'  => '',
-		//     'menu_name'          => 'Курсы',
-		//   ),
-		//   'public'             => true,
-		//   'publicly_queryable' => true,
-		//   'show_ui'            => true,
-		//   'show_in_menu'       => true,
-		//   'query_var'          => true,
-		//   'rewrite'            => true,
-		//   'capability_type'    => 'post',
-		//   'has_archive'        => true,
-		//   'hierarchical'       => false,
-		//   'menu_position'      => null,
-		//   'supports'           => array('title','editor','author','thumbnail','excerpt','comments'),
-		//   'menu_icon'          => 'dashicons-welcome-learn-more',
-		//   'taxonomies'         => array( 'category', 'post_tag'	),
-		// ) );
+		register_post_type( 'courses', array(
+			'labels'             => array(
+				'name'               => 'Курс',
+				'singular_name'      => 'Курс',
+				'add_new'            => 'Добавить новый',
+				'add_new_item'       => 'Добавить курс',
+				'edit_item'          => 'Редактировать курс',
+				'new_item'           => 'Новый курс',
+				'view_item'          => 'Посмотреть курс',
+				'search_items'       => 'Найти курс',
+				'not_found'          => 'Курсов не найдено',
+				'not_found_in_trash' => 'Удаленных курсов не найдено',
+				'parent_item_colon'  => '',
+				'menu_name'          => 'Курсы',
+		  ),
+			'public'             => true,
+			'publicly_queryable' => true,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'query_var'          => true,
+			'rewrite'            => true,
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => false,
+			'menu_position'      => null,
+			'supports'           => array('title','editor','author','thumbnail','excerpt','comments'),
+			'menu_icon'          => 'dashicons-welcome-learn-more',
+			'taxonomies'         => array( 'category', 'post_tag'	),
+		) );
 
 		register_post_type( 'courses_skillup', array(
 			'labels'             => array(
@@ -312,48 +312,21 @@
 			'menu_icon'          => 'dashicons-thumbs-up',
 		) );
 
-		register_post_type( 'licenses', array(
-			'labels'             => array(
-				'name'               => 'Лицензия',
-				'singular_name'      => 'Лицензия',
-				'add_new'            => 'Добавить новую',
-				'add_new_item'       => 'Добавить лицензию',
-				'edit_item'          => 'Редактировать лицензию',
-				'new_item'           => 'Новая лицензия',
-				'view_item'          => 'Посмотреть лицензию',
-				'search_items'       => 'Найти лицензию',
-				'not_found'          => 'Лицензий не найдено',
-				'not_found_in_trash' => 'Удаленных Лицензий не найдено',
-				'parent_item_colon'  => '',
-				'menu_name'          => 'Лицензии',
-		  ),
-			'public'             => true,
-			'publicly_queryable' => true,
-			'show_ui'            => true,
-			'show_in_menu'       => true,
-			'query_var'          => true,
-			'rewrite'            => true,
-			'capability_type'    => 'post',
-			'has_archive'        => true,
-			'hierarchical'       => false,
-			'menu_position'      => null,
-			'supports'           => array('title','editor','author','thumbnail','excerpt','comments'),
-		) );
 	
-		register_post_type( 'docs', array(
+		register_post_type( 'contact_info', array(
 			'labels'             => array(
-				'name'               => 'Документ',
-				'singular_name'      => 'Документ',
-				'add_new'            => 'Добавить новую',
-				'add_new_item'       => 'Добавить документ',
-				'edit_item'          => 'Редактировать документ',
-				'new_item'           => 'Новый документ',
-				'view_item'          => 'Посмотреть документ',
-				'search_items'       => 'Найти документ',
-				'not_found'          => 'Документов не найдено',
-				'not_found_in_trash' => 'Удаленных документов не найдено',
+				'name'               => 'Контакт',
+				'singular_name'      => 'Контакты',
+				'add_new'            => 'Добавить новый',
+				'add_new_item'       => 'Добавить контакт',
+				'edit_item'          => 'Редактировать контакт',
+				'new_item'           => 'Новый контакт',
+				'view_item'          => 'Посмотреть контакт',
+				'search_items'       => 'Найти контакт',
+				'not_found'          => 'Контактов не найдено',
+				'not_found_in_trash' => 'Удаленных контактов не найдено',
 				'parent_item_colon'  => '',
-				'menu_name'          => 'Документы',
+				'menu_name'          => 'Контакты',
 		  ),
 			'public'             => true,
 			'publicly_queryable' => true,
@@ -366,36 +339,9 @@
 			'hierarchical'       => false,
 			'menu_position'      => null,
 			'supports'           => array('title','editor','author','thumbnail','excerpt','comments'),
+			'menu_icon'          => 'dashicons-email',
 		) );
-	//   register_post_type( 'contact_info', array(
-	//     'labels'             => array(
-	//       'name'               => 'Контакт',
-	//       'singular_name'      => 'Контакты',
-	//       'add_new'            => 'Добавить новый',
-	//       'add_new_item'       => 'Добавить контакт',
-	//       'edit_item'          => 'Редактировать контакт',
-	//       'new_item'           => 'Новый контакт',
-	//       'view_item'          => 'Посмотреть контакт',
-	//       'search_items'       => 'Найти контакт',
-	//       'not_found'          => 'Контактов не найдено',
-	//       'not_found_in_trash' => 'Удаленных контактов не найдено',
-	//       'parent_item_colon'  => '',
-	//       'menu_name'          => 'Контакты',
-	//     ),
-	//     'public'             => true,
-	//     'publicly_queryable' => true,
-	//     'show_ui'            => true,
-	//     'show_in_menu'       => true,
-	//     'query_var'          => true,
-	//     'rewrite'            => true,
-	//     'capability_type'    => 'post',
-	//     'has_archive'        => true,
-	//     'hierarchical'       => false,
-	//     'menu_position'      => null,
-	//     'supports'           => array('title','editor','author','thumbnail','excerpt','comments'),
-	//     'menu_icon'          => 'dashicons-email',
-	//   ) );
-  //
+
 	}
 
 

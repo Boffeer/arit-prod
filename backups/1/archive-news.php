@@ -28,11 +28,19 @@
 		'order' => 'DESC',
 		'offset' => 1,
 	);
+	$news_rest = array(
+		'post_type' => 'news',
+		'supress_filters' => false,
+		'numberposts' => -1,
+		'orderby' => 'date',
+		'order' => 'DESC',
+		'offset' => 4,
+	);
 
 	$news_latest = get_posts( $news_latest_item );
 	$news_smalls = get_posts( $news_latest_small );
+	$news_rest = get_posts( $news_rest );
 	$catalog_counter = 1;
-	$posts_to_exclude = array();
 
 ?>
 
@@ -45,9 +53,8 @@
 
 						<div class="news-latest-one">
 <?php
-	foreach ($news_latest as $key => $post) {
+	foreach ($news_latest as $post) {
 		setup_postdata($post);
-		$posts_to_exclude[$key] = $post->to_array()['ID'];
 ?>
 							<a class="news-latest-one__img-wrap" href="<?php echo the_permalink(); ?>">
 							<img class="news-latest-one__pic" src="<?php the_field('news_hero'); ?>" alt="<?php the_field('news_title'); ?>">
@@ -71,9 +78,8 @@
 
 						<div class="news-latest">
 <?php
-	foreach ($news_smalls as $key => $post) {
+	foreach ($news_smalls as $post) {
 		setup_postdata($post);
-		$posts_to_exclude[$key+1] = $post->to_array()['ID'];
 ?>
 							<a class="news-latest-item" href="<?php the_permalink(); ?>">
 								<h3 class="news-item__title"><?php the_field('news_title'); ?></h3>
@@ -89,16 +95,6 @@
         <div class="regular-news-wrapper">
           <div class="news-page regular-news">
 					<?php
-	$get_news_rest = array(
-		'post_type' => 'news',
-		'supress_filters' => false,
-		'numberposts' => -1,
-		'orderby' => 'date',
-		'order' => 'DESC',
-		'offset' => 4,
-		'exclude' => $posts_to_exclude,
-	);
-	$news_rest = get_posts( $get_news_rest );
 						foreach ($news_rest as $post) {
 						setup_postdata($post);
 					?>

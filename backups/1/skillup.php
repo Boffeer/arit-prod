@@ -1,50 +1,16 @@
 <?php 
 /*
  * Template Name: О направлении повышения квалификации
-		Template Post Type: retrain
  */
 ?>
 <?php get_header();?>
-
-<?php 
-// getting current tag name
-	$url;
-	$get_current_url = home_url(add_query_arg( array() ), $url->requiest);
-	$string = $get_current_url;
-	$pattern = '/.+\/tag/';
-	$replacement = '';
-	$get_tag_name = preg_replace($pattern, $replacement, $string);
-	$get_tag_name = str_ireplace('/', '', $get_tag_name);
-
-	$tag_args = array(
-		'post_type' => 'courses_skillup',
-		'supress_filters' => false,
-		'numberposts' => -1,
-		'orderby' => 'name',
-		'order' => 'ASC',
-		'tag' => $get_tag_name,
-	);
-	$all_tag_posts = get_posts($tag_args);
-
-	$tag_args_retrain = array(
-		'post_type' => 'courses_retrain',
-		'supress_filters' => false,
-		'numberposts' => -1,
-		'orderby' => 'name',
-		'order' => 'ASC',
-		'tag' => $get_tag_name,
-	);
-	$all_tag_posts_retrain = get_posts($tag_args_retrain);
-?>
-
-
     <main class="subpage--white skillup-page">
       <script>var mapsDelay = 100;</script>
       <div class="about-wrap" id="about">
         <div class="about-container container">
           <div class="about">
-					<h2 class="section__title section__title--left about__title">Профессиональная переподготовка по направлению «<?php single_tag_title() ?>»</h2>
-					<p class="regular-text about__text">Предлагаем освоить новую специальнгость по направлению «<?php single_tag_title() ?>». Для этого достаточно пройти курсы профессиональной переподготовки по направлению «<?php echo single_tag_title() ?>». Учебные программы с нагрузкой более 1000 академических часов позволяют получить диплом о профпереподготовке с присвоением квалификации. Подробности уточняйте у спецаиалистов академии.</p>
+            <h2 class="section__title section__title--left about__title">Повышение квалификации по направлению «Менеджмент»</h2>
+            <p class="regular-text about__text">Предлагаем освоить новую специальнгость по направлению «Менеджмент». Для этого достаточно пройти курсы профессиональной переподготовки по направлению «Менеджмент». Учебные программы с нагрузкой более 1000 академических часов позволяют получить диплом о профпереподготовке с присвоением квалификации. Подробности уточняйте у спецаиалистов академии.</p>
           </div>
         </div>
       </div>
@@ -52,103 +18,144 @@
         <div class="container skillup-container">
           <div class="learning-tabs-wrap">
             <div class="learning-tabbar">
-              <button class="learning-tab__control learning-tab__control--skillup learning-tab__control--active">Повышение квалификации</button>
-              <button class="learning-tab__control learning-tab__control--retrain">Профессиональная переподготовка</button>
+              <button class="learning-tab__control learning-tab__control--skillup learning-tab__control--active">Профессиональная переподготовка</button>
+              <button class="learning-tab__control learning-tab__control--retrain">Повышение квалификации </button>
             </div>
             <div class="learning-tab--retrain">
               <div class="learning-tab">
                 <div class="learning-page-list">
-
-<?php if (count($all_tag_posts_retrain) === 0) { ?>
-								<p style="text-align: center; margin-bottom: 20px;">Пока нет опубликованных курсов по этому направлению</p>
-<?php } ?>
-<?php foreach ($all_tag_posts_retrain as $key => $course) {
-	setup_postdata($course);
-	$course_ar = $course->to_array();
-	$id = $course->to_array()['ID'];
-?>
-<?php 
-	// echo '<pre>';
-	// var_dump($course);
-	// echo get_field('course_name', $id);
-	// echo '</pre>';
-	// echo '<br>';
-	// echo '<br>';
-	// echo '<br>';
-	// echo '<br>';
-	// echo $id;
-	// echo '<br>';
-	// echo '<br>';
-?>
                   <div class="learning-page-item">
                     <div class="learning-page-info-wrapper">
                       <div class="learning-page-number">
-											<p class="learning-page__number"><?php echo $key + 1?> </p>
+                        <p class="learning-page__number">1</p>
                       </div>
                       <div class="learning-page-info">
-											<h3 class="learning-page-info__title"><?php echo $course_ar['post_title'] ?></h3>
-											<p class="learning-page-info__hours learning-page-info__bullet"><span class="learning-page-info__field-name">Объем программы:</span><span class="text-bold learning-page-info__content"><?php the_field('hours', $id) ?></span></p>
-											<p class="learning-page-info__duration learning-page-info__bullet"><span class="learning-page-info__field-name">Длительность обучения:</span><span class="text-bold learning-page-info__content"><?php echo the_field('days', $id) ?></span></p>
-											<p class="learning-page-info__document learning-page-info__bullet"><span class="learning-page-info__field-name">Получаемый документ:</span><span class="text-bold learning-page-info__content"><?php echo get_field('doc', $id) ?></span></p>
-											<p class="learning-page-info__base learning-page-info__bullet"><span class="learning-page-info__field-name">Обучение на базе:</span><span class="text-bold learning-page-info__content"><?php the_field('base', $id) ?></span></p>
+                        <h3 class="learning-page-info__title">IT менеджмент</h3>
+                        <p class="learning-page-info__hours learning-page-info__bullet"><span class="learning-page-info__field-name">Объем программы:</span><span class="text-bold learning-page-info__content">от 520 ч.</span></p>
+                        <p class="learning-page-info__duration learning-page-info__bullet"><span class="learning-page-info__field-name">Длительность обучения:</span><span class="text-bold learning-page-info__content">от 83 дней</span></p>
+                        <p class="learning-page-info__document learning-page-info__bullet"><span class="learning-page-info__field-name">Получаемый документ:</span><span class="text-bold learning-page-info__content">Диплом о профессиональной переподготовке (ПП)</span></p>
+                        <p class="learning-page-info__base learning-page-info__bullet"><span class="learning-page-info__field-name">Обучение на базе:</span><span class="text-bold learning-page-info__content">высшего или средне-профессионального образования</span></p>
                       </div>
                     </div>
                     <div class="learning-page-info-buttons">
-										<button data-to-form="Консультация по курсу «<?php echo $course_ar['post_title'] ?>», направление «<?php single_tag_title() ?>»>" class="primary-button learning-page-info__consult">Получить консультацию</button>
-											<a href="<?php the_permalink($id) ?>" class="thirdly-button learning-page-info__more">Подробнее</a>
+                      <button class="primary-button learning-page-info__consult">Получить консультацию</button>
+                      <button class="thirdly-button learning-page-info__more">Подробнее</button>
                     </div>
                   </div>
-<?php } wp_reset_postdata(); //end learning item ?>
-
+                  <div class="learning-page-item">
+                    <div class="learning-page-info-wrapper">
+                      <div class="learning-page-number">
+                        <p class="learning-page__number">1</p>
+                      </div>
+                      <div class="learning-page-info">
+                        <h3 class="learning-page-info__title">IT менеджмент</h3>
+                        <p class="learning-page-info__hours learning-page-info__bullet"><span class="learning-page-info__field-name">Объем программы:</span><span class="text-bold learning-page-info__content">от 520 ч.</span></p>
+                        <p class="learning-page-info__duration learning-page-info__bullet"><span class="learning-page-info__field-name">Длительность обучения:</span><span class="text-bold learning-page-info__content">от 83 дней</span></p>
+                        <p class="learning-page-info__document learning-page-info__bullet"><span class="learning-page-info__field-name">Получаемый документ:</span><span class="text-bold learning-page-info__content">Диплом о профессиональной переподготовке (ПП)</span></p>
+                        <p class="learning-page-info__base learning-page-info__bullet"><span class="learning-page-info__field-name">Обучение на базе:</span><span class="text-bold learning-page-info__content">высшего или средне-профессионального образования</span></p>
+                      </div>
+                    </div>
+                    <div class="learning-page-info-buttons">
+                      <button class="primary-button learning-page-info__consult">Получить консультацию</button>
+                      <button class="thirdly-button learning-page-info__more">Подробнее</button>
+                    </div>
+                  </div>
+                  <div class="learning-page-item">
+                    <div class="learning-page-info-wrapper">
+                      <div class="learning-page-number">
+                        <p class="learning-page__number">1</p>
+                      </div>
+                      <div class="learning-page-info">
+                        <h3 class="learning-page-info__title">IT менеджмент</h3>
+                        <p class="learning-page-info__hours learning-page-info__bullet"><span class="learning-page-info__field-name">Объем программы:</span><span class="text-bold learning-page-info__content">от 520 ч.</span></p>
+                        <p class="learning-page-info__duration learning-page-info__bullet"><span class="learning-page-info__field-name">Длительность обучения:</span><span class="text-bold learning-page-info__content">от 83 дней</span></p>
+                        <p class="learning-page-info__document learning-page-info__bullet"><span class="learning-page-info__field-name">Получаемый документ:</span><span class="text-bold learning-page-info__content">Диплом о профессиональной переподготовке (ПП)</span></p>
+                        <p class="learning-page-info__base learning-page-info__bullet"><span class="learning-page-info__field-name">Обучение на базе:</span><span class="text-bold learning-page-info__content">высшего или средне-профессионального образования</span></p>
+                      </div>
+                    </div>
+                    <div class="learning-page-info-buttons">
+                      <button class="primary-button learning-page-info__consult">Получить консультацию</button>
+                      <button class="thirdly-button learning-page-info__more">Подробнее</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-
-
-
-
-
-<?php
-
-
-?>
-
-
-
-
             <div class="learning-tab--skillup learning-tab--active">
               <div class="learning-tab">
                 <div class="learning-page-list">
-
-<?php if (count($all_tag_posts) === 0) { ?>
-								<p style="text-align: center; margin-bottom: 20px;">Пока нет опубликованных курсов по этому направлению</p>
-<?php } ?>
-<?php foreach ($all_tag_posts as $key => $course) {
-	setup_postdata($course);
-	$course_ar = $course->to_array();
-	$id = $course->to_array()['ID'];
-?>
                   <div class="learning-page-item">
                     <div class="learning-page-info-wrapper">
                       <div class="learning-page-number">
-											<p class="learning-page__number"><?php echo $key + 1?></p>
+                        <p class="learning-page__number">1</p>
                       </div>
                       <div class="learning-page-info">
-											<h3 class="learning-page-info__title"><?php echo $course_ar['post_title'] ?></h3>
-											<p class="learning-page-info__hours learning-page-info__bullet"><span class="learning-page-info__field-name">Объем программы:</span><span class="text-bold learning-page-info__content"><?php the_field('hours', $id) ?></span></p>
-											<p class="learning-page-info__duration learning-page-info__bullet"><span class="learning-page-info__field-name">Длительность обучения:</span><span class="text-bold learning-page-info__content"><?php echo the_field('days', $id) ?></span></p>
-											<p class="learning-page-info__document learning-page-info__bullet"><span class="learning-page-info__field-name">Получаемый документ:</span><span class="text-bold learning-page-info__content"><?php echo get_field('doc', $id) ?></span></p>
-											<p class="learning-page-info__base learning-page-info__bullet"><span class="learning-page-info__field-name">Обучение на базе:</span><span class="text-bold learning-page-info__content"><?php the_field('base', $id) ?></span></p>
+                        <h3 class="learning-page-info__title">IT менеджмент</h3>
+                        <p class="learning-page-info__hours learning-page-info__bullet"><span class="learning-page-info__field-name">Объем программы:</span><span class="text-bold learning-page-info__content">от 520 ч.</span></p>
+                        <p class="learning-page-info__duration learning-page-info__bullet"><span class="learning-page-info__field-name">Длительность обучения:</span><span class="text-bold learning-page-info__content">от 83 дней</span></p>
+                        <p class="learning-page-info__document learning-page-info__bullet"><span class="learning-page-info__field-name">Получаемый документ:</span><span class="text-bold learning-page-info__content">Диплом о профессиональной переподготовке (ПП)</span></p>
+                        <p class="learning-page-info__base learning-page-info__bullet"><span class="learning-page-info__field-name">Обучение на базе:</span><span class="text-bold learning-page-info__content">высшего или средне-профессионального образования</span></p>
                       </div>
                     </div>
                     <div class="learning-page-info-buttons">
-										<button data-to-form="Консультация по курсу «<?php echo $course_ar['post_title'] ?>», направление «<?php single_tag_title() ?>»>" class="primary-button learning-page-info__consult">Получить консультацию</button>
-											<a href="<?php the_permalink($id) ?>" class="thirdly-button learning-page-info__more">Подробнее</a>
+                      <button class="primary-button learning-page-info__consult">Получить консультацию</button>
+                      <button class="thirdly-button learning-page-info__more">Подробнее</button>
                     </div>
                   </div>
-<?php } wp_reset_postdata(); //end learning item ?>
-
-
+                  <div class="learning-page-item">
+                    <div class="learning-page-info-wrapper">
+                      <div class="learning-page-number">
+                        <p class="learning-page__number">1</p>
+                      </div>
+                      <div class="learning-page-info">
+                        <h3 class="learning-page-info__title">IT менеджмент</h3>
+                        <p class="learning-page-info__hours learning-page-info__bullet"><span class="learning-page-info__field-name">Объем программы:</span><span class="text-bold learning-page-info__content">от 520 ч.</span></p>
+                        <p class="learning-page-info__duration learning-page-info__bullet"><span class="learning-page-info__field-name">Длительность обучения:</span><span class="text-bold learning-page-info__content">от 83 дней</span></p>
+                        <p class="learning-page-info__document learning-page-info__bullet"><span class="learning-page-info__field-name">Получаемый документ:</span><span class="text-bold learning-page-info__content">Диплом о профессиональной переподготовке (ПП)</span></p>
+                        <p class="learning-page-info__base learning-page-info__bullet"><span class="learning-page-info__field-name">Обучение на базе:</span><span class="text-bold learning-page-info__content">высшего или средне-профессионального образования</span></p>
+                      </div>
+                    </div>
+                    <div class="learning-page-info-buttons">
+                      <button class="primary-button learning-page-info__consult">Получить консультацию</button>
+                      <button class="thirdly-button learning-page-info__more">Подробнее</button>
+                    </div>
+                  </div>
+                  <div class="learning-page-item">
+                    <div class="learning-page-info-wrapper">
+                      <div class="learning-page-number">
+                        <p class="learning-page__number">1</p>
+                      </div>
+                      <div class="learning-page-info">
+                        <h3 class="learning-page-info__title">IT менеджмент</h3>
+                        <p class="learning-page-info__hours learning-page-info__bullet"><span class="learning-page-info__field-name">Объем программы:</span><span class="text-bold learning-page-info__content">от 520 ч.</span></p>
+                        <p class="learning-page-info__duration learning-page-info__bullet"><span class="learning-page-info__field-name">Длительность обучения:</span><span class="text-bold learning-page-info__content">от 83 дней</span></p>
+                        <p class="learning-page-info__document learning-page-info__bullet"><span class="learning-page-info__field-name">Получаемый документ:</span><span class="text-bold learning-page-info__content">Диплом о профессиональной переподготовке (ПП)</span></p>
+                        <p class="learning-page-info__base learning-page-info__bullet"><span class="learning-page-info__field-name">Обучение на базе:</span><span class="text-bold learning-page-info__content">высшего или средне-профессионального образования</span></p>
+                      </div>
+                    </div>
+                    <div class="learning-page-info-buttons">
+                      <button class="primary-button learning-page-info__consult">Получить консультацию</button>
+                      <button class="thirdly-button learning-page-info__more">Подробнее</button>
+                    </div>
+                  </div>
+                  <div class="learning-page-item">
+                    <div class="learning-page-info-wrapper">
+                      <div class="learning-page-number">
+                        <p class="learning-page__number">1</p>
+                      </div>
+                      <div class="learning-page-info">
+                        <h3 class="learning-page-info__title">IT менеджмент</h3>
+                        <p class="learning-page-info__hours learning-page-info__bullet"><span class="learning-page-info__field-name">Объем программы:</span><span class="text-bold learning-page-info__content">от 520 ч.</span></p>
+                        <p class="learning-page-info__duration learning-page-info__bullet"><span class="learning-page-info__field-name">Длительность обучения:</span><span class="text-bold learning-page-info__content">от 83 дней</span></p>
+                        <p class="learning-page-info__document learning-page-info__bullet"><span class="learning-page-info__field-name">Получаемый документ:</span><span class="text-bold learning-page-info__content">Диплом о профессиональной переподготовке (ПП)</span></p>
+                        <p class="learning-page-info__base learning-page-info__bullet"><span class="learning-page-info__field-name">Обучение на базе:</span><span class="text-bold learning-page-info__content">высшего или средне-профессионального образования</span></p>
+                      </div>
+                    </div>
+                    <div class="learning-page-info-buttons">
+                      <button class="primary-button learning-page-info__consult">Получить консультацию</button>
+                      <button class="thirdly-button learning-page-info__more">Подробнее</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -187,63 +194,63 @@
                 <li class="features-list-item">
                   <p class="features-item__text"> <span class="text-bold">Индивидуальный подход </span> и&nbsp;модульная система обучения </p>
                   <picture class="features-pic">
-                    <source srcset="<?php echo get_template_directory_uri() ?>/img/4-features/stairs.webp 1x,<?php echo get_template_directory_uri()?>/img/4-features/stairs@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri() ?>/img/4-features/stairs.png" srcset="<?php echo get_template_directory_uri() ?>/img/4-features/stairs@2x.png 2x"/>
+                    <source srcset="img/4-features/stairs.webp 1x,<?php echo get_template_directory_uri()?>/img/4-features/stairs@2x.webp 2x" type="image/webp"/><img src="img/4-features/stairs.png" srcset="img/4-features/stairs@2x.png 2x"/>
                   </picture>
                   <h3 class="features-item__number">01</h3>
                 </li>
                 <li class="features-list-item">
                   <p class="features-item__text"> <span class="text-bold">Сотни</span> направлений обучения</p>
                   <picture class="features-pic">
-                    <source srcset="<?php echo get_template_directory_uri() ?>/img/4-features/weathervane.webp 1x,<?php echo get_template_directory_uri()?>/img/4-features/weathervane@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri() ?>/img/4-features/weathervane.png" srcset="<?php echo get_template_directory_uri() ?>/img/4-features/weathervane@2x.png 2x"/>
+                    <source srcset="img/4-features/weathervane.webp 1x,<?php echo get_template_directory_uri()?>/img/4-features/weathervane@2x.webp 2x" type="image/webp"/><img src="img/4-features/weathervane.png" srcset="img/4-features/weathervane@2x.png 2x"/>
                   </picture>
                   <h3 class="features-item__number">02</h3>
                 </li>
                 <li class="features-list-item">
                   <p class="features-item__text">Поддержка кураторов <span class="text-bold">24/7</span></p>
                   <picture class="features-pic">
-                    <source srcset="<?php echo get_template_directory_uri() ?>/img/4-features/shield.webp 1x,<?php echo get_template_directory_uri()?>/img/4-features/shield@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri() ?>/img/4-features/shield.png" srcset="<?php echo get_template_directory_uri() ?>/img/4-features/shield@2x.png 2x"/>
+                    <source srcset="img/4-features/shield.webp 1x,<?php echo get_template_directory_uri()?>/img/4-features/shield@2x.webp 2x" type="image/webp"/><img src="img/4-features/shield.png" srcset="img/4-features/shield@2x.png 2x"/>
                   </picture>
                   <h3 class="features-item__number">03</h3>
                 </li>
                 <li class="features-list-item">
                   <p class="features-item__text">Все преподаватели<br>действующие <span class="text-bold">практики</span></p>
                   <picture class="features-pic">
-                    <source srcset="<?php echo get_template_directory_uri() ?>/img/4-features/caduceus.webp 1x,<?php echo get_template_directory_uri()?>/img/4-features/caduceus@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri() ?>/img/4-features/caduceus.png" srcset="<?php echo get_template_directory_uri() ?>/img/4-features/caduceus@2x.png 2x"/>
+                    <source srcset="img/4-features/caduceus.webp 1x,<?php echo get_template_directory_uri()?>/img/4-features/caduceus@2x.webp 2x" type="image/webp"/><img src="img/4-features/caduceus.png" srcset="img/4-features/caduceus@2x.png 2x"/>
                   </picture>
                   <h3 class="features-item__number">04</h3>
                 </li>
                 <li class="features-list-item">
                   <p class="features-item__text features-item__text--single-row">Учебные программы соответствуют<span class="text-bold"> государственным стандартам (ФГОС) </span></p>
                   <picture class="features-pic">
-                    <source srcset="<?php echo get_template_directory_uri() ?>/img/4-features/book.webp 1x,<?php echo get_template_directory_uri()?>/img/4-features/book@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri() ?>/img/4-features/book.png" srcset="<?php echo get_template_directory_uri() ?>/img/4-features/book@2x.png 2x"/>
+                    <source srcset="img/4-features/book.webp 1x,<?php echo get_template_directory_uri()?>/img/4-features/book@2x.webp 2x" type="image/webp"/><img src="img/4-features/book.png" srcset="img/4-features/book@2x.png 2x"/>
                   </picture>
                   <h3 class="features-item__number">05</h3>
                 </li>
                 <li class="features-list-item"> 
                   <p class="features-item__text features-item__text--single-row">Доставка документов<span class="text-bold"> по всей России</span></p>
                   <picture class="features-pic">
-                    <source srcset="<?php echo get_template_directory_uri() ?>/img/4-features/box.webp 1x,<?php echo get_template_directory_uri()?>/img/4-features/box@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri() ?>/img/4-features/box.png" srcset="<?php echo get_template_directory_uri() ?>/img/4-features/box@2x.png 2x"/>
+                    <source srcset="img/4-features/box.webp 1x,<?php echo get_template_directory_uri()?>/img/4-features/box@2x.webp 2x" type="image/webp"/><img src="img/4-features/box.png" srcset="img/4-features/box@2x.png 2x"/>
                   </picture>
                   <h3 class="features-item__number">06</h3>
                 </li>
                 <li class="features-list-item">
                   <p class="features-item__text features-item__text--single-row">Документы установленного образца</p>
                   <picture class="features-pic">
-                    <source srcset="<?php echo get_template_directory_uri() ?>/img/4-features/paper.webp 1x,<?php echo get_template_directory_uri()?>/img/4-features/paper@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri() ?>/img/4-features/paper.png" srcset="<?php echo get_template_directory_uri() ?>/img/4-features/paper@2x.png 2x"/>
+                    <source srcset="img/4-features/paper.webp 1x,<?php echo get_template_directory_uri()?>/img/4-features/paper@2x.webp 2x" type="image/webp"/><img src="img/4-features/paper.png" srcset="img/4-features/paper@2x.png 2x"/>
                   </picture>
                   <h3 class="features-item__number">07</h3>
                 </li>
                 <li class="features-list-item">
                   <p class="features-item__text">Доступ к учебным материалам <span class="text-bold">в&nbsp;любое время</span></p>
                   <picture class="features-pic">
-                    <source srcset="<?php echo get_template_directory_uri() ?>/img/4-features/safe.webp 1x,<?php echo get_template_directory_uri()?>/img/4-features/safe@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri() ?>/img/4-features/safe.png" srcset="<?php echo get_template_directory_uri() ?>/img/4-features/safe@2x.png 2x"/>
+                    <source srcset="img/4-features/safe.webp 1x,<?php echo get_template_directory_uri()?>/img/4-features/safe@2x.webp 2x" type="image/webp"/><img src="img/4-features/safe.png" srcset="img/4-features/safe@2x.png 2x"/>
                   </picture>
                   <h3 class="features-item__number">08</h3>
                 </li>
                 <li class="features-list-item">
                   <p class="features-item__text">Доступные цены</p>
                   <picture class="features-pic">
-                    <source srcset="<?php echo get_template_directory_uri() ?>/img/4-features/piggy.webp 1x,<?php echo get_template_directory_uri()?>/img/4-features/piggy@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri() ?>/img/4-features/piggy.png" srcset="<?php echo get_template_directory_uri() ?>/img/4-features/piggy@2x.png 2x"/>
+                    <source srcset="img/4-features/piggy.webp 1x,<?php echo get_template_directory_uri()?>/img/4-features/piggy@2x.webp 2x" type="image/webp"/><img src="img/4-features/piggy.png" srcset="img/4-features/piggy@2x.png 2x"/>
                   </picture>
                   <h3 class="features-item__number">09</h3>
                 </li>

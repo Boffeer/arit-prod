@@ -3542,8 +3542,7 @@ p {
 
 .news-latest-one {
   background: var(--color-surface-dark);
-  max-width: 50%;
-	width: 50%;
+  max-width: 42%;
   margin-right: 20px;
 }
 
@@ -3657,7 +3656,6 @@ p {
   }
 
   .news-latest-one {
-		width: 100%;
     max-width: 100%;
     margin-right: 0;
     margin-bottom: 20px;
@@ -4328,7 +4326,7 @@ p {
 
   .testimonial__picture {
     position: absolute;
-    top: -12px;
+    top: -20px;
     left: 0;
     width: 75px;
   }
@@ -4512,7 +4510,3 @@ p {
   }
 }
 /*# sourceMappingURL=style.css.map */
-
-
-
-

@@ -14,7 +14,7 @@ Template Post Type: courses_retrain
       </div>
       <div class="container container--page-course">
         <div class="course-left">
-          <p class="text--title-caption">Повышение квалификации по программе</p>
+          <p class="text--title-caption">Профессиональная переподготовка по программе</p>
 
 <?php
 	$newsItems = array(

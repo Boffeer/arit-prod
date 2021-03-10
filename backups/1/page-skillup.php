@@ -1,7 +1,7 @@
 <?php 
 /*
- * Template Name: Курс по ПК
- * Template Post Type: courses_skillup
+Template Name: Курс по ПК
+Template Post Type: courses_skillup
  */
 ?>
 <?php get_header();?>
@@ -138,28 +138,6 @@
           </li>
         </ul>
       </div>
-
-
-
-
-
-
-<?php
-	$get_partners = array(
-		'post_type' => 'partners',
-		'supress_filters' => false,
-		'numberposts' => -1,
-		'order' => 'ASC',
-	);
-
-	$partners = get_posts( $get_partners );
-
-?>
-
-
-
-
-
       <div class="partners--course">
         <div class="partners-wrapper" id="partners">
           <div class="partners-container container">
@@ -167,21 +145,97 @@
               <h2 class="section__title partners__title">У нас обучаются</h2>
               <div class="partners-slider-outer">
                 <div class="partners-slider-wrap swiper-container">
-									<div class="partners-slider swiper-wrapper">
-
-<?php
-	foreach ($partners as $partner) {
-		setup_postdata($partner)
-?>
-										<a class="partners-item swiper-slide" href="<?php the_field('partner_link') ?>" target="_blank">
+                  <div class="partners-slider swiper-wrapper"><a class="partners-item swiper-slide" href="https://www.atmos-med.ru/" target="_blank">
                       <div class="partners-item__border">
                         <picture class="partners__picture">
-												<img src="<?php the_field('partner_logo') ?>"/>
+                          <source srcset="img/8-partners/atmos.webp 1x,img/8-partners/atmos@2x.webp 2x" type="image/webp"/><img src="img/8-partners/atmos.png" srcset="img/8-partners/atmos@2x.png 2x"/>
                         </picture>
-											</div>
-										</a>
-<?php } wp_reset_postdata(); ?>
-
+                      </div></a><a class="partners-item swiper-slide" href="https://www.btlmed.ru/" target="_blank">
+                      <div class="partners-item__border">
+                        <picture class="partners__picture">
+                          <source srcset="img/8-partners/btl.webp 1x,img/8-partners/btl@2x.webp 2x" type="image/webp"/><img src="img/8-partners/btl.png" srcset="img/8-partners/btl@2x.png 2x"/>
+                        </picture>
+                      </div></a><a class="partners-item swiper-slide" href="https://www.cbr.ru/" target="_blank">
+                      <div class="partners-item__border">
+                        <picture class="partners__picture">
+                          <source srcset="img/8-partners/cb.webp 1x,img/8-partners/cb@2x.webp 2x" type="image/webp"/><img src="img/8-partners/cb.png" srcset="img/8-partners/cb@2x.png 2x"/>
+                        </picture>
+                      </div></a><a class="partners-item swiper-slide" href="https://fcgie.ru/" target="_blank">
+                      <div class="partners-item__border">
+                        <picture class="partners__picture">
+                          <source srcset="img/8-partners/center-hygien.webp 1x,img/8-partners/center-hygien@2x.webp 2x" type="image/webp"/><img src="img/8-partners/center-hygien.png" srcset="img/8-partners/center-hygien@2x.png 2x"/>
+                        </picture>
+                      </div></a><a class="partners-item swiper-slide" href="http://ucentr.karelia.ru/" target="_blank">
+                      <div class="partners-item__border">
+                        <picture class="partners__picture">
+                          <source srcset="img/8-partners/center-karnelius.webp 1x,img/8-partners/center-karnelius@2x.webp 2x" type="image/webp"/><img src="img/8-partners/center-karnelius.png" srcset="img/8-partners/center-karnelius@2x.png 2x"/>
+                        </picture>
+                      </div></a><a class="partners-item swiper-slide" href="https://vk.com/dental.aurora" target="_blank">
+                      <div class="partners-item__border">
+                        <picture class="partners__picture">
+                          <source srcset="img/8-partners/dental-aurora-clinic.webp 1x,img/8-partners/dental-aurora-clinic@2x.webp 2x" type="image/webp"/><img src="img/8-partners/dental-aurora-clinic.png" srcset="img/8-partners/dental-aurora-clinic@2x.png 2x"/>
+                        </picture>
+                      </div></a><a class="partners-item swiper-slide" href="https://www.instagram.com/doctor_super/?hl=ru" target="_blank">
+                      <div class="partners-item__border">
+                        <picture class="partners__picture">
+                          <source srcset="img/8-partners/dr-super.webp 1x,img/8-partners/dr-super@2x.webp 2x" type="image/webp"/><img src="img/8-partners/dr-super.png" srcset="img/8-partners/dr-super@2x.png 2x"/>
+                        </picture>
+                      </div></a><a class="partners-item swiper-slide" href="https://www.vladokb.ru/" target="_blank">
+                      <div class="partners-item__border">
+                        <picture class="partners__picture">
+                          <source srcset="img/8-partners/gbuzvookb.webp 1x,img/8-partners/gbuzvookb@2x.webp 2x" type="image/webp"/><img src="img/8-partners/gbuzvookb.png" srcset="img/8-partners/gbuzvookb@2x.png 2x"/>
+                        </picture>
+                      </div></a><a class="partners-item swiper-slide" href="https://g-richter.ru/" target="_blank">
+                      <div class="partners-item__border">
+                        <picture class="partners__picture">
+                          <source srcset="img/8-partners/gedeon-richter.webp 1x,img/8-partners/gedeon-richter@2x.webp 2x" type="image/webp"/><img src="img/8-partners/gedeon-richter.png" srcset="img/8-partners/gedeon-richter@2x.png 2x"/>
+                        </picture>
+                      </div></a><a class="partners-item swiper-slide" href="https://gkbe.ru/" target="_blank">
+                      <div class="partners-item__border">
+                        <picture class="partners__picture">
+                          <source srcset="img/8-partners/gkb-eramishanceva.webp 1x,img/8-partners/gkb-eramishanceva@2x.webp 2x" type="image/webp"/><img src="img/8-partners/gkb-eramishanceva.png" srcset="img/8-partners/gkb-eramishanceva@2x.png 2x"/>
+                        </picture>
+                      </div></a><a class="partners-item swiper-slide" target="_blank">
+                      <div class="partners-item__border">
+                        <picture class="partners__picture">
+                          <source srcset="img/8-partners/job-service.webp 1x,img/8-partners/job-service@2x.webp 2x" type="image/webp"/><img src="img/8-partners/job-service.png" srcset="img/8-partners/job-service@2x.png 2x"/>
+                        </picture>
+                      </div></a><a class="partners-item swiper-slide" href="https://niioz.ru/" target="_blank">
+                      <div class="partners-item__border">
+                        <picture class="partners__picture">
+                          <source srcset="img/8-partners/nii.webp 1x,img/8-partners/nii@2x.webp 2x" type="image/webp"/><img src="img/8-partners/nii.png" srcset="img/8-partners/nii@2x.png 2x"/>
+                        </picture>
+                      </div></a><a class="partners-item swiper-slide" href="https://www.pnzgu.ru/" target="_blank">
+                      <div class="partners-item__border">
+                        <picture class="partners__picture">
+                          <source srcset="img/8-partners/president-gov-univercity.webp 1x,img/8-partners/president-gov-univercity@2x.webp 2x" type="image/webp"/><img src="img/8-partners/president-gov-univercity.png" srcset="img/8-partners/president-gov-univercity@2x.png 2x"/>
+                        </picture>
+                      </div></a><a class="partners-item swiper-slide" href="http://spmuzrb.ru/" target="_blank">
+                      <div class="partners-item__border">
+                        <picture class="partners__picture">
+                          <source srcset="img/8-partners/sergiev-posad.webp 1x,img/8-partners/sergiev-posad@2x.webp 2x" type="image/webp"/><img src="img/8-partners/sergiev-posad.png" srcset="img/8-partners/sergiev-posad@2x.png 2x"/>
+                        </picture>
+                      </div></a><a class="partners-item swiper-slide" href="https://www.lvrach.ru/" target="_blank">
+                      <div class="partners-item__border">
+                        <picture class="partners__picture">
+                          <source srcset="img/8-partners/doctor.webp 1x,img/8-partners/doctor@2x.webp 2x" type="image/webp"/><img src="img/8-partners/doctor.png" srcset="img/8-partners/doctor@2x.png 2x"/>
+                        </picture>
+                      </div></a><a class="partners-item swiper-slide" href="https://www.lvrach.ru/" target="_blank">
+                      <div class="partners-item__border">
+                        <picture class="partners__picture">
+                          <source srcset="img/8-partners/ttp-optic.webp 1x,img/8-partners/ttp-optic@2x.webp 2x" type="image/webp"/><img src="img/8-partners/ttp-optic.png" srcset="img/8-partners/ttp-optic@2x.png 2x"/>
+                        </picture>
+                      </div></a><a class="partners-item swiper-slide" href="https://szgmu.ru/rus/" target="_blank">
+                      <div class="partners-item__border">
+                        <picture class="partners__picture">
+                          <source srcset="img/8-partners/szgmu.webp 1x,img/8-partners/szgmu@2x.webp 2x" type="image/webp"/><img src="img/8-partners/szgmu.png" srcset="img/8-partners/szgmu@2x.png 2x"/>
+                        </picture>
+                      </div></a><a class="partners-item swiper-slide" href="https://www.rastatus.ru/" target="_blank">
+                      <div class="partners-item__border">
+                        <picture class="partners__picture">
+                          <source srcset="img/8-partners/status.webp 1x,img/8-partners/status@2x.webp 2x" type="image/webp"/><img src="img/8-partners/status.png" srcset="img/8-partners/status@2x.png 2x"/>
+                        </picture>
+                      </div></a>
                   </div>
                 </div>
                 <div class="partners-slider-scrollbar slider-scrollbar"></div>
@@ -201,17 +255,6 @@
         </div>
       </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
     <div class="testimonials-wrapper">
       <div class="testimonials-container container">
         <div class="testimonials page-course">
