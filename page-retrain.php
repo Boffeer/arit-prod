@@ -38,7 +38,7 @@ Template Post Type: courses_retrain
             </div>
             <div class="course-about-time">
               <p class="course-about__descriptor">Время обучения</p>
-              <p class="course-about__value">от 500ч.</p>
+              <p class="course-about__value"><?php the_field('hours') ?></p>
             </div>
           </div>
           <div class="course-info">
@@ -73,21 +73,22 @@ Template Post Type: courses_retrain
           </div>
         </div>
         <div class="course-right">
-          <div class="sticky-form-right-wrap">
+          <form method="post" onsubmit="return false" class="form sticky-form-right-wrap">
             <div class="sticky-form-right">
               <h3 class="form__title">Оставить заявку на консультацию</h3>
               <div class="form-fields">
                 <div class="form-input-wrap">
-                  <input type="hidden" name="fomrname"/>
+										<input type="hidden" name="arit_formpage" value="<?php echo add_query_arg( $wp->query_vars, home_url( $wp->request ) ); ?>">
+										<input type="hidden" name="arit_fomrname" value="<?php the_title() ?>"/>
                 </div>
                 <div class="form-input-wrap">
-                  <input class="form__input" required="required" name="name" type="text" placeholder="Имя"/>
+                  <input class="form__input" required="required" name="arit_name" type="text" placeholder="Имя"/>
                 </div>
                 <div class="form-input-wrap">
-                  <input class="form__input input--phone" required="required" name="tel" type="tel" autocorrect="off" autocomplete="tel" placeholder="Телефон"/>
+                  <input class="form__input input--phone" required="required" name="arit_phone" type="tel" autocorrect="off" autocomplete="tel" placeholder="Телефон"/>
                 </div>
                 <div class="form-input-wrap">
-                  <input class="form__input" name="email" type="email" autocapitalize="off" autocorrect="off" autocomplete="email" placeholder="Эл. почта" data-value-missing="Пожалуйста, введите свою электронную почту" data-value-invalid="Проверьте правильно ли написана почта"/>
+                  <input class="form__input" name="arit_email" type="email" autocapitalize="off" autocorrect="off" autocomplete="email" placeholder="Эл. почта" data-value-missing="Пожалуйста, введите свою электронную почту" data-value-invalid="Проверьте правильно ли написана почта"/>
                 </div>
                 <div class="form-input-wrap form-input-wrap--button">
                   <button class="primary-button form__button">Отправить заявку</button>
@@ -97,7 +98,7 @@ Template Post Type: courses_retrain
                 <button class="gdpr__button">на обработку персональных данных</button>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
       <script defer>
@@ -138,6 +139,14 @@ Template Post Type: courses_retrain
           </li>
         </ul>
       </div>
+
+
+
+
+
+
+
+
       <div class="partners--course">
         <div class="partners-wrapper" id="partners">
           <div class="partners-container container">
@@ -145,97 +154,29 @@ Template Post Type: courses_retrain
               <h2 class="section__title partners__title">У нас обучаются</h2>
               <div class="partners-slider-outer">
                 <div class="partners-slider-wrap swiper-container">
-                  <div class="partners-slider swiper-wrapper"><a class="partners-item swiper-slide" href="https://www.atmos-med.ru/" target="_blank">
+									<div class="partners-slider swiper-wrapper">
+
+<?php
+	$get_partners = array(
+		'post_type' => 'partners',
+		'supress_filters' => false,
+		'numberposts' => -1,
+		'order' => 'ASC',
+	);
+
+	$partners = get_posts( $get_partners );
+	foreach ($partners as $partner) {
+		$id = $partner->to_array()['ID'];
+		setup_postdata($partner)
+?>
+										<a class="partners-item swiper-slide" href="<?php the_field('partner_link', $id) ?>" target="_blank">
                       <div class="partners-item__border">
                         <picture class="partners__picture">
-                          <source srcset="img/8-partners/atmos.webp 1x,img/8-partners/atmos@2x.webp 2x" type="image/webp"/><img src="img/8-partners/atmos.png" srcset="img/8-partners/atmos@2x.png 2x"/>
+													<img src="<?php the_field('partner_logo', $id) ?>"/>
                         </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://www.btlmed.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/btl.webp 1x,img/8-partners/btl@2x.webp 2x" type="image/webp"/><img src="img/8-partners/btl.png" srcset="img/8-partners/btl@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://www.cbr.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/cb.webp 1x,img/8-partners/cb@2x.webp 2x" type="image/webp"/><img src="img/8-partners/cb.png" srcset="img/8-partners/cb@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://fcgie.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/center-hygien.webp 1x,img/8-partners/center-hygien@2x.webp 2x" type="image/webp"/><img src="img/8-partners/center-hygien.png" srcset="img/8-partners/center-hygien@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="http://ucentr.karelia.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/center-karnelius.webp 1x,img/8-partners/center-karnelius@2x.webp 2x" type="image/webp"/><img src="img/8-partners/center-karnelius.png" srcset="img/8-partners/center-karnelius@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://vk.com/dental.aurora" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/dental-aurora-clinic.webp 1x,img/8-partners/dental-aurora-clinic@2x.webp 2x" type="image/webp"/><img src="img/8-partners/dental-aurora-clinic.png" srcset="img/8-partners/dental-aurora-clinic@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://www.instagram.com/doctor_super/?hl=ru" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/dr-super.webp 1x,img/8-partners/dr-super@2x.webp 2x" type="image/webp"/><img src="img/8-partners/dr-super.png" srcset="img/8-partners/dr-super@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://www.vladokb.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/gbuzvookb.webp 1x,img/8-partners/gbuzvookb@2x.webp 2x" type="image/webp"/><img src="img/8-partners/gbuzvookb.png" srcset="img/8-partners/gbuzvookb@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://g-richter.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/gedeon-richter.webp 1x,img/8-partners/gedeon-richter@2x.webp 2x" type="image/webp"/><img src="img/8-partners/gedeon-richter.png" srcset="img/8-partners/gedeon-richter@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://gkbe.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/gkb-eramishanceva.webp 1x,img/8-partners/gkb-eramishanceva@2x.webp 2x" type="image/webp"/><img src="img/8-partners/gkb-eramishanceva.png" srcset="img/8-partners/gkb-eramishanceva@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/job-service.webp 1x,img/8-partners/job-service@2x.webp 2x" type="image/webp"/><img src="img/8-partners/job-service.png" srcset="img/8-partners/job-service@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://niioz.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/nii.webp 1x,img/8-partners/nii@2x.webp 2x" type="image/webp"/><img src="img/8-partners/nii.png" srcset="img/8-partners/nii@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://www.pnzgu.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/president-gov-univercity.webp 1x,img/8-partners/president-gov-univercity@2x.webp 2x" type="image/webp"/><img src="img/8-partners/president-gov-univercity.png" srcset="img/8-partners/president-gov-univercity@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="http://spmuzrb.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/sergiev-posad.webp 1x,img/8-partners/sergiev-posad@2x.webp 2x" type="image/webp"/><img src="img/8-partners/sergiev-posad.png" srcset="img/8-partners/sergiev-posad@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://www.lvrach.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/doctor.webp 1x,img/8-partners/doctor@2x.webp 2x" type="image/webp"/><img src="img/8-partners/doctor.png" srcset="img/8-partners/doctor@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://www.lvrach.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/ttp-optic.webp 1x,img/8-partners/ttp-optic@2x.webp 2x" type="image/webp"/><img src="img/8-partners/ttp-optic.png" srcset="img/8-partners/ttp-optic@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://szgmu.ru/rus/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/szgmu.webp 1x,img/8-partners/szgmu@2x.webp 2x" type="image/webp"/><img src="img/8-partners/szgmu.png" srcset="img/8-partners/szgmu@2x.png 2x"/>
-                        </picture>
-                      </div></a><a class="partners-item swiper-slide" href="https://www.rastatus.ru/" target="_blank">
-                      <div class="partners-item__border">
-                        <picture class="partners__picture">
-                          <source srcset="img/8-partners/status.webp 1x,img/8-partners/status@2x.webp 2x" type="image/webp"/><img src="img/8-partners/status.png" srcset="img/8-partners/status@2x.png 2x"/>
-                        </picture>
-                      </div></a>
+											</div>
+										</a>
+<?php } wp_reset_postdata(); ?>
                   </div>
                 </div>
                 <div class="partners-slider-scrollbar slider-scrollbar"></div>
@@ -255,6 +196,14 @@ Template Post Type: courses_retrain
         </div>
       </div>
     </div>
+
+
+
+
+
+
+
+
     <div class="testimonials-wrapper">
       <div class="testimonials-container container">
         <div class="testimonials page-course">
@@ -262,160 +211,151 @@ Template Post Type: courses_retrain
           <div class="testimonials-slider-outer">
             <div class="testimonials-slider-wrap">
               <div class="testimonials-list testimonials-slider">
-                <div class="testimonial-item swiper-slide">
-                  <div class="testimonial">
-                    <picture class="testimonial__picture">
-                      <source srcset="img/10-testimonials/testimonial-1.webp 1x,img/10-testimonials/testimonial-1@2x.webp 2x" type="image/webp"/><img src="img/10-testimonials/testimonial-1.png" srcset="img/10-testimonials/testimonial-1@2x.png 2x"/>
-                    </picture>
-                    <div class="testimonial-message">
-                      <div class="testimonial-message-info">
-                        <div class="testimonial-who">
-                          <h3 class="testimonial-who__name">Оксана Иванова</h3>
-                          <p class="testimonial-who__position">Директор MacDonalds</p>
-                        </div>
-                        <div class="testimonial__date">02.06.20</div>
-                      </div>
-                      <p class="testimonial__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. In culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="testimonial-item swiper-slide">
-                  <div class="testimonial">
-                    <picture class="testimonial__picture">
-                      <source srcset="img/10-testimonials/testimonial-1.webp 1x,img/10-testimonials/testimonial-1@2x.webp 2x" type="image/webp"/><img src="img/10-testimonials/testimonial-1.png" srcset="img/10-testimonials/testimonial-1@2x.png 2x"/>
-                    </picture>
-                    <div class="testimonial-message">
-                      <div class="testimonial-message-info">
-                        <div class="testimonial-who">
-                          <h3 class="testimonial-who__name">Оксана Иванова</h3>
-                          <p class="testimonial-who__position">Директор MacDonalds</p>
-                        </div>
-                        <div class="testimonial__date">02.06.20</div>
-                      </div>
-                      <p class="testimonial__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. In culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="testimonial-item swiper-slide">
-                  <div class="testimonial">
-                    <picture class="testimonial__picture">
-                      <source srcset="img/10-testimonials/testimonial-1.webp 1x,img/10-testimonials/testimonial-1@2x.webp 2x" type="image/webp"/><img src="img/10-testimonials/testimonial-1.png" srcset="img/10-testimonials/testimonial-1@2x.png 2x"/>
-                    </picture>
-                    <div class="testimonial-message">
-                      <div class="testimonial-message-info">
-                        <div class="testimonial-who">
-                          <h3 class="testimonial-who__name">Оксана Иванова</h3>
-                          <p class="testimonial-who__position">Директор MacDonalds</p>
-                        </div>
-                        <div class="testimonial__date">02.06.20</div>
-                      </div>
-                      <p class="testimonial__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. In culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="testimonials-slider-scrollbar"></div>
-            </div>
-          </div>
-          <div class="testimonials-more-wrap"><a class="secondary-button testimonials-more" href="/testimonials.html">Показать еще</a></div>
-        </div>
-      </div>
+
+<?php
+$args = array(
+	'post_type' => 'testimonials',
+	'supress_filters' => false,
+	'numberposts' => 10,
+	'orderby' => 'date',
+	'order' => 'DESC',
+);
+$testimonials = get_posts( $args );
+?>
+<?php if (count($testimonials) == 0) {?>
+	<p>Пока нет ни одного отзыва</p>
+<?php } ?>
+<?php 
+		foreach ($testimonials as $testimonial) {
+		$id = $testimonial->to_array()['ID'];
+		setup_postdata($testimonial);
+?>
+							<div class="testimonial-item swiper-slide">
+								<div class="testimonial">
+									<picture class="testimonial__picture">
+										<img src="<?php the_field('img', $id) ?>"/>
+									</picture>
+									<div class="testimonial-message">
+										<div class="testimonial-message-info">
+											<div class="testimonial-who">
+												<h3 class="testimonial-who__name"><?php the_field('name', $id) ?></h3>
+												<p class="testimonial-who__position"><?php the_field('post', $id) ?></p>
+											</div>
+											<div class="testimonial__date"><?php echo date('d.m.y', strtotime($testimonial->post_date)) ?></div>
+										</div>
+										<p class="testimonial__text"><?php the_field('testimonial', $id) ?></p>
+									</div>
+								</div>
+							</div>
+<?php }; wp_reset_postdata();//end smalls ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
       <div class="features-wrapper bg-white">
         <div class="features-container container">
           <div class="features">
             <h2 class="section__title features__title">Преимущества академии</h2>
+
             <ol class="features-list">
               <li class="features-list-item">
                 <p class="features-item__text"> <span class="text-bold">Индивидуальный подход </span> и&nbsp;модульная система обучения </p>
                 <picture class="features-pic">
-                  <source srcset="img/4-features/stairs.webp 1x,img/4-features/stairs@2x.webp 2x" type="image/webp"/><img src="img/4-features/stairs.png" srcset="img/4-features/stairs@2x.png 2x"/>
+                  <source srcset="<?php echo get_template_directory_uri()?>/img/4-features/stairs.webp 1x,img/4-features/stairs@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/4-features/stairs.png" srcset="<?php echo get_template_directory_uri()?>/img/4-features/stairs@2x.png 2x"/>
                 </picture>
                 <h3 class="features-item__number">01</h3>
               </li>
               <li class="features-list-item">
                 <p class="features-item__text"> <span class="text-bold">Сотни</span> направлений обучения</p>
                 <picture class="features-pic">
-                  <source srcset="img/4-features/weathervane.webp 1x,img/4-features/weathervane@2x.webp 2x" type="image/webp"/><img src="img/4-features/weathervane.png" srcset="img/4-features/weathervane@2x.png 2x"/>
+                  <source srcset="<?php echo get_template_directory_uri()?>/img/4-features/weathervane.webp 1x,img/4-features/weathervane@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/4-features/weathervane.png" srcset="<?php echo get_template_directory_uri()?>/img/4-features/weathervane@2x.png 2x"/>
                 </picture>
                 <h3 class="features-item__number">02</h3>
               </li>
               <li class="features-list-item">
                 <p class="features-item__text">Поддержка кураторов <span class="text-bold">24/7</span></p>
                 <picture class="features-pic">
-                  <source srcset="img/4-features/shield.webp 1x,img/4-features/shield@2x.webp 2x" type="image/webp"/><img src="img/4-features/shield.png" srcset="img/4-features/shield@2x.png 2x"/>
+                  <source srcset="<?php echo get_template_directory_uri()?>/img/4-features/shield.webp 1x,img/4-features/shield@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/4-features/shield.png" srcset="<?php echo get_template_directory_uri()?>/img/4-features/shield@2x.png 2x"/>
                 </picture>
                 <h3 class="features-item__number">03</h3>
               </li>
               <li class="features-list-item">
                 <p class="features-item__text">Все преподаватели<br>действующие <span class="text-bold">практики</span></p>
                 <picture class="features-pic">
-                  <source srcset="img/4-features/caduceus.webp 1x,img/4-features/caduceus@2x.webp 2x" type="image/webp"/><img src="img/4-features/caduceus.png" srcset="img/4-features/caduceus@2x.png 2x"/>
+                  <source srcset="<?php echo get_template_directory_uri()?>/img/4-features/caduceus.webp 1x,img/4-features/caduceus@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/4-features/caduceus.png" srcset="<?php echo get_template_directory_uri()?>/img/4-features/caduceus@2x.png 2x"/>
                 </picture>
                 <h3 class="features-item__number">04</h3>
               </li>
               <li class="features-list-item">
                 <p class="features-item__text features-item__text--single-row">Учебные программы соответствуют<span class="text-bold"> государственным стандартам (ФГОС) </span></p>
                 <picture class="features-pic">
-                  <source srcset="img/4-features/book.webp 1x,img/4-features/book@2x.webp 2x" type="image/webp"/><img src="img/4-features/book.png" srcset="img/4-features/book@2x.png 2x"/>
+                  <source srcset="<?php echo get_template_directory_uri()?>/img/4-features/book.webp 1x,img/4-features/book@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/4-features/book.png" srcset="<?php echo get_template_directory_uri()?>/img/4-features/book@2x.png 2x"/>
                 </picture>
                 <h3 class="features-item__number">05</h3>
               </li>
               <li class="features-list-item"> 
                 <p class="features-item__text features-item__text--single-row">Доставка документов<span class="text-bold"> по всей России</span></p>
                 <picture class="features-pic">
-                  <source srcset="img/4-features/box.webp 1x,img/4-features/box@2x.webp 2x" type="image/webp"/><img src="img/4-features/box.png" srcset="img/4-features/box@2x.png 2x"/>
+                  <source srcset="<?php echo get_template_directory_uri()?>/img/4-features/box.webp 1x,img/4-features/box@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/4-features/box.png" srcset="<?php echo get_template_directory_uri()?>/img/4-features/box@2x.png 2x"/>
                 </picture>
                 <h3 class="features-item__number">06</h3>
               </li>
               <li class="features-list-item">
                 <p class="features-item__text features-item__text--single-row">Документы установленного образца</p>
                 <picture class="features-pic">
-                  <source srcset="img/4-features/paper.webp 1x,img/4-features/paper@2x.webp 2x" type="image/webp"/><img src="img/4-features/paper.png" srcset="img/4-features/paper@2x.png 2x"/>
+                  <source srcset="<?php echo get_template_directory_uri()?>/img/4-features/paper.webp 1x,img/4-features/paper@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/4-features/paper.png" srcset="<?php echo get_template_directory_uri()?>/img/4-features/paper@2x.png 2x"/>
                 </picture>
                 <h3 class="features-item__number">07</h3>
               </li>
               <li class="features-list-item">
                 <p class="features-item__text">Доступ к учебным материалам <span class="text-bold">в&nbsp;любое время</span></p>
                 <picture class="features-pic">
-                  <source srcset="img/4-features/safe.webp 1x,img/4-features/safe@2x.webp 2x" type="image/webp"/><img src="img/4-features/safe.png" srcset="img/4-features/safe@2x.png 2x"/>
+                  <source srcset="<?php echo get_template_directory_uri()?>/img/4-features/safe.webp 1x,img/4-features/safe@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/4-features/safe.png" srcset="<?php echo get_template_directory_uri()?>/img/4-features/safe@2x.png 2x"/>
                 </picture>
                 <h3 class="features-item__number">08</h3>
               </li>
               <li class="features-list-item">
                 <p class="features-item__text">Доступные цены</p>
                 <picture class="features-pic">
-                  <source srcset="img/4-features/piggy.webp 1x,img/4-features/piggy@2x.webp 2x" type="image/webp"/><img src="img/4-features/piggy.png" srcset="img/4-features/piggy@2x.png 2x"/>
+                  <source srcset="<?php echo get_template_directory_uri()?>/img/4-features/piggy.webp 1x,img/4-features/piggy@2x.webp 2x" type="image/webp"/><img src="<?php echo get_template_directory_uri()?>/img/4-features/piggy.png" srcset="<?php echo get_template_directory_uri()?>/img/4-features/piggy@2x.png 2x"/>
                 </picture>
                 <h3 class="features-item__number">09</h3>
               </li>
             </ol>
+
           </div>
         </div>
       </div>
-    </div>
+
     <script>
-      const partnersSlider = new Swiper('.partners-slider-wrap',{
-      	slidesPerView: 1,
-      	spaceBetween: 20,
-      
-      	slidesPerColumn: 2,
-      	slidesPerColumnFill: 'row',
-      
-      	scrollbar: {
-      		el: '.partners-slider-scrollbar',
-      		hide: false,
-      	},
-      	breakpoints: {
-      		1200: {
-      			slidesPerView: 5,
-      			slidesPerColumn: 1,
-      			navigation: {
-      				nextEl: '.partners-slider-next',
-      				prevEl: '.partners-slider-prev',
-      			},
-      		}
-      	}
-      })
+      // const partnersSlider = new Swiper('.partners-slider-wrap',{
+      //   slidesPerView: 1,
+      //   spaceBetween: 20,
+      //
+      //   slidesPerColumn: 2,
+      //   slidesPerColumnFill: 'row',
+      //
+      //   scrollbar: {
+      //     el: '.partners-slider-scrollbar',
+      //     hide: false,
+      //   },
+      //   breakpoints: {
+      //     1200: {
+      //       slidesPerView: 5,
+      //       slidesPerColumn: 1,
+      //       navigation: {
+      //         nextEl: '.partners-slider-next',
+      //         prevEl: '.partners-slider-prev',
+      //       },
+      //     }
+      //   }
+      // })
       
       if (window.innerWidth < 1200){
       		document.querySelector('.testimonials-slider-wrap').classList.add('swiper-container');
@@ -431,4 +371,6 @@ Template Post Type: courses_retrain
       			},
       	})
       }
+</script>
+
 <?php get_footer();?>

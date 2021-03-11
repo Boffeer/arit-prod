@@ -80,8 +80,8 @@ $arit_get_categories = array(
 					</ul>
           <div class="learning-tabs-wrap">
             <div class="learning-tabbar">
-              <button class="learning-tab__control learning-tab__control--skillup learning-tab__control--active">Профессиональная переподготовка</button>
-              <button class="learning-tab__control learning-tab__control--retrain">Повышение квалификации </button>
+              <button class="learning-tab__control learning-tab__control--skillup learning-tab__control--active">Повышение квалификации</button>
+              <button class="learning-tab__control learning-tab__control--retrain">Профессиональная переподготовка</button>
             </div>
             <div class="learning-tab--retrain">
               <div class="learning-tab">
@@ -91,7 +91,7 @@ $arit_get_categories = array(
 		while ($tag_counter <= $column_1_count) { ?>
 									<li class="learning-tab-list-item">
 										<a class="learning-tab-list-item__link" 
-												href="<?php echo $learning_ways[$tag_counter]['link'] ?>">
+												href="<?php echo $learning_ways[$tag_counter]['link'] ?>?course=retrain">
 													<?php echo $learning_ways[$tag_counter]['name'] ?>
 										</a>
 									</li>
@@ -102,7 +102,7 @@ $arit_get_categories = array(
 <?php while ($tag_counter <= $column_2_count) { ?>
 									<li class="learning-tab-list-item">
 										<a class="learning-tab-list-item__link" 
-												href="<?php echo $learning_ways[$tag_counter]['link'] ?>">
+												href="<?php echo $learning_ways[$tag_counter]['link'] ?>?course=retrain">
 													<?php echo $learning_ways[$tag_counter]['name'] ?>
 										</a>
 									</li>
@@ -113,7 +113,7 @@ $arit_get_categories = array(
 <?php while ($tag_counter < $tags_count) { ?>
 									<li class="learning-tab-list-item">
 										<a class="learning-tab-list-item__link"
-											href="<?php echo $learning_ways[$tag_counter]['link'] ?>"><?php echo $learning_ways[$tag_counter]['name'] ?>
+											href="<?php echo $learning_ways[$tag_counter]['link'] ?>?course=retrain"><?php echo $learning_ways[$tag_counter]['name'] ?>
 										</a>
 									</li>
 <?php $tag_counter++; } ?>

@@ -15,6 +15,9 @@
 	$replacement = '';
 	$get_tag_name = preg_replace($pattern, $replacement, $string);
 	$get_tag_name = str_ireplace('/', '', $get_tag_name);
+	$get_tag_name = str_ireplace('#retrain', '', $get_tag_name);
+	$get_tag_name = str_ireplace('#skillup', '', $get_tag_name);
+	$get_tag_name = str_ireplace('?course=retrain', '', $get_tag_name);
 
 	$tag_args = array(
 		'post_type' => 'courses_skillup',
@@ -43,8 +46,9 @@
       <div class="about-wrap" id="about">
         <div class="about-container container">
           <div class="about">
-					<h2 class="section__title section__title--left about__title">Профессиональная переподготовка по направлению «<?php single_tag_title() ?>»</h2>
-					<p class="regular-text about__text">Предлагаем освоить новую специальнгость по направлению «<?php single_tag_title() ?>». Для этого достаточно пройти курсы профессиональной переподготовки по направлению «<?php echo single_tag_title() ?>». Учебные программы с нагрузкой более 1000 академических часов позволяют получить диплом о профпереподготовке с присвоением квалификации. Подробности уточняйте у спецаиалистов академии.</p>
+					<h2 class="section__title section__title--left about__title">Повышение квалификации по направлению «<?php single_tag_title() ?>»</h2>
+					<p class="regular-text about__text">Предлагаем повысить квалификацию по направлению «<?php single_tag_title() ?>». Для этого достаточно пройти курсы повышения квалификации по направлению «<?php echo single_tag_title() ?>». Учебные программы с нагрузкой более 1000 академических часов позволяют получить диплом о повышении квалификации. Подробности уточняйте у спецаиалистов академии.</p>
+					<!--<p class="regular-text about__text"><?php //tag_description() ?></p>-->
           </div>
         </div>
       </div>
@@ -159,23 +163,18 @@
         </div>
       </div>
       <div class="container mobile-fullpage-container">
-        <div class="paper">
-          <h3>Содержание программ по переподготовке</h3>
-          <p>Содержание программы направлено на то, чтобы учащиеся в максимально короткие сроки смогли освоить теоретический и практический базис знаний, который необходим для работы в области менеджмента и управления. <b>В рамках курса будут рассмотрены следующие темы:</b></p>
-          <ul>
-            <li>Менеджмент и есть основная специфика;</li>
-            <li>Знакомство с разными видами управления (стратегическим, тактическим и оперативным);</li>
-            <li>Работа с разносрочными планами, принципы их композиции и декомпозиции;</li>
-            <li>Проведение самостоятельной оценки эффективности своей работы</li>
-          </ul>
-          <p>Более углублённые программы разрабатываются опытными преподавателями СНТА с учётом потребностей целевой аудитории. Средняя продолжительность обучения составляет около 250 академических часов. Есть разные типы программ, предназначенные для сотрудников разных предприятий (коммерческого и некоммерческого плана).</p>
-          <h3>Преимущества дистанционного обучения</h3>
-          <p>СНТА проводит дистанционное обучение с использованием современных образовательных технологий. Речь идёт об учёбе в удобном удалённом формате, благодаря которому участникам не нужно выезжать в Академию и тратить финансовые средства на дорогу туда и обратно. Сразу же после оплаты полной стоимости курса вы получаете доступ к нашей онлайн-библиотеке, где расположены все материалы, необходимые для учёбы. Доступ к ним му предоставляем 24 часа в сутки, как и круглосуточную техническую поддержку на сайте.</p>
-          <p>По окончании обучения слушатели защищают дипломную работу и проходят итоговую аттестацию. За дипломом ехать в СНТА тоже нет необходимости: опытный курьер оперативно доставит его вам на указанный почтовый адрес в любой регион России. Доставка бесплатна, а её срок составит не более трёх дней с момента окончания курсов.</p>
-          <h3>Требования к участникам</h3>
-          <p>Курсы профпереподготовки рассчитаны на лиц, имеющих высшее или среднее профессиональное образование. При этом, вид основной специальности не играет особой роли.</p>
-          <p>Согласно общественным профессиональным стандартам, утверждённым 22.04.2008 г., есть рекомендация о том, что для человека, желающего посвятить себя управленческой сфере, рекомендовано иметь высшее образование либо обладать профессиональными навыками, соответствующими его уровню.</p>
-          <p>Если вы желаете записаться на курс «Менеджмент», это можно сделать прямо сейчас. Оставьте свою заявку в диалоговом окне сайта или свяжитесь с нашими онлайн-консультантами по указанному номеру телефона, и вы получите ответ в ближайшее время.</p>
+        <div class="paper" style="padding-top: 50px">
+<?php 
+	$tagIdArgs = get_tags( array(
+		'number' => 1,
+		'slug' => $get_tag_name,
+	) );
+	if (! empty($tagIdArgs)){
+			echo $tagIdArgs[0]->to_array()['description'];
+	}
+	// echo $tagIdArgs[0]->to_array()['term_id'];
+	// var_dump($tagIdArgs);
+?>
         </div>
       </div>
       <div class="features">
@@ -336,17 +335,28 @@
           const retrainTabHandler = document.querySelector('.learning-tab__control--retrain');
           const retrainTab = document.querySelector('.learning-tab--retrain');
           
+					var tagTitle = document.querySelector('.section__title.about__title');
+					var tagDescr = document.querySelector('.regular-text.about__text');
+					var skillupTitle = 'Повышение квалификации по направлению «<?php single_tag_title() ?>»';
+					var skillupDescr = 'Предлагаем повысить квалификацию по направлению «<?php single_tag_title() ?>». Для этого достаточно пройти курсы повышения квалификации по направлению «<?php echo single_tag_title() ?>». Учебные программы с нагрузкой более 1000 академических часов позволяют получить диплом о повышении квалификации. Подробности уточняйте у спецаиалистов академии.';
+					var retrainTitle = 'Профессиональная переподготовка по направлению «<?php single_tag_title() ?>»';
+					var retrainDescr = 'Предлагаем освоить новую специальнгость по направлению «<?php single_tag_title() ?>». Для этого достаточно пройти курсы профессиональной переподготовки по направлению «<?php echo single_tag_title() ?>». Учебные программы с нагрузкой более 1000 академических часов позволяют получить диплом о профпереподготовке с присвоением квалификации. Подробности уточняйте у спецаиалистов академии.';
+
           	skillupTabHandler.addEventListener('click', function(){
           		this.classList.add('learning-tab__control--active')
           		skillupTab.classList.add('learning-tab--active');
           		retrainTabHandler.classList.remove('learning-tab__control--active')
           		retrainTab.classList.remove('learning-tab--active')
+							tagTitle.innerText = skillupTitle;
+							tagDescr.innerText = skillupDescr;
           	})
           	retrainTabHandler.addEventListener('click', function(){
           		this.classList.add('learning-tab__control--active');
           		retrainTab.classList.add('learning-tab--active');
           		skillupTabHandler.classList.remove('learning-tab__control--active');
           		skillupTab.classList.remove('learning-tab--active');
+							tagTitle.innerText = retrainTitle;
+							tagDescr.innerText = retrainDescr;
           })
           if (window.innerWidth < 1200){
           	showmore({
@@ -364,6 +374,12 @@
           		currentItem: 0,
           	})
           }
+					// if (document.location.href.includes('retrain')) {
+					if (document.location.search.includes('?course=retrain')) {
+							document.querySelector('.learning-tab__control--retrain').click();
+							tagTitle.innerText = retrainTitle;
+							tagDescr.innerText = retrainDescr;
+					}
           
         </script>
       </div>

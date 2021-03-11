@@ -7,12 +7,17 @@
 		<meta name="description" content="<?php bloginfo('description'); ?>">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
+		<style>
+			.form__button--pressed {
+				opacity: 0.5;
+			}
+		</style>
 	 <?php wp_head();?>
   </head>
   <body>
     <div class="header-wrapper">
       <div class="container header-container">
-				<header class="header"><a  class="header__logo" href="<?php echo get_site_url() ?>"><img style="margin-right: 100px;" src="<?php echo get_template_directory_uri()?>/img/0-common/logo.svg" alt="logo">
+				<header class="header"><a  class="header__logo" href="<?php echo get_site_url() ?>"><img src="<?php echo get_template_directory_uri()?>/img/0-common/logo.svg" alt="logo">
             <!--<p class="header-logo-descriptor">Дополнительное профессиональное образование. Лицензия №12 от 25.10.2013</p></a>-->
           <div class="header-search">
             <input class="header__search" type="text" placeholder="Поиск">
