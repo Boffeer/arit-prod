@@ -38,7 +38,7 @@
             </div>
             <div class="course-about-time">
               <p class="course-about__descriptor">Время обучения</p>
-							<p class="course-about__value"><?php the_field('hours') ?></p>
+							<p class="course-about__value"><?php the_field('hours') ?> ч.</p>
             </div>
           </div>
           <div class="course-info">
@@ -56,9 +56,16 @@
                 <h3 class="dropdown-block__name">Получаемые документы</h3>
                 <button class="dropdown-block__handler"></button>
               </div>
-							<div class="dropdown-block-text paper paper--dropdown"><img src="http://xn--80aqxj.xn--p1ai/wp-content/uploads/2021/03/diploma.png" alt="">
-                <p><b> <i>Важно! В дипломе не указывается форма обучения (очная/заочная). Диплом установленного образца</i></b></p>
+							<div class="dropdown-block-text paper paper--dropdown">
+<!--<img src="http://xn--80aqxj.xn--p1ai/wp-content/uploads/2021/03/diploma.png" alt="">
+                <p><b> <i>Важно! В дипломе не указывается форма обучения (очная/заочная). Диплом установленного образца</i></b></p>-->
 								<?php the_field('documents'); ?>
+
+								<?php $doc = get_field('learning_plan'); 
+	if (! empty($doc)) {
+?>
+	<a style="color: var(--color-primary)" href="<?php echo $doc['link'] ?>"><?php echo $doc['title'] ?></a>
+<?php } ?>
               </div>
             </div>
             <div class="dropdown-block course-info-dropdown">
@@ -70,6 +77,25 @@
 								<?php the_field('requirements') ?>
               </div>
             </div>
+
+
+					<?php if (! empty(get_field('for_who'))) { ?>
+            <div class="dropdown-block course-info-dropdown">
+              <div class="dropdown-block-inner">
+                <h3 class="dropdown-block__name">Для кого это обучение?</h3>
+                <!--<h3 class="dropdown-block__name">Условия поступления</h3>-->
+                <button class="dropdown-block__handler"></button>
+              </div>
+              <div class="dropdown-block-text paper paper--dropdown">
+								<?php the_field('for_who') ?>
+              </div>
+            </div>
+					<?php } ?>
+
+
+
+
+
           </div>
         </div>
         <div class="course-right">
@@ -118,7 +144,7 @@
           <li class="how-start-item">
             <p class="how-start__text">Оставьте заявку на&nbsp;обратный звонок, позвоните по телефону или&nbsp;воспользуйтесь&nbspформой</p>
             <picture class="how-start__pic">
-							<img src="http://xn--80aqxj.xn--p1ai/wp-content/uploads/2021/03/retroPhone.png" />
+							<img src="https://xn--80aqxj.xn--p1ai/wp-content/uploads/2021/03/retroPhone.png" />
             </picture>
             <h3 class="how-start__number">01</h3>
           </li>
@@ -133,7 +159,7 @@
           <li class="how-start-item">
             <p class="how-start__text">Завершить обучение и получить документы</p>
             <picture class="how-start__pic">
-							<img src="http://xn--80aqxj.xn--p1ai/wp-content/uploads/2021/03/cap.png" />
+							<img src="https://xn--80aqxj.xn--p1ai/wp-content/uploads/2021/03/cap.png" />
             </picture>
             <h3 class="how-start__number">04</h3>
           </li>

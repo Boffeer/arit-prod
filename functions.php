@@ -405,4 +405,7 @@
 		add_theme_support('menus');
 	}
 
-
+function mihdan_debug_wp_mail( $wp_error ) {
+    return error_log( print_r( $wp_error, true ) );
+}
+add_action( 'wp_mail_failed', 'mihdan_debug_wp_mail', 10, 1 );

@@ -34,6 +34,7 @@ $jobs = get_posts( $args );
 	<p>Пока нет ни одной вакансии</p>
 <?php } ?>
 <?php 
+		$jobs_counter = 0;
 		foreach ($jobs as $job) {
 		$id = $job->to_array()['ID'];
 		setup_postdata($job);
@@ -43,7 +44,7 @@ $jobs = get_posts( $args );
 							<div class="jobs-item__name"><?php the_field('name', $id) ?></div>
 							<div class="jobs-item__descr"><?php the_field('descr', $id) ?></div>
 							<div class="jobs-item__cta">
-								<button data-to-fom="Заявка на вакансию <?php the_field('name', $id) ?>"class="primary-button">Подать заявку</button>
+								<button id="job-button-<?php echo $jobs_counter; $jobs_counter++ ?>" data-form-name="Заявка на вакансию <?php the_field('name', $id) ?>"class="primary-button">Подать заявку</button>
 							</div>
 						</div>
 <?php }  wp_reset_postdata(); ?>
@@ -53,3 +54,31 @@ $jobs = get_posts( $args );
       </div>
     </main>
 <?php get_footer();?>
+
+
+
+
+<script>
+					
+
+	var jobs_buttons = [...document.querySelectorAll('.jobs-item .primary-button')];
+
+		jobs_buttons.map(function(item, index){
+			console.log(index)
+			popa({
+				clickTrigger: '#job-button-'+index,
+				popWrap: '.consult-pop-wrap',
+				pop: '.consult-pop',
+				popCloser: '.pop-closer',
+			})
+
+			var form_handler_value = item.getAttribute('data-form-name');
+			if (form_handler_value != null) {
+				let form_name_item = document.querySelector('.pop-form input[name="arit_formname"]')
+				let form_name_value = form_name_item.getAttribute('value');
+				form_name_item.value = form_name_value + ', ' +  form_handler_value;
+						}
+		})
+
+
+</script>

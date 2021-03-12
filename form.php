@@ -27,10 +27,12 @@ require_once( $_SERVER['DOCUMENT_ROOT'] . '/wp-load.php' );
 		$message2 .= '</table>';
 
 		$headers  = "Content-type: text/html; charset=utf-8 \r\n";
-		$headers .= "From: <boffeechane@gmail.com>\r\n";
+		$headers .= "From: <mailer@арит.рф>\r\n";
 
-		$mailstat = wp_mail('boffeechane@gmail.com', $subj, $message2, $headers);
-		$mailstat;
+		$mailstat1 = wp_mail('boffeechane@gmail.com', $subj, $message2, $headers);
+		$mailstat2 = wp_mail('dpo@dpoarit.ru', $subj, $message2, $headers);
+		$mailstat1;
+		$mailstat2;
 		
 	//   wp_send_json([
 	//     'success' => true,

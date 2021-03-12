@@ -27,9 +27,23 @@
 					<img src="<?php the_field('meetup_pic') ?>" alt="<?php the_field('meetup_name'); ?>">
             <div class="paper--news-item-body">
 							<?php the_field('meetup_more'); ?>
+
+
+<?php if (! empty(get_field('url_landing'))) { ?>
+							<!-- .button -->
+							<div class="button--center-aligner"><!-- .primary-button -->
+								<a class="primary-button" style="text-align: center" href="<?php  the_field('url_landing' )?>"><?php the_field('cta_text') ?></a>
+								<!-- /.primary-button -->
+							</div>
+							<!-- /.button -->
+<?php } ?>
+
             </div>
           </div>
         </div>
       </div>
     </main>
 <?php get_footer();?>
+
+
+

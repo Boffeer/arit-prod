@@ -33,31 +33,48 @@ foreach ( $posts as $post ) {
 	setup_postdata($post);
 
 	$date = get_field('meetup_date');
-	$filter_date_format = strtotime($date);
-	$today_date_format = strtotime(date('d.m.y'));
+	$filter_date_format = ($date);
+	$today_date_format = (date('d.m.y'));
 	$result = $filter_date_format - $today_date_format;
 
 	$get_meetup_status = implode('/', explode('.', $date, -2));
 	$get_meetup_untill = $get_meetup_status - date('d');
 
+	$days_multiply = (24 * 60 * 60);
+	$today = (date('d.m.y')) ;
+	$meetup_date =  ($date);
+	$date_time_form = DateTime::createFromFormat('d.m.y', $today);
+	$date_time_to = DateTime::createFromFormat('d.m.y', $meetup_date);
+	$calculate_days = $date_time_form->diff( $date_time_to )->format( '%a' ) ;
+
 
 	if ($result > -1) {
+		$postsToIncoming[$incomingCounter]['calculate_days'] = $calculate_days;
 		$postsToIncoming[$incomingCounter]['meetup_pic'] = get_field('meetup_pic');
 		$postsToIncoming[$incomingCounter]['meetup_address'] = get_field('meetup_address');
 		$postsToIncoming[$incomingCounter]['meetup_date'] = get_field('meetup_date');
 		$postsToIncoming[$incomingCounter]['meetup_name'] = get_field('meetup_name');
 		$postsToIncoming[$incomingCounter]['meetup_speakers'] = get_field('meetup_speakers');
 		$postsToIncoming[$incomingCounter]['sorting_days'] = $get_meetup_untill;
+		$postsToIncoming[$incomingCounter]['time'] = get_field('time', $id);
 		$postsToIncoming[$incomingCounter]['url'] = get_permalink();
 
-		if ($get_meetup_untill < 1) {
+		if ($calculate_days < 1) {
 			$postsToIncoming[$incomingCounter]['days_untill'] = 'Семинар сегодня';
-		} else if ($get_meetup_untill < 2) {
+
+		} else if ($calculate_days < 2) {
 			$postsToIncoming[$incomingCounter]['days_untill'] = 'Семинар завтра';
-		} else if ($get_meetup_untill < 5) {
+
+		} else if ( (( strlen($calculate_days) ) > 1 ) && substr($calculate_days, -1) == 1) {
+			$postsToIncoming[$incomingCounter]['days_untill'] = 'Остался ' . $calculate_days . ' день'; //2, 3, 4
+
+		} else if (substr($calculate_days, -1) < 5 || $calculate_days == 2  ) {
 			$postsToIncoming[$incomingCounter]['days_untill'] = 'Осталось ' . $get_meetup_untill . ' дня'; //2, 3, 4
-		} else if ($get_meetup_untill > 4){
-			$postsToIncoming[$incomingCounter]['days_untill'] = 'Осталось ' . $get_meetup_untill . ' дней'; //5, 6, 7, 8, 9, 10
+			$postsToIncoming[$incomingCounter]['days_untill'] = 'Осталось ' . $calculate_days . ' дня'; //2, 3, 4
+
+		} else if ( substr($calculate_days, -1) > 4 || ($calculate_days == 11) || ( (strlen($calculate_days) > 1) && ( substr($calculate_days, -1) == 0)) ){
+			$postsToIncoming[$incomingCounter]['days_untill'] = 'Осталось ' . $calculate_days . ' дней'; //5, 6, 7, 8, 9, 10
+
 		}
 
 		$incomingCounter++;
@@ -76,7 +93,8 @@ foreach ( $posts as $post ) {
 
 
 usort($postsToIncoming, function($a,$b){
-	return ($a['sorting_days'] - $b['sorting_days']);
+	return ($a['calculate_days'] - $b['calculate_days']);
+	// return ($a['sorting_days'] - $b['sorting_days']);
 });?>
       <div class="container">
         <div class="meetups-page-container">
@@ -115,13 +133,21 @@ foreach ($postsToIncoming as $post) {
 	
 
 ?>
-							<div class="meetup-next-item" data-url="<?php echo $post['url'] ?>" data-src="<?php echo $post['meetup_pic'] ?>" data-address="<?php echo $post['meetup_address'] ?>" data-date="<?php echo $post['meetup_date'] ?>">
+							<div 
+								class="meetup-next-item"
+								data-url="<?php echo $post['url'] ?>"
+								data-src="<?php echo $post['meetup_pic'] ?>"
+								data-address="<?php echo $post['meetup_address'] ?>"
+								data-date="<?php echo $post['time'] ?>"
+								data-form-name="<?php echo $post['meetup_name'] ?>"
+							>
+
 								<div class="meetup-next-item-due">
 								<div class="meetup-next-item__date"><?php echo implode('/', explode('.', $post['meetup_date'], -1)) ?></div>
 								<div class="meetup-next-item__status"><?php echo $post['days_untill'] ?></div>
               </div>
               <div class="meetup-next-item-info">
-							<h3 class="meetup-next-item-info__topic"><?php echo $post['meetup_name'] ?></h3>
+							<h3 class="meetup-next-item-info__topic"><?php echo $post['meetup_name'] ?> <?php echo $post['counted_date'] ?></h3>
 								<p class="meetup-next-item-info__speakers"><?php echo $post['meetup_speakers'] ?></p>
               </div>
             </div>
@@ -178,3 +204,26 @@ foreach ($postsToIncoming as $post) {
           
         </script>
 <?php get_footer();?>
+
+
+<script>
+
+					popa({
+						clickTrigger: '.seminar__button-cta',
+						popWrap: '.consult-pop-wrap',
+						pop: '.consult-pop',
+						popCloser: '.pop-closer',
+					})
+
+					var event_name = 'Семинар';
+					var form_handler = document.querySelector('.meetups-item').querySelector('.primary-button');
+					form_handler.addEventListener('click', function(){
+						var form_handler_value = form_handler.getAttribute('data-form-name');
+						if (form_handler_value != null) {
+							let form_name_item = document.querySelector('.pop-form input[name="arit_formname"]')
+							let form_name_value = form_name_item.getAttribute('value');
+							form_name_item.value = form_name_value + ' ' + event_name + ', ' +  form_handler_value;
+						}
+					})
+
+</script>

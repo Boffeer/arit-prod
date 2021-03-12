@@ -389,7 +389,7 @@ $last_webinar = get_posts( $args_web );
 											<a href="<?php the_permalink($id) ?>" class="meetup__secondary-button thirdly-button seminar__button-more">Подробнее</a>
                       </div>
                     </div>
-                  </div><a class="secondary-button meetups-more--seminars" href="/seminars">Показать еще</a>
+										</div><a class="secondary-button meetups-more--seminars" href="<?php the_permalink(181) ?>">Показать еще</a>
             </div>
 <?php } //end seminar ?>
 
@@ -421,7 +421,7 @@ $last_webinar = get_posts( $args_web );
                       </div>
                     </div>
 <?php } // end of webinar ?>
-                  </div><a class="secondary-button meetups-more--webinars" href="/webinars">Показать еще</a>
+                  </div><a class="secondary-button meetups-more--webinars" href="<?php the_permalink(108) ?>">Показать еще</a>
             </div>
           </div>
         </div>
@@ -619,7 +619,7 @@ $testimonials = get_posts( $args );
                 <div class="testimonials-slider-scrollbar"></div>
               </div>
             </div>
-            <div class="testimonials-more-wrap"><a class="secondary-button testimonials-more" href="/testimonials.html">Показать еще</a></div>
+						<div class="testimonials-more-wrap"><a class="secondary-button testimonials-more" href="<?php the_permalink(106) ?>">Показать еще</a></div>
           </div>
         </div>
       </div>

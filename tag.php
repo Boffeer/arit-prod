@@ -7,6 +7,7 @@
 <?php get_header();?>
 
 <?php 
+	$button_counter = 0;
 // getting current tag name
 	$url;
 	$get_current_url = home_url(add_query_arg( array() ), $url->requiest);
@@ -66,7 +67,8 @@
 <?php if (count($all_tag_posts_retrain) === 0) { ?>
 								<p style="text-align: center; margin-bottom: 20px;">Пока нет опубликованных курсов по этому направлению</p>
 <?php } ?>
-<?php foreach ($all_tag_posts_retrain as $key => $course) {
+<?php 
+	foreach ($all_tag_posts_retrain as $key => $course) {
 	setup_postdata($course);
 	$course_ar = $course->to_array();
 	$id = $course->to_array()['ID'];
@@ -91,14 +93,17 @@
                       </div>
                       <div class="learning-page-info">
 											<h3 class="learning-page-info__title"><?php echo $course_ar['post_title'] ?></h3>
-											<p class="learning-page-info__hours learning-page-info__bullet"><span class="learning-page-info__field-name">Объем программы:</span><span class="text-bold learning-page-info__content"><?php the_field('hours', $id) ?></span></p>
-											<p class="learning-page-info__duration learning-page-info__bullet"><span class="learning-page-info__field-name">Длительность обучения:</span><span class="text-bold learning-page-info__content"><?php echo the_field('days', $id) ?></span></p>
+											<p class="learning-page-info__hours learning-page-info__bullet"><span class="learning-page-info__field-name">Объем программы:</span><span class="text-bold learning-page-info__content"><?php the_field('hours', $id) ?> ч.</span></p>
+											<p class="learning-page-info__duration learning-page-info__bullet"><span class="learning-page-info__field-name">Длительность обучения:</span><span class="text-bold learning-page-info__content"><?php echo the_field('days', $id) ?> д.</span></p>
 											<p class="learning-page-info__document learning-page-info__bullet"><span class="learning-page-info__field-name">Получаемый документ:</span><span class="text-bold learning-page-info__content"><?php echo get_field('doc', $id) ?></span></p>
 											<p class="learning-page-info__base learning-page-info__bullet"><span class="learning-page-info__field-name">Обучение на базе:</span><span class="text-bold learning-page-info__content"><?php the_field('base', $id) ?></span></p>
                       </div>
                     </div>
                     <div class="learning-page-info-buttons">
-										<button data-to-form="Консультация по курсу «<?php echo $course_ar['post_title'] ?>», направление «<?php single_tag_title() ?>»>" class="primary-button learning-page-info__consult">Получить консультацию</button>
+										<button
+											id="button-<?php echo $button_counter; $button_counter++; ?>"
+											data-form-name="Консультация по курсу ПП «<?php echo $course_ar['post_title'] ?>», направление «<?php single_tag_title() ?>»"
+											class="primary-button learning-page-info__consult">Получить консультацию</button>
 											<a href="<?php the_permalink($id) ?>" class="thirdly-button learning-page-info__more">Подробнее</a>
                     </div>
                   </div>
@@ -127,7 +132,9 @@
 <?php if (count($all_tag_posts) === 0) { ?>
 								<p style="text-align: center; margin-bottom: 20px;">Пока нет опубликованных курсов по этому направлению</p>
 <?php } ?>
-<?php foreach ($all_tag_posts as $key => $course) {
+
+<?php
+ 	foreach ($all_tag_posts as $key => $course) {
 	setup_postdata($course);
 	$course_ar = $course->to_array();
 	$id = $course->to_array()['ID'];
@@ -139,14 +146,14 @@
                       </div>
                       <div class="learning-page-info">
 											<h3 class="learning-page-info__title"><?php echo $course_ar['post_title'] ?></h3>
-											<p class="learning-page-info__hours learning-page-info__bullet"><span class="learning-page-info__field-name">Объем программы:</span><span class="text-bold learning-page-info__content"><?php the_field('hours', $id) ?></span></p>
-											<p class="learning-page-info__duration learning-page-info__bullet"><span class="learning-page-info__field-name">Длительность обучения:</span><span class="text-bold learning-page-info__content"><?php echo the_field('days', $id) ?></span></p>
+											<p class="learning-page-info__hours learning-page-info__bullet"><span class="learning-page-info__field-name">Объем программы:</span><span class="text-bold learning-page-info__content"><?php the_field('hours', $id) ?> ч.</span></p>
+											<p class="learning-page-info__duration learning-page-info__bullet"><span class="learning-page-info__field-name">Длительность обучения:</span><span class="text-bold learning-page-info__content"><?php echo the_field('days', $id) ?> д.</span></p>
 											<p class="learning-page-info__document learning-page-info__bullet"><span class="learning-page-info__field-name">Получаемый документ:</span><span class="text-bold learning-page-info__content"><?php echo get_field('doc', $id) ?></span></p>
 											<p class="learning-page-info__base learning-page-info__bullet"><span class="learning-page-info__field-name">Обучение на базе:</span><span class="text-bold learning-page-info__content"><?php the_field('base', $id) ?></span></p>
                       </div>
                     </div>
                     <div class="learning-page-info-buttons">
-										<button data-to-form="Консультация по курсу «<?php echo $course_ar['post_title'] ?>», направление «<?php single_tag_title() ?>»>" class="primary-button learning-page-info__consult">Получить консультацию</button>
+										<button id="button-<?php echo $button_counter; $button_counter++ ?>"data-form-name="Консультация по курсу ПК «<?php echo $course_ar['post_title'] ?>», направление «<?php single_tag_title() ?>»" class="primary-button learning-page-info__consult">Получить консультацию</button>
 											<a href="<?php the_permalink($id) ?>" class="thirdly-button learning-page-info__more">Подробнее</a>
                     </div>
                   </div>
@@ -181,7 +188,7 @@
         <div class="features-wrapper">
           <div class="features-container container">
             <div class="features">
-              <h2 class="section__title features__title">Плюсы образования, полученного в СНТА</h2>
+              <h2 class="section__title features__title">Плюсы образования, полученного в АРИТ</h2>
               <ol class="features-list">
                 <li class="features-list-item">
                   <p class="features-item__text"> <span class="text-bold">Индивидуальный подход </span> и&nbsp;модульная система обучения </p>
@@ -255,78 +262,54 @@
         <div class="container container--mobile-fullscreen">
           <h2 class="section__title">Лицензии</h2>
           <div class="licenses-list">
-            <div class="licenses-item">
-              <div class="licenses-item-text">
-                <p class="licenses-item__title">Свидетельство о пастановке в налоговый орган от 24.11.2020</p>
-                <p class="licenses-item__size">1Мб</p>
-              </div>
-              <button class="licenses-item-download"> <span class="licenses-item-download__text">Скачать PDF</span>
-                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7.5 0C6.46875 0 5.625 0.84375 5.625 1.875V28.125C5.625 29.1562 6.46875 30 7.5 30H26.25C27.2812 30 28.125 29.1562 28.125 28.125V7.5L20.625 0H7.5Z" fill="#E2E5E7"></path>
-                  <path d="M22.5 7.5H28.125L20.625 0V5.625C20.625 6.65625 21.4688 7.5 22.5 7.5Z" fill="#B0B7BD"></path>
-                  <path d="M28.125 13.125L22.5 7.5H28.125V13.125Z" fill="#CAD1D8"></path>
-                  <path d="M24.375 24.375C24.375 24.8906 23.9531 25.3125 23.4375 25.3125H2.8125C2.29688 25.3125 1.875 24.8906 1.875 24.375V15C1.875 14.4844 2.29688 14.0625 2.8125 14.0625H23.4375C23.9531 14.0625 24.375 14.4844 24.375 15V24.375Z" fill="#F15642"></path>
-                  <path d="M5.96143 17.7626C5.96143 17.5151 6.15643 17.2451 6.47049 17.2451H8.20205C9.17705 17.2451 10.0546 17.8976 10.0546 19.1482C10.0546 20.3332 9.17705 20.9932 8.20205 20.9932H6.95049V21.9832C6.95049 22.3132 6.74049 22.4998 6.47049 22.4998C6.22299 22.4998 5.96143 22.3132 5.96143 21.9832V17.7626ZM6.95049 18.1892V20.0567H8.20205C8.70455 20.0567 9.10205 19.6132 9.10205 19.1482C9.10205 18.6242 8.70455 18.1892 8.20205 18.1892H6.95049Z" fill="white"></path>
-                  <path d="M11.5224 22.4997C11.2749 22.4997 11.0049 22.3647 11.0049 22.0356V17.7775C11.0049 17.5084 11.2749 17.3125 11.5224 17.3125H13.2389C16.6646 17.3125 16.5896 22.4997 13.3064 22.4997H11.5224ZM11.9949 18.2275V21.5856H13.2389C15.263 21.5856 15.353 18.2275 13.2389 18.2275H11.9949Z" fill="white"></path>
-                  <path d="M17.8053 18.2875V19.479H19.7169C19.9869 19.479 20.2569 19.749 20.2569 20.0106C20.2569 20.2581 19.9869 20.4606 19.7169 20.4606H17.8053V22.0346C17.8053 22.2971 17.6188 22.4987 17.3563 22.4987C17.0263 22.4987 16.8247 22.2971 16.8247 22.0346V17.7765C16.8247 17.5075 17.0272 17.3115 17.3563 17.3115H19.9878C20.3178 17.3115 20.5128 17.5075 20.5128 17.7765C20.5128 18.0165 20.3178 18.2865 19.9878 18.2865H17.8053V18.2875Z" fill="white"></path>
-                  <path d="M23.4375 25.3125H5.625V26.25H23.4375C23.9531 26.25 24.375 25.8281 24.375 25.3125V24.375C24.375 24.8906 23.9531 25.3125 23.4375 25.3125Z" fill="#CAD1D8"></path>
-                </svg>
-              </button>
-            </div>
-            <div class="licenses-item">
-              <div class="licenses-item-text">
-                <p class="licenses-item__title">Устав АНО ДПО АРИТ 20.10.2020</p>
-                <p class="licenses-item__size">1Мб</p>
-              </div>
-              <button class="licenses-item-download"> <span class="licenses-item-download__text">Скачать PDF</span>
-                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7.5 0C6.46875 0 5.625 0.84375 5.625 1.875V28.125C5.625 29.1562 6.46875 30 7.5 30H26.25C27.2812 30 28.125 29.1562 28.125 28.125V7.5L20.625 0H7.5Z" fill="#E2E5E7"></path>
-                  <path d="M22.5 7.5H28.125L20.625 0V5.625C20.625 6.65625 21.4688 7.5 22.5 7.5Z" fill="#B0B7BD"></path>
-                  <path d="M28.125 13.125L22.5 7.5H28.125V13.125Z" fill="#CAD1D8"></path>
-                  <path d="M24.375 24.375C24.375 24.8906 23.9531 25.3125 23.4375 25.3125H2.8125C2.29688 25.3125 1.875 24.8906 1.875 24.375V15C1.875 14.4844 2.29688 14.0625 2.8125 14.0625H23.4375C23.9531 14.0625 24.375 14.4844 24.375 15V24.375Z" fill="#F15642"></path>
-                  <path d="M5.96143 17.7626C5.96143 17.5151 6.15643 17.2451 6.47049 17.2451H8.20205C9.17705 17.2451 10.0546 17.8976 10.0546 19.1482C10.0546 20.3332 9.17705 20.9932 8.20205 20.9932H6.95049V21.9832C6.95049 22.3132 6.74049 22.4998 6.47049 22.4998C6.22299 22.4998 5.96143 22.3132 5.96143 21.9832V17.7626ZM6.95049 18.1892V20.0567H8.20205C8.70455 20.0567 9.10205 19.6132 9.10205 19.1482C9.10205 18.6242 8.70455 18.1892 8.20205 18.1892H6.95049Z" fill="white"></path>
-                  <path d="M11.5224 22.4997C11.2749 22.4997 11.0049 22.3647 11.0049 22.0356V17.7775C11.0049 17.5084 11.2749 17.3125 11.5224 17.3125H13.2389C16.6646 17.3125 16.5896 22.4997 13.3064 22.4997H11.5224ZM11.9949 18.2275V21.5856H13.2389C15.263 21.5856 15.353 18.2275 13.2389 18.2275H11.9949Z" fill="white"></path>
-                  <path d="M17.8053 18.2875V19.479H19.7169C19.9869 19.479 20.2569 19.749 20.2569 20.0106C20.2569 20.2581 19.9869 20.4606 19.7169 20.4606H17.8053V22.0346C17.8053 22.2971 17.6188 22.4987 17.3563 22.4987C17.0263 22.4987 16.8247 22.2971 16.8247 22.0346V17.7765C16.8247 17.5075 17.0272 17.3115 17.3563 17.3115H19.9878C20.3178 17.3115 20.5128 17.5075 20.5128 17.7765C20.5128 18.0165 20.3178 18.2865 19.9878 18.2865H17.8053V18.2875Z" fill="white"></path>
-                  <path d="M23.4375 25.3125H5.625V26.25H23.4375C23.9531 26.25 24.375 25.8281 24.375 25.3125V24.375C24.375 24.8906 23.9531 25.3125 23.4375 25.3125Z" fill="#CAD1D8"></path>
-                </svg>
-              </button>
-            </div>
-            <div class="licenses-item">
-              <div class="licenses-item-text">
-                <p class="licenses-item__title">Договор аренды от 15.12.2020</p>
-                <p class="licenses-item__size">1Мб</p>
-              </div>
-              <button class="licenses-item-download"> <span class="licenses-item-download__text">Скачать PDF</span>
-                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7.5 0C6.46875 0 5.625 0.84375 5.625 1.875V28.125C5.625 29.1562 6.46875 30 7.5 30H26.25C27.2812 30 28.125 29.1562 28.125 28.125V7.5L20.625 0H7.5Z" fill="#E2E5E7"></path>
-                  <path d="M22.5 7.5H28.125L20.625 0V5.625C20.625 6.65625 21.4688 7.5 22.5 7.5Z" fill="#B0B7BD"></path>
-                  <path d="M28.125 13.125L22.5 7.5H28.125V13.125Z" fill="#CAD1D8"></path>
-                  <path d="M24.375 24.375C24.375 24.8906 23.9531 25.3125 23.4375 25.3125H2.8125C2.29688 25.3125 1.875 24.8906 1.875 24.375V15C1.875 14.4844 2.29688 14.0625 2.8125 14.0625H23.4375C23.9531 14.0625 24.375 14.4844 24.375 15V24.375Z" fill="#F15642"></path>
-                  <path d="M5.96143 17.7626C5.96143 17.5151 6.15643 17.2451 6.47049 17.2451H8.20205C9.17705 17.2451 10.0546 17.8976 10.0546 19.1482C10.0546 20.3332 9.17705 20.9932 8.20205 20.9932H6.95049V21.9832C6.95049 22.3132 6.74049 22.4998 6.47049 22.4998C6.22299 22.4998 5.96143 22.3132 5.96143 21.9832V17.7626ZM6.95049 18.1892V20.0567H8.20205C8.70455 20.0567 9.10205 19.6132 9.10205 19.1482C9.10205 18.6242 8.70455 18.1892 8.20205 18.1892H6.95049Z" fill="white"></path>
-                  <path d="M11.5224 22.4997C11.2749 22.4997 11.0049 22.3647 11.0049 22.0356V17.7775C11.0049 17.5084 11.2749 17.3125 11.5224 17.3125H13.2389C16.6646 17.3125 16.5896 22.4997 13.3064 22.4997H11.5224ZM11.9949 18.2275V21.5856H13.2389C15.263 21.5856 15.353 18.2275 13.2389 18.2275H11.9949Z" fill="white"></path>
-                  <path d="M17.8053 18.2875V19.479H19.7169C19.9869 19.479 20.2569 19.749 20.2569 20.0106C20.2569 20.2581 19.9869 20.4606 19.7169 20.4606H17.8053V22.0346C17.8053 22.2971 17.6188 22.4987 17.3563 22.4987C17.0263 22.4987 16.8247 22.2971 16.8247 22.0346V17.7765C16.8247 17.5075 17.0272 17.3115 17.3563 17.3115H19.9878C20.3178 17.3115 20.5128 17.5075 20.5128 17.7765C20.5128 18.0165 20.3178 18.2865 19.9878 18.2865H17.8053V18.2875Z" fill="white"></path>
-                  <path d="M23.4375 25.3125H5.625V26.25H23.4375C23.9531 26.25 24.375 25.8281 24.375 25.3125V24.375C24.375 24.8906 23.9531 25.3125 23.4375 25.3125Z" fill="#CAD1D8"></path>
-                </svg>
-              </button>
-            </div>
-            <div class="licenses-item">
-              <div class="licenses-item-text">
-                <p class="licenses-item__title">Свидетельство о гос.рег 03.12.2020</p>
-                <p class="licenses-item__size">1Мб</p>
-              </div>
-              <button class="licenses-item-download"> <span class="licenses-item-download__text">Скачать PDF</span>
-                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7.5 0C6.46875 0 5.625 0.84375 5.625 1.875V28.125C5.625 29.1562 6.46875 30 7.5 30H26.25C27.2812 30 28.125 29.1562 28.125 28.125V7.5L20.625 0H7.5Z" fill="#E2E5E7"></path>
-                  <path d="M22.5 7.5H28.125L20.625 0V5.625C20.625 6.65625 21.4688 7.5 22.5 7.5Z" fill="#B0B7BD"></path>
-                  <path d="M28.125 13.125L22.5 7.5H28.125V13.125Z" fill="#CAD1D8"></path>
-                  <path d="M24.375 24.375C24.375 24.8906 23.9531 25.3125 23.4375 25.3125H2.8125C2.29688 25.3125 1.875 24.8906 1.875 24.375V15C1.875 14.4844 2.29688 14.0625 2.8125 14.0625H23.4375C23.9531 14.0625 24.375 14.4844 24.375 15V24.375Z" fill="#F15642"></path>
-                  <path d="M5.96143 17.7626C5.96143 17.5151 6.15643 17.2451 6.47049 17.2451H8.20205C9.17705 17.2451 10.0546 17.8976 10.0546 19.1482C10.0546 20.3332 9.17705 20.9932 8.20205 20.9932H6.95049V21.9832C6.95049 22.3132 6.74049 22.4998 6.47049 22.4998C6.22299 22.4998 5.96143 22.3132 5.96143 21.9832V17.7626ZM6.95049 18.1892V20.0567H8.20205C8.70455 20.0567 9.10205 19.6132 9.10205 19.1482C9.10205 18.6242 8.70455 18.1892 8.20205 18.1892H6.95049Z" fill="white"></path>
-                  <path d="M11.5224 22.4997C11.2749 22.4997 11.0049 22.3647 11.0049 22.0356V17.7775C11.0049 17.5084 11.2749 17.3125 11.5224 17.3125H13.2389C16.6646 17.3125 16.5896 22.4997 13.3064 22.4997H11.5224ZM11.9949 18.2275V21.5856H13.2389C15.263 21.5856 15.353 18.2275 13.2389 18.2275H11.9949Z" fill="white"></path>
-                  <path d="M17.8053 18.2875V19.479H19.7169C19.9869 19.479 20.2569 19.749 20.2569 20.0106C20.2569 20.2581 19.9869 20.4606 19.7169 20.4606H17.8053V22.0346C17.8053 22.2971 17.6188 22.4987 17.3563 22.4987C17.0263 22.4987 16.8247 22.2971 16.8247 22.0346V17.7765C16.8247 17.5075 17.0272 17.3115 17.3563 17.3115H19.9878C20.3178 17.3115 20.5128 17.5075 20.5128 17.7765C20.5128 18.0165 20.3178 18.2865 19.9878 18.2865H17.8053V18.2875Z" fill="white"></path>
-                  <path d="M23.4375 25.3125H5.625V26.25H23.4375C23.9531 26.25 24.375 25.8281 24.375 25.3125V24.375C24.375 24.8906 23.9531 25.3125 23.4375 25.3125Z" fill="#CAD1D8"></path>
-                </svg>
-              </button>
-            </div>
+<?php
+$licenses_args = array(
+	'post_type' => 'licenses',
+	'supress_filters' => false,
+	'numberposts' => -1,
+	'order' => 'ASC',
+);
+$licenses = get_posts($licenses_args);
+
+
+	function human_filesize($bytes, $decimals = 0) {
+		$sz = array(
+			0 => ' б',
+			1 => ' Кб',
+			2 => ' Мб',
+		);
+			  $factor = floor((strlen($bytes) - 1) / 3);
+			  return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$sz[$factor];
+	}
+
+foreach ($licenses as $doc) {
+	$id = $doc->to_array()['ID'];
+	setup_postdata($doc);
+	$file = get_field('file', $id);
+	$filesize = filesize( get_attached_file( $file['ID'] ) );
+?>
+
+                    <div class="licenses-item">
+                      <div class="licenses-item-text">
+											<p class="licenses-item__title"><?php the_field('name', $id) ?></p>
+											<p class="licenses-item__size"><?php echo human_filesize($filesize) ?></p>
+                      </div>
+											<a download href="<?php echo $file['url'] ?>" class="licenses-item-download"> <span class="licenses-item-download__text">Скачать PDF</span>
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M7.5 0C6.46875 0 5.625 0.84375 5.625 1.875V28.125C5.625 29.1562 6.46875 30 7.5 30H26.25C27.2812 30 28.125 29.1562 28.125 28.125V7.5L20.625 0H7.5Z" fill="#E2E5E7"></path>
+                          <path d="M22.5 7.5H28.125L20.625 0V5.625C20.625 6.65625 21.4688 7.5 22.5 7.5Z" fill="#B0B7BD"></path>
+                          <path d="M28.125 13.125L22.5 7.5H28.125V13.125Z" fill="#CAD1D8"></path>
+                          <path d="M24.375 24.375C24.375 24.8906 23.9531 25.3125 23.4375 25.3125H2.8125C2.29688 25.3125 1.875 24.8906 1.875 24.375V15C1.875 14.4844 2.29688 14.0625 2.8125 14.0625H23.4375C23.9531 14.0625 24.375 14.4844 24.375 15V24.375Z" fill="#F15642"></path>
+                          <path d="M5.96143 17.7626C5.96143 17.5151 6.15643 17.2451 6.47049 17.2451H8.20205C9.17705 17.2451 10.0546 17.8976 10.0546 19.1482C10.0546 20.3332 9.17705 20.9932 8.20205 20.9932H6.95049V21.9832C6.95049 22.3132 6.74049 22.4998 6.47049 22.4998C6.22299 22.4998 5.96143 22.3132 5.96143 21.9832V17.7626ZM6.95049 18.1892V20.0567H8.20205C8.70455 20.0567 9.10205 19.6132 9.10205 19.1482C9.10205 18.6242 8.70455 18.1892 8.20205 18.1892H6.95049Z" fill="white"></path>
+                          <path d="M11.5224 22.4997C11.2749 22.4997 11.0049 22.3647 11.0049 22.0356V17.7775C11.0049 17.5084 11.2749 17.3125 11.5224 17.3125H13.2389C16.6646 17.3125 16.5896 22.4997 13.3064 22.4997H11.5224ZM11.9949 18.2275V21.5856H13.2389C15.263 21.5856 15.353 18.2275 13.2389 18.2275H11.9949Z" fill="white"></path>
+                          <path d="M17.8053 18.2875V19.479H19.7169C19.9869 19.479 20.2569 19.749 20.2569 20.0106C20.2569 20.2581 19.9869 20.4606 19.7169 20.4606H17.8053V22.0346C17.8053 22.2971 17.6188 22.4987 17.3563 22.4987C17.0263 22.4987 16.8247 22.2971 16.8247 22.0346V17.7765C16.8247 17.5075 17.0272 17.3115 17.3563 17.3115H19.9878C20.3178 17.3115 20.5128 17.5075 20.5128 17.7765C20.5128 18.0165 20.3178 18.2865 19.9878 18.2865H17.8053V18.2875Z" fill="white"></path>
+                          <path d="M23.4375 25.3125H5.625V26.25H23.4375C23.9531 26.25 24.375 25.8281 24.375 25.3125V24.375C24.375 24.8906 23.9531 25.3125 23.4375 25.3125Z" fill="#CAD1D8"></path>
+                        </svg>
+                      </a>
+                    </div>
+
+
+<?php } ?>
           </div>
         </div>
         <script defer>
@@ -385,3 +368,28 @@
       </div>
     </main>
 <?php get_footer();?>
+<script>
+					
+
+	var jobs_buttons = [...document.querySelectorAll('.learning-page-item .primary-button')];
+
+		jobs_buttons.map(function(item, index){
+			console.log(index)
+			popa({
+				clickTrigger: '#button-'+index,
+				popWrap: '.consult-pop-wrap',
+				pop: '.consult-pop',
+				popCloser: '.pop-closer',
+			})
+			item.addEventListener('click', function(){
+				var form_handler_value = item.getAttribute('data-form-name');
+				if (form_handler_value != null) {
+					let form_name_item = document.querySelector('.pop-form input[name="arit_formname"]')
+					let form_name_value = form_name_item.getAttribute('value');
+					form_name_item.value = form_name_value + ', ' +  form_handler_value;
+				}
+			})
+		})
+
+
+</script>
