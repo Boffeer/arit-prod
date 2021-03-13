@@ -400,12 +400,23 @@
 	}
 
 
-
-	if(function_exists('add_theme_support')) {
-		add_theme_support('menus');
-	}
+/* Должен быть обработчик писем, но не работает так*/
+if(function_exists('add_theme_support')) {
+	add_theme_support('menus');
+}
 
 function mihdan_debug_wp_mail( $wp_error ) {
     return error_log( print_r( $wp_error, true ) );
 }
 add_action( 'wp_mail_failed', 'mihdan_debug_wp_mail', 10, 1 );
+
+
+/*===   Security   ===*/
+
+// Hide WP version
+function wp_version_remove_version() {
+return '';
+}
+add_filter('the_generator', 'wp_version_remove_version');
+
+

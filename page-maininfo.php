@@ -18,16 +18,16 @@
           <div class="contacts-items">
             <div class="contacts-item">
               <h3 class="minititle">Наш адрес</h3>
-              <div class="contacts-item-content footer-contact--geo"><img src="img/0-common/geo-footer.svg" alt="geo">
+              <div class="contacts-item-content footer-contact--geo"><img src="<?php echo get_stylesheet_directory_uri() ?>/img/0-common/geo-footer.svg" alt="geo">
                 <p class="footer-contacts__text">Москва, улица Образцова, д. 4</p>
               </div>
             </div>
             <div class="contacts-item">
-              <h3 class="minititle">Телефон</h3><a class="contacts-item-content footer-contact--phone" href="tel:+74997026069"><img src="img/0-common/phone.svg" alt="phone">
+              <h3 class="minititle">Телефон</h3><a class="contacts-item-content footer-contact--phone" href="tel:+74997026069"><img src="<?php echo get_stylesheet_directory_uri() ?>/img/0-common/phone.svg" alt="phone">
                 <p class="footer-contacts__text">+7 (499) 702-60-69</p></a>
             </div>
             <div class="contacts-item">
-              <h3 class="minititle">Почта</h3><a class="contacts-item-content footer-contact--mail" href="mailto:undefined"><img src="img/0-common/mail.svg" alt="email">
+              <h3 class="minititle">Почта</h3><a class="contacts-item-content footer-contact--mail" href="mailto:undefined"><img src="<?php echo get_stylesheet_directory_uri() ?>/img/0-common/mail.svg" alt="email">
                 <div class="footer-contacts__text">dpo@dpoarit.ru</div></a>
             </div>
             <div class="contacts-item contacts-item--socials">
